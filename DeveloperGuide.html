@@ -714,6 +714,36 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <td class="tableblock halign-left valign-top"><p class="tableblock">track all consults that I have</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teaching assistant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a new tutorial slot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">track what tutorials I am teaching</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teaching assistant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete a new tutorial slot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove tutorials I have mistakenly added</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teaching assistant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view all tutorial slots I am teaching</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">track my tutorials and their respective details (eg. time and place)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teaching assistant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mark students in my tutorial as absent or present</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">record attendance of my students</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teaching assistant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view attendance sheet for my tutorial</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">track attendance of my students</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">teaching assistant</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">find consults based on the date or place</p></td>
@@ -966,6 +996,185 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </li>
 </ul>
+</div>
+<h3 id="use-case-add-tutorial-uxx" class="discrete">Use case: Add tutorial (UXX)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add tutorial</p>
+</li>
+<li>
+<p>System saves the new tutorial into the database.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The user enters an invalid command format to add tutorial.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that a wrong format was given.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-tutorial-uxx" class="discrete">Use case: Delete tutorial (UXX)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to delete tutorial</p>
+</li>
+<li>
+<p>System deletes the existing tutorial from the database.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The user enters an invalid command format to delete tutorial.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that a wrong format was given.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The tutorial requested does not exist in the database.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message that the requested tutorial was not found.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-view-tutorial-uxx" class="discrete">Use case: View tutorial (UXX)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to view all tutorials.</p>
+</li>
+<li>
+<p>System returns the list of tutorials and their respective information from the database.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-mark-attendance-of-student-uxx" class="discrete">Use case: Mark attendance of student (UXX)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to mark attendance of student, either absent or present.</p>
+</li>
+<li>
+<p>System updates attendance of the requested student in the database, with the respective attendance specified.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The user enters an invalid command format to mark attendance.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that a wrong format was given.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The student requested does not exist in the database.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message that the requested student was not found.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-view-attendance-sheet-uxx" class="discrete">Use case: View attendance sheet (UXX)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to view attendance of students from a particular tutorial.</p>
+</li>
+<li>
+<p>System returns the list of students and their attendance from the database.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
 </div>
 <h3 id="use-case-add-reminder-uxx" class="discrete">Use case: Add reminder (UXX)</h3>
 <div class="paragraph">
@@ -1235,9 +1444,6 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 students without a noticeable sluggishness in performance for typical usage.</p>
-</li>
-<li>
 <p>Should be intuitive for users to use after following the User Guide.</p>
 </li>
 <li>
@@ -1271,10 +1477,6 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
-</dd>
-<dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
-<dd>
-<p>A contact detail that is not meant to be shared with others</p>
 </dd>
 <dt class="hdlist1"><a id="students"></a> Students</dt>
 <dd>
@@ -1434,4 +1636,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-05 08:00:01 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-05 09:13:33 UTC</div></div></div></body></html>
