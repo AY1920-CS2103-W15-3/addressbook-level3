@@ -106,7 +106,7 @@
 <h3 id="add-a-tutorial-slot-code-addtutorial-code"><a class="link" href="#add-a-tutorial-slot-code-addtutorial-code">Add a tutorial slot: <code>addTutorial</code></a></h3>
 <div class="paragraph">
 <p>Add a tutorial slot for a particular module at the given time, day and place.<br>
-Format: <code>addTutorial mod/MODULE tutorialName/TUTORIAL_NAME day/WEEKDAY beginTime/START_TIME endTIme/END_TIME place/PLACE</code></p>
+Format: <code>addTutorial m/MODULE tutorialName/TUTORIAL_NAME day/WEEKDAY_VALUE beginTime/START_TIME endTIme/END_TIME place/PLACE</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -116,10 +116,7 @@ Format: <code>addTutorial mod/MODULE tutorialName/TUTORIAL_NAME day/WEEKDAY begi
 <p>The time provided must be in HH:MM format, i.e: 24-hour format</p>
 </li>
 <li>
-<p>The day provided must be the first 3 letters of the day <strong>or</strong> the full name of the weekday</p>
-</li>
-<li>
-<p>The day provided is case insensitive, e.g. <code>wEd</code> is equivalent to <code>Wed</code> or <code>wed</code></p>
+<p>The day provided is the value of the weekday (ie. MONDAY = 1, TUESDAY = 2, &#8230;&#8203; SUNDAY = 7)</p>
 </li>
 <li>
 <p>The module code provided is case insensitive, e.g. <code>Cs2103</code> is equivalent to <code>CS2103</code></p>
@@ -137,10 +134,10 @@ Format: <code>addTutorial mod/MODULE tutorialName/TUTORIAL_NAME day/WEEKDAY begi
 <div class="ulist">
 <ul>
 <li>
-<p><code>addTutorial mod/CS2103 tutorialName/T02 day/Wed beginTime/12:00 endTime/13:00 place/SR3</code></p>
+<p><code>addTutorial m/CS2103 tutorialName/T02 day/3 beginTime/12:00 endTime/13:00 place/SR3</code></p>
 </li>
 <li>
-<p><code>addTutorial mod/CS1101S tutorialName/T11 day/Wednesday beginTime/12:00 endTime/13:00 place/SR3</code></p>
+<p><code>addTutorial m/CS1101S tutorialName/T11 day/4 beginTime/12:00 endTime/13:00 place/SR3</code></p>
 </li>
 </ul>
 </div>
@@ -149,7 +146,7 @@ Format: <code>addTutorial mod/MODULE tutorialName/TUTORIAL_NAME day/WEEKDAY begi
 <h3 id="delete-a-tutorial-slot-code-deletetutorial-code"><a class="link" href="#delete-a-tutorial-slot-code-deletetutorial-code">Delete a tutorial slot: <code>deleteTutorial</code></a></h3>
 <div class="paragraph">
 <p>Delete a tutorial slot for a particular module.<br>
-Format: <code>deleteTutorial mod/MODULE tutorialName/TUTORIAL_NAME</code></p>
+Format: <code>deleteTutorial m/MODULE tutorialName/TUTORIAL_NAME</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -168,35 +165,7 @@ Format: <code>deleteTutorial mod/MODULE tutorialName/TUTORIAL_NAME</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>deleteTutorial mod/CS2103 tutorialName/T02</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="view-details-of-a-tutorial-slot-code-viewtutorial-code"><a class="link" href="#view-details-of-a-tutorial-slot-code-viewtutorial-code">View details of a tutorial slot: <code>viewTutorial</code></a></h3>
-<div class="paragraph">
-<p>Display all the details of a particular tutorial slot.<br>
-Format: <code>viewTutorial mod/MODULE tutorialName/TUTORIAL_NAME</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Both the module and name of the tutorial slot has to be specified</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>viewTutorial mod/CS2103 tutorialName/T02</code></p>
+<p><code>deleteTutorial m/CS2103 tutorialName/T02</code></p>
 </li>
 </ul>
 </div>
@@ -205,7 +174,7 @@ Format: <code>viewTutorial mod/MODULE tutorialName/TUTORIAL_NAME</code></p>
 <h3 id="marks-students-as-present-code-markpresent-code"><a class="link" href="#marks-students-as-present-code-markpresent-code">Marks students as present: <code>markPresent</code></a></h3>
 <div class="paragraph">
 <p>Takes attendance of students in a tutorial class by marking them as present for a particular week. Present students will be marked with a :heavy_check_mark:.<br>
-Format: <code>markPresent mod/MODULE tutorialName/TUTORIAL_NAME week/WEEK student/STUDENT [OPTIONAL]</code></p>
+Format: <code>markPresent m/MODULE tutorialName/TUTORIAL_NAME week/WEEK student/STUDENT [OPTIONAL]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -230,11 +199,11 @@ Format: <code>markPresent mod/MODULE tutorialName/TUTORIAL_NAME week/WEEK studen
 <div class="ulist">
 <ul>
 <li>
-<p><code>markPresent mod/CS2103 tutorialName/T02 week/7 student/John Tan</code><br>
+<p><code>markPresent m/CS2103 tutorialName/T02 week/7 student/John Tan</code><br>
 Marks only John Tan as present for CS2103 tutorial T02 in week 7</p>
 </li>
 <li>
-<p><code>markPresent mod/CS2103 tutorialName/T02 week/7</code><br>
+<p><code>markPresent m/CS2103 tutorialName/T02 week/7</code><br>
 Marks all students in CS2103 T02 in week 7 as present</p>
 </li>
 </ul>
@@ -244,7 +213,7 @@ Marks all students in CS2103 T02 in week 7 as present</p>
 <h3 id="marks-students-as-absent-code-markabsent-code"><a class="link" href="#marks-students-as-absent-code-markabsent-code">Marks students as absent: <code>markAbsent</code></a></h3>
 <div class="paragraph">
 <p>Takes attendance of students in a tutorial class by marking them as absent for a particular week. Absent students will be marked with a :x:.<br>
-Format: <code>markPresent mod/MODULE tutorialName/TUTORIAL_NAME week/WEEK student/STUDENT</code></p>
+Format: <code>markPresent m/MODULE tutorialName/TUTORIAL_NAME week/WEEK student/STUDENT</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -269,11 +238,11 @@ Format: <code>markPresent mod/MODULE tutorialName/TUTORIAL_NAME week/WEEK studen
 <div class="ulist">
 <ul>
 <li>
-<p><code>markAbsent mod/CS2103 tutorialName/T02 week/7 student/Jane Tan</code><br>
+<p><code>markAbsent m/CS2103 tutorialName/T02 week/7 student/Jane Tan</code><br>
 Marks only Jane Tan as absent for CS2103 tutorial T02 in week 7</p>
 </li>
 <li>
-<p><code>markAbsent mod/CS2103 tutorialName/T02 week/7</code><br>
+<p><code>markAbsent m/CS2103 tutorialName/T02 week/7</code><br>
 Marks all students in CS2103 T02 in week 7 as absent (oh no!)</p>
 </li>
 </ul>
@@ -282,21 +251,46 @@ Marks all students in CS2103 T02 in week 7 as absent (oh no!)</p>
 <div class="sect2">
 <h3 id="display-attendance-list-for-a-tutorial-code-viewattendance-code"><a class="link" href="#display-attendance-list-for-a-tutorial-code-viewattendance-code">Display attendance list for a tutorial: <code>viewAttendance</code></a></h3>
 <div class="paragraph">
-<p>Displays the attendance list for a tutorial. It can either show the attendance for all the weeks or for a certain week only.<br>
-Format: <code>viewAttendance mod/MODULE tutorialName/TUTORIAL_NAME week/WEEK [OPTIONAL]</code></p>
+<p>Displays the attendance list for a tutorial. It can either show the attendance for all the weeks.<br>
+Format: <code>viewAttendance m/MODULE tutorialName/TUTORIAL_NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewAttendance m/CS2103 tutorialName/T02</code><br>
+Displays the attendance list for CS2103 T02 from week 1 to week 13 (unmarked attendance will show up as blanks)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-all-tutorials-code-listtutorial-code"><a class="link" href="#list-all-tutorials-code-listtutorial-code">List all tutorials: <code>listTutorial</code></a></h3>
+<div class="paragraph">
+<p>Lists all the tutorials that the TA is teaching for the particular semester on TAble.<br>
+Format: <code>listTutorial</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-student-to-tutorial-code-addtutorialstudent-code"><a class="link" href="#add-student-to-tutorial-code-addtutorialstudent-code">Add student to tutorial: <code>addTutorialStudent</code></a></h3>
+<div class="paragraph">
+<p>Enroll an existing student to an existing tutorial.
+Format: <code>addTutorialStudent m/MODULE tutorialName/TUTORIAL_NAME student/STUDENT</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>week/WEEK</code> is optional; if no <code>week/</code> is included, then the attendance for all the weeks in the semester will be shown</p>
+<p>The <code>STUDENT</code> should be referred to by matriculation number.</p>
 </li>
 <li>
-<p>If <code>w/WEEK</code> is included, then only the attendance for the specified week will be shown</p>
+<p>The student should already exist.</p>
 </li>
 <li>
-<p>The week should be in numerical format, and accepts only numbers in the range 1 to 13 (inclusive)</p>
+<p>The tutorial should already exist.</p>
 </li>
 </ul>
 </div>
@@ -308,21 +302,43 @@ Format: <code>viewAttendance mod/MODULE tutorialName/TUTORIAL_NAME week/WEEK [OP
 <div class="ulist">
 <ul>
 <li>
-<p><code>viewAttendance mod/CS2103 tutorialName/T02 week/7</code><br>
-Displays the attendance list for CS2103 T02 in week 7</p>
-</li>
-<li>
-<p><code>viewAttendance mod/CS2103 tutorialName/T02</code><br>
-Displays the attendance list for CS2103 T02 from week 1 to week 13 (unmarked attendance will show up as blanks)</p>
+<p><code>addTutorialStudent m/CS2103 tutorialName/T03 student/A0123456Z</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="list-all-tutorials-code-listtutorial-code"><a class="link" href="#list-all-tutorials-code-listtutorial-code">List all tutorials: <code>listTutorial</code></a></h3>
+<h3 id="remove-student-from-tutorial-code-deletetutorialstudent-code"><a class="link" href="#remove-student-from-tutorial-code-deletetutorialstudent-code">Remove student from tutorial: <code>deleteTutorialStudent</code></a></h3>
 <div class="paragraph">
-<p>Lists all the tutorials that the TA is teaching for the particular semester on TAble.<br>
-Format: <code>listTutorial</code></p>
+<p>Remove an existing student from an existing tutorial.
+Format: <code>deleteTutorialStudent m/MODULE tutorialName/TUTORIAL_NAME student/STUDENT</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>STUDENT</code> should be referred to by matriculation number.</p>
+</li>
+<li>
+<p>The student should already exist.</p>
+</li>
+<li>
+<p>The tutorial should already exist.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deleteTutorialStudent m/CS2103 tutorialName/T03 student/A0123456Z</code></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -344,4 +360,4 @@ Format: <code>listTutorial</code></p>
 <p><em>To be updated</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-07 03:20:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-07 12:23:00 UTC</div></div></div></body></html>
