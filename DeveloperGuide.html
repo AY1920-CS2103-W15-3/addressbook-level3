@@ -804,6 +804,24 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <td class="tableblock halign-left valign-top"><p class="tableblock">easily postpone a task</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teaching assistant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find a module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">retrieve information on it</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teaching assistant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view module links</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quickly access module resources</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teaching assistant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add module links</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update module resources</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
@@ -1584,6 +1602,201 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </li>
 </ul>
 </div>
+<h3 id="use-case-create-module-uxx" class="discrete">Use case: Create Module (UXX)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to create Module</p>
+</li>
+<li>
+<p>System creates Module and includes it in its storage</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The user enters an invalid command format to add module.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that a wrong format was given.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. The user enters a module code that is already present in the storage</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message stating that the module already exists.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<h3 id="use-case-view-module-uxx" class="discrete">Use case: View Module (UXX)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to view an existing module</p>
+</li>
+<li>
+<p>System updates the tab to show the existing module according to the the User&#8217;s request</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The module does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that the module does not exist.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-update-module-uxx" class="discrete">Use case: Update Module (UXX)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to update description of an existing module</p>
+</li>
+<li>
+<p>System updates the existing module according to the the User&#8217;s request</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The module does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that the module does not exist.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-include-module-links-uxx" class="discrete">Use case: Include Module links (UXX)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to include links to module</p>
+</li>
+<li>
+<p>System updates the existing module links according to the the User&#8217;s request by appending the link to the module links section.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The module does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that the module does not exist.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-clear-all-module-links-uxx" class="discrete">Use case: Clear All Module links (UXX)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to clear all links to module</p>
+</li>
+<li>
+<p>System removes all existing module links according to the the User&#8217;s request</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The module does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that the module does not exist.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
 </div>
@@ -1626,7 +1839,8 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <dl>
 <dt class="hdlist1"><a id="events"></a> Events</dt>
 <dd>
-<p>Events are things which the Teaching Assistant is required to take note of. The Teaching Assistant will be required to attend these events, which can be in the form of tutorials or consultations.</p>
+<p>Events are things which the Teaching Assistant is required to take note of.
+The Teaching Assistant will be required to attend these events, which can be in the form of tutorials or consultations.</p>
 </dd>
 <dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
 <dd>
@@ -1639,6 +1853,11 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <dt class="hdlist1"><a id="teaching-assistant"></a> Teaching Assistant</dt>
 <dd>
 <p>The primary user of this application.</p>
+</dd>
+<dt class="hdlist1"><a id="module"></a> Module</dt>
+<dd>
+<p>Course that Teaching Assistant teaches and Students register for.
+Due to naming restrictions, Module is shortened to Mod in file names.</p>
 </dd>
 </dl>
 </div>
@@ -1790,4 +2009,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-08 07:29:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-08 17:01:12 UTC</div></div></div></body></html>
