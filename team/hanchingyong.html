@@ -20,11 +20,11 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to insert/edit/delete/update Consults</strong></p>
+<p><strong>Major enhancement</strong>: Enabled support for <strong>Consults</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does:</p>
+<p>What it does: Allows the user to work with all of his/her consults using <strong>TAble</strong>.</p>
 </li>
 <li>
 <p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
@@ -61,7 +61,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Added Consults feature in User Guide: <a href="https://github.com">#14</a></p>
+<p>Added Consults feature in User Guide: <a href="https://github.com">#0</a></p>
 </li>
 <li>
 <p>Added Consults user stories and use cases.</p>
@@ -113,10 +113,24 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="add-module-into-database-code-addmodule-code"><a class="link" href="#add-module-into-database-code-addmodule-code">Add Module into database: <code>addModule</code></a></h3>
+<h3 id="adding-a-consult-code-addconsult-code"><a class="link" href="#adding-a-consult-code-addconsult-code">Adding a consult: <code>addConsult</code></a></h3>
 <div class="paragraph">
-<p>Adds module into TAble.<br>
-Format: <code>addModule m/MODULE</code></p>
+<p>Add a consultation slot at the given time, date and place.<br>
+Format: <code>addConsult beginDateTime/BEGINDATETIME endDateTime/ENDDATETIME place/PLACE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The begin and end time provided must be in the yyyy-MM-dd HH:mm format</p>
+</li>
+<li>
+<p>The place provided should be any valid string</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -124,16 +138,33 @@ Format: <code>addModule m/MODULE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addModule m/CS1010S</code></p>
+<p><code>addConsult beginDateTime/2020-03-03 10:00 endDateTime/2020-03-03 12:00 place/The Deck</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-module-description-code-editmodule-code"><a class="link" href="#edit-module-description-code-editmodule-code">Edit Module description: <code>editModule</code></a></h3>
+<h3 id="editing-a-consult-code-editconsult-code"><a class="link" href="#editing-a-consult-code-editconsult-code">Editing a consult: <code>editConsult</code></a></h3>
 <div class="paragraph">
-<p>Edits corresponding description of module.<br>
-Format: <code>editModule m/MODULE d/DESCRIPTION</code></p>
+<p>Edit the time, date or place of an existing consultation slot.<br>
+Format: <code>editConsult INDEX [beginDateTime/BEGINDATETIME] [endDateTime/ENDDATETIME] [place/PLACE]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the consult at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed consultation list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -141,17 +172,45 @@ Format: <code>editModule m/MODULE d/DESCRIPTION</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>editModule m/CS1010S d/How cool is that?</code><br>
-When viewing the module page for CS1010S, the description will be updated to show "How cool is that?"</p>
+<p><code>editConsult 1 beginDateTime/2020-03-03 15:00</code><br>
+Edits the beginning time of the 1st consult to be at 2020-03-03, 15:00 hours i.e 3.00 p.m.</p>
+</li>
+<li>
+<p><code>edit 2 place/SR3</code><br>
+Edits the place of the 2nd consult to be at SR3.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-link-to-module-with-appropriate-tag-code-linkmodule-code"><a class="link" href="#add-link-to-module-with-appropriate-tag-code-linkmodule-code">Add link to module with appropriate tag: <code>linkModule</code></a></h3>
+<h3 id="listing-all-consults-code-listconsult-code"><a class="link" href="#listing-all-consults-code-listconsult-code">Listing all consults : <code>listConsult</code></a></h3>
 <div class="paragraph">
-<p>Edit module to include links to appropriate websites (e.g. Google Drive Folder, Module Website etc.)<br>
-Format: <code>linkModule m/MODULE l/LINK t/TAG</code></p>
+<p>Shows a list of all consultations in TAble.<br>
+Format: <code>listConsult</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-consult-code-deleteconsult-code"><a class="link" href="#deleting-a-consult-code-deleteconsult-code">Deleting a consult: <code>deleteConsult</code></a></h3>
+<div class="paragraph">
+<p>Removes an existing consultation slot.<br>
+Format: <code>deleteConsult INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the consultation at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed consultation list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -159,53 +218,60 @@ Format: <code>linkModule m/MODULE l/LINK t/TAG</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>linkModule m/CS1231 l/comp.nus.edu.sg/~cs1231 t/Website</code><br>
-When viewing he module page for CS1231, there will be an additional clickable link that is labelled "Website" and points to <a href="https://comp.nus.edu.sg/~cs1231" class="bare">https://comp.nus.edu.sg/~cs1231</a>.</p>
+<p><code>listConsult</code><br>
+<code>deleteConsult 2</code><br>
+Deletes the 2nd consultation in TAble.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-lecture-timeslot-code-addlecture-code-coming-in-v2-0"><a class="link" href="#add-lecture-timeslot-code-addlecture-code-coming-in-v2-0">Add lecture timeslot: <code>addLecture</code> [coming in v2.0]</a></h3>
+<h3 id="clearing-all-consults-code-clearconsult-code"><a class="link" href="#clearing-all-consults-code-clearconsult-code">Clearing all consults : <code>clearConsult</code></a></h3>
 <div class="paragraph">
-<p>Adds lecture timeslot to module.<br>
-Format: <code>addLecture m/MODULE d/DAY from/TIME to/TIME p/LOCATION</code></p>
+<p>Clears all consultations slots in TAble.<br>
+Format: <code>clearConsults</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locating-consultations-by-date-or-place-code-findconsult-code"><a class="link" href="#locating-consultations-by-date-or-place-code-findconsult-code">Locating consultations by date or place: <code>findConsult</code></a></h3>
+<div class="paragraph">
+<p>Finds consultations whose date or place match any of the given keywords.<br>
+Format: <code>findConsult [DATE] [PLACE]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>At least one of the optional fields must be provided</p>
+</li>
+<li>
+<p>If both optional fields are provided, only consults that meet both criterion will be returned</p>
+</li>
+<li>
+<p>The search is case insensitive. e.g <code>SR1</code> will match <code>sr1</code></p>
+</li>
+<li>
+<p>The order of the keywords matters. e.g. <code>find SR1 03-03-2020</code> will throw an error</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addLecture m/CS1010S d/WED from/1400 to/1600 p/LT27</code></p>
+<p><code>findConsult 03-03-2020</code><br>
+Returns all consults on 03-03-2020</p>
 </li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="clear-all-lecture-timeslots-code-clearlecture-code-coming-in-v2-0"><a class="link" href="#clear-all-lecture-timeslots-code-clearlecture-code-coming-in-v2-0">Clear all lecture timeslots: <code>clearLecture</code> [coming in v2.0]</a></h3>
-<div class="paragraph">
-<p>Clears all lectures associated with a certain module.<br>
-Format: <code>clearLecture m/MODULE</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
 <li>
-<p><code>clearLecture m/CS1010S</code></p>
+<p><code>findConsult SR3</code><br>
+Returns any consults that are held at SR3</p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="view-module-code-viewmodule-code"><a class="link" href="#view-module-code-viewmodule-code">View Module: <code>viewModule</code></a></h3>
-<div class="paragraph">
-<p>Opens the view for the selected module to view module description, links and lecture timeslots.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>viewModule m/MODULE</code></p>
 </div>
 </div>
 </div>
@@ -227,4 +293,4 @@ Format: <code>clearLecture m/MODULE</code></p>
 <p><em>To be updated</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-07 12:23:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-08 07:29:15 UTC</div></div></div></body></html>
