@@ -22,10 +22,11 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
+<li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo Feature</a></li>
 <li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#consult-feature">3.3. Consult feature</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -330,7 +331,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></h3>
+<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo Feature</a></h3>
 <div class="sect3">
 <h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
 <div class="paragraph">
@@ -550,14 +551,105 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="consult-feature"><a class="link" href="#consult-feature">3.3. Consult feature</a></h3>
+<div class="paragraph">
+<p><strong>TAble</strong> allows NUS teaching assistants to track and record all their consultations scheduled with their students.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.3.1. Implementation</a></h4>
+<div class="paragraph">
+<p>A <code>Consult</code> class stores all of the relevant information of consults. The class diagram below shows how all the different components interact to allow the consult feature to function. Note that the XConsultCommand and XConsultCommandParser refers to all Consult related commands like add, edit, delete etc.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ConsultsCommandClassDiagram.png" alt="ConsultsCommandClassDiagram">
+</div>
+<div class="title">Figure 9. Class diagram of 'Consults' feature</div>
+</div>
+<div class="paragraph">
+<p>A consultation slot is represented by the <code>Consult</code> class which contains 5 key attributes, the beginDateTime, endDateTime, location, studentMatricNumber and studentName.
+The beginDateTime and endDateTime attributes are represented using Java&#8217;s <code>LocalDateTime</code> class. The studentMatricNumber and studentName attributes are classes that belong to a certain <code>Student</code>. The studentMatricNumber is used to uniquely identify the <code>Student</code> involved in the consultation, while the studentName is used in the front end of the application, displayed to the TA.</p>
+</div>
+<div class="paragraph">
+<p>The <code>XConsultCommand</code> class represent classes that extend the abstract class <code>Command</code> and allows the TA to add, edit, delete, view and clear consultations added to TAble. These <code>XConsultCommands</code> are created by the respective <code>XConsultCommandParsers</code>.</p>
+</div>
+<div class="paragraph">
+<p>A <code>ConsultTAble</code> that has a <code>UniqueConsultList</code> stores and manages all <code>Consults</code>. When a <code>Consult</code> is added to the ConsultTAble, there will first be a check that the <code>Consult</code> does not already exist in the <code>UniqueConsultList</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="length-of-command-prefixes-for-all-features"><a class="link" href="#length-of-command-prefixes-for-all-features">Length of command prefixes (For all features)</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Make the prefixes of the command descriptive, such as <code>student/</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Make the prefixes of the commands short, by using the first few letters of the command word, such as <code>s/</code> for students.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is more clear and intuitive for the user to type in the full prefix.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is easier for the user to type in shorter command prefixes, so that it is less tedious to input the commands.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lower user experience as the user has to type in longer commands to use the TAble application.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It may be confusing for the user, as certain command prefixes may share similar initials, such as <code>tags</code> and <code>time</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1:  We believe that the user experience will be better  when using more descriptive command prefixes, as the user will not be required to constantly check on the user guide since the command prefixes are intuitive.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="consult-storing-matric-number-and-name"><a class="link" href="#consult-storing-matric-number-and-name">Consult storing Matric Number and Name</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Make the consult store the matric number and name of the student that is attending the consult.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Make the consult store the entire Student class that is attending the consult.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is easier to implement and coupling will be reduced as <code>Student</code> will not be directly related to the <code>Consult</code> class.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is easier to visualise as the entire <code>Student</code> related to the <code>Consult</code> will be stored.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is not as intuitive as currently, the <code>Consult</code> class only stores certain attributes of the <code>Student</code> that is attending the <code>Consult</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It will be harder to test due to the high degree of coupling.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1: Due to the time constraint of this project, our group has decided to choose alternative 1, as it not only reduces coupling, but is sufficient for us to uniquely identify the <code>Student</code> participating in the <code>Consult</code> as the <code>MatricNumber</code> would be unique.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -588,7 +680,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1850,6 +1942,10 @@ The Teaching Assistant will be required to attend these events, which can be in 
 <dd>
 <p>The primary group of people which the Teaching Assistant wil have to keep track of.</p>
 </dd>
+<dt class="hdlist1"><a id="events"></a> TA</dt>
+<dd>
+<p>Refers to Teaching Assistant. See Teaching Assistant for more information.</p>
+</dd>
 <dt class="hdlist1"><a id="teaching-assistant"></a> Teaching Assistant</dt>
 <dd>
 <p>The primary user of this application.</p>
@@ -2009,4 +2105,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-20 06:32:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-21 12:43:02 UTC</div></div></div></body></html>
