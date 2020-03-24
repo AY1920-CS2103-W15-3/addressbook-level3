@@ -938,7 +938,7 @@ Format: <code>clearLecture m/MODULE</code></p>
 <h3 id="adding-a-reminder-code-addreminder-code"><a class="link" href="#adding-a-reminder-code-addreminder-code">3.27. Adding a reminder: <code>addReminder</code></a></h3>
 <div class="paragraph">
 <p>Adds a reminder to the reminder list.<br>
-Format: <code>addReminder i/INFO d/DATE t/TIME</code></p>
+Format: <code>addReminder desc/DESCRIPTION date/DATE time/TIME</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -957,10 +957,10 @@ Reminders will alert the user during the stipulated date and time.
 <div class="ulist">
 <ul>
 <li>
-<p>The information provided should be any valid string.</p>
+<p>The description provided should be any valid string.</p>
 </li>
 <li>
-<p>The date provided must be in DD-MM-YYYY format</p>
+<p>The date provided must be in YYYY-MM-DD format</p>
 </li>
 <li>
 <p>The time provided must be in HH:MM format, i.e: 24-hour format</p>
@@ -975,7 +975,7 @@ Reminders will alert the user during the stipulated date and time.
 <div class="ulist">
 <ul>
 <li>
-<p><code>addReminder i/Mark midterms papers d/05-03-2020 t/14:00</code></p>
+<p><code>addReminder desc/Mark midterms papers date/2020-03-05 time/14:00</code></p>
 </li>
 </ul>
 </div>
@@ -1075,7 +1075,7 @@ Deletes the 3rd reminder in TAble.</p>
 <h3 id="editing-a-reminder-code-editreminder-code"><a class="link" href="#editing-a-reminder-code-editreminder-code">3.31. Editing a reminder: <code>editReminder</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing reminder in the reminder list.<br>
-Format: <code>editReminder INDEX [i/INFO] [d/DATE] t/TIME]</code></p>
+Format: <code>editReminder INDEX [desc/DESCRIPTION] [date/DATE] [time/TIME]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1100,11 +1100,11 @@ Format: <code>editReminder INDEX [i/INFO] [d/DATE] t/TIME]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>editReminder 1 i/Return midterms papers</code><br>
-Edits the information of the 1st reminder to "Return midterms paper".</p>
+<p><code>editReminder 1 desc/Return midterms papers</code><br>
+Edits the description of the 1st reminder to "Return midterms paper".</p>
 </li>
 <li>
-<p><code>editReminder 3 d/20-05-2020 t/18:00</code><br>
+<p><code>editReminder 3 date/2020-05-20 time/18:00</code><br>
 Edits the date of the 3rd reminder to 20th May 2020 18:00 hours i.e. 6.00 p.m.</p>
 </li>
 </ul>
@@ -1114,7 +1114,7 @@ Edits the date of the 3rd reminder to 20th May 2020 18:00 hours i.e. 6.00 p.m.</
 <h3 id="finding-reminders-by-information-or-date-code-findreminder-code"><a class="link" href="#finding-reminders-by-information-or-date-code-findreminder-code">3.32. Finding reminders by information or date: <code>findReminder</code></a></h3>
 <div class="paragraph">
 <p>Finds reminders matching with the given keyword or date.
-Format: <code>findReminder [i/INFO] [d/DATE]</code></p>
+Format: <code>findReminder [desc/DESCRIPTION] [date/DATE]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1139,11 +1139,11 @@ Format: <code>findReminder [i/INFO] [d/DATE]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>findReminder i/mark</code>
+<p><code>findReminder desc/mark</code><br>
 Returns reminders containing the keyword 'mark'.</p>
 </li>
 <li>
-<p><code>findReminder d/05-03-2020</code><br>
+<p><code>findReminder date/2020-05-05</code><br>
 Returns all reminders on 05 May 2020.</p>
 </li>
 </ul>
@@ -1153,7 +1153,7 @@ Returns all reminders on 05 May 2020.</p>
 <h3 id="snoozing-a-reminder-code-snoozereminder-code"><a class="link" href="#snoozing-a-reminder-code-snoozereminder-code">3.33. Snoozing a reminder: <code>snoozeReminder</code></a></h3>
 <div class="paragraph">
 <p>Snoozes a reminder in the reminder list.<br>
-Format: <code>snoozeReminder INDEX [d/DAY] [h/HOUR]</code></p>
+Format: <code>snoozeReminder INDEX [day/DAY] [hour/HOUR] [minute/MINUTE]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1166,10 +1166,7 @@ Format: <code>snoozeReminder INDEX [d/DAY] [h/HOUR]</code></p>
 <p>At least one of the optional fields must be provided.</p>
 </li>
 <li>
-<p>Number of days provided must be a positive whole number.</p>
-</li>
-<li>
-<p>Number of hours provided can either be a positive whole number or a positive decimal number up to 1 decimal place (e.g. 0.5 represents half an hour).</p>
+<p>Number of days, hours or minutes provided must be a positive whole number.</p>
 </li>
 </ul>
 </div>
@@ -1181,12 +1178,12 @@ Format: <code>snoozeReminder INDEX [d/DAY] [h/HOUR]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>snoozeReminder 2 d/3 h/0.5</code><br>
-Postpone the second reminder to 3 days and half an hour later.</p>
+<p><code>snoozeReminder 2 day/3 hour/2</code><br>
+Postpone the second reminder to 3 days and 2 hours later.</p>
 </li>
 <li>
-<p><code>snoozeReminder 4 h/2</code><br>
-Postpone the fourth reminder to 2 hours later.</p>
+<p><code>snoozeReminder 4 minute/30</code><br>
+Postpone the fourth reminder to 30 minutes later.</p>
 </li>
 </ul>
 </div>
@@ -1255,4 +1252,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-23 14:55:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-24 03:33:10 UTC</div></div></div></body></html>
