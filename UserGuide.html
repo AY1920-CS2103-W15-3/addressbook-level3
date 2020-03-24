@@ -97,7 +97,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>listStudent</code></strong> : lists all students</p>
 </li>
 <li>
-<p><strong><code>addStudent</code></strong><code>n/John Doe p/98765432 e/johnd@example.com</code> : adds a student named <code>John Doe</code> to TAble.</p>
+<p><strong><code>addStudent</code></strong><code>n/John Doe m/A0188888H e/johnd@example.com</code> : adds a student named <code>John Doe</code> to TAble.</p>
 </li>
 <li>
 <p><strong><code>deleteStudent</code></strong><code>3</code> : deletes the 3rd student shown in the current list</p>
@@ -126,7 +126,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>addStudent n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>addStudent n/John Doe</code>.</p>
 </li>
 <li>
 <p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
@@ -151,7 +151,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <h3 id="adding-a-student-code-add-code"><a class="link" href="#adding-a-student-code-add-code">3.2. Adding a student: <code>add</code></a></h3>
 <div class="paragraph">
 <p>Adds a student to TAble<br>
-Format: <code>add n/NAME id/STUDENTID e/EMAIL [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>addStudent n/NAME m/MATRIC_NUMBER e/EMAIL [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -171,10 +171,10 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe e/johnd@example.com</code></p>
+<p><code>addStudent n/John Doe m/A0123456X e/johnd@example.com</code></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com t/CS2103</code></p>
+<p><code>addStudent n/Betsy Crowe m/A1234567X t/friend e/betsycrowe@example.com t/CS2103</code></p>
 </li>
 </ul>
 </div>
@@ -190,7 +190,7 @@ Format: <code>list</code></p>
 <h3 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">3.4. Editing a student : <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing student in TAble.<br>
-Format: <code>edit INDEX [n/NAME] [id/STUDENTID] [e/EMAIL] [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>edit INDEX [n/NAME] [m/MATRIC_NUMBER] [e/EMAIL] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1202,8 +1202,8 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong>Add</strong> <code>addStudent n/NAME m/MATRIC_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>addStudent n/James Ho m/A0123456X e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
@@ -1213,7 +1213,7 @@ e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1
 e.g. <code>delete 3</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [m/MATRIC_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
 <li>
@@ -1229,4 +1229,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-24 10:31:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-24 10:32:36 UTC</div></div></div></body></html>
