@@ -103,7 +103,9 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="add-a-tutorial-slot-code-addtutorial-code"><a class="link" href="#add-a-tutorial-slot-code-addtutorial-code">Add a tutorial slot: <code>addTutorial</code></a></h3>
+<h3 id="tutorials-feature"><a class="link" href="#tutorials-feature">Tutorials Feature</a></h3>
+<div class="sect3">
+<h4 id="add-a-tutorial-slot-code-addtutorial-code"><a class="link" href="#add-a-tutorial-slot-code-addtutorial-code">Add a tutorial slot: <code>addTutorial</code></a></h4>
 <div class="paragraph">
 <p>Add a tutorial slot for a particular module at the given time, day and place.<br>
 Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEEKDAY_VALUE beginTime/START_TIME endTIme/END_TIME place/PLACE</code></p>
@@ -142,8 +144,8 @@ Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEE
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="delete-a-tutorial-slot-code-deletetutorial-code"><a class="link" href="#delete-a-tutorial-slot-code-deletetutorial-code">Delete a tutorial slot: <code>deleteTutorial</code></a></h3>
+<div class="sect3">
+<h4 id="delete-a-tutorial-slot-code-deletetutorial-code"><a class="link" href="#delete-a-tutorial-slot-code-deletetutorial-code">Delete a tutorial slot: <code>deleteTutorial</code></a></h4>
 <div class="paragraph">
 <p>Delete a tutorial slot for a particular module.<br>
 Format: <code>deleteTutorial INDEX</code></p>
@@ -177,8 +179,8 @@ Format: <code>deleteTutorial INDEX</code></p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="marks-students-as-present-code-markpresent-code"><a class="link" href="#marks-students-as-present-code-markpresent-code">Marks students as present: <code>markPresent</code></a></h3>
+<div class="sect3">
+<h4 id="marks-students-as-present-code-markpresent-code"><a class="link" href="#marks-students-as-present-code-markpresent-code">Marks students as present: <code>markPresent</code></a></h4>
 <div class="paragraph">
 <p>Takes attendance of students in a tutorial class by marking them as present for a particular week. Present students will be marked with a :heavy_check_mark:.<br>
 Format: <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT [OPTIONAL]</code></p>
@@ -225,8 +227,8 @@ Marks all students as present in week 7 in tutorial at index 2</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="marks-students-as-absent-code-markabsent-code"><a class="link" href="#marks-students-as-absent-code-markabsent-code">Marks students as absent: <code>markAbsent</code></a></h3>
+<div class="sect3">
+<h4 id="marks-students-as-absent-code-markabsent-code"><a class="link" href="#marks-students-as-absent-code-markabsent-code">Marks students as absent: <code>markAbsent</code></a></h4>
 <div class="paragraph">
 <p>Takes attendance of students in a tutorial class by marking them as absent for a particular week. Absent students will be marked with a :x:.<br>
 Format: <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT</code></p>
@@ -273,8 +275,8 @@ Marks all students in week 7 as absent in tutorial at index 3 (oh no!)</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="add-student-to-tutorial-code-addtutorialstudent-code"><a class="link" href="#add-student-to-tutorial-code-addtutorialstudent-code">Add student to tutorial: <code>addTutorialStudent</code></a></h3>
+<div class="sect3">
+<h4 id="add-student-to-tutorial-code-addtutorialstudent-code"><a class="link" href="#add-student-to-tutorial-code-addtutorialstudent-code">Add student to tutorial: <code>addTutorialStudent</code></a></h4>
 <div class="paragraph">
 <p>Enroll an existing student to an existing tutorial.
 Format: <code>addTutorialStudent tutorialIndex/INDEX student/STUDENT</code></p>
@@ -313,8 +315,8 @@ Format: <code>addTutorialStudent tutorialIndex/INDEX student/STUDENT</code></p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="remove-student-from-tutorial-code-deletetutorialstudent-code"><a class="link" href="#remove-student-from-tutorial-code-deletetutorialstudent-code">Remove student from tutorial: <code>deleteTutorialStudent</code></a></h3>
+<div class="sect3">
+<h4 id="remove-student-from-tutorial-code-deletetutorialstudent-code"><a class="link" href="#remove-student-from-tutorial-code-deletetutorialstudent-code">Remove student from tutorial: <code>deleteTutorialStudent</code></a></h4>
 <div class="paragraph">
 <p>Remove an existing student from an existing tutorial.
 Format: <code>deleteTutorialStudent tutorialIndex/INDEX student/STUDENT</code></p>
@@ -353,8 +355,8 @@ Format: <code>deleteTutorialStudent tutorialIndex/INDEX student/STUDENT</code></
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="display-students-and-attendance-of-a-tutorial-code-listtutorial-code"><a class="link" href="#display-students-and-attendance-of-a-tutorial-code-listtutorial-code">Display students and attendance of a tutorial: <code>ListTutorial</code></a></h3>
+<div class="sect3">
+<h4 id="display-students-and-attendance-of-a-tutorial-code-listtutorial-code"><a class="link" href="#display-students-and-attendance-of-a-tutorial-code-listtutorial-code">Display students and attendance of a tutorial: <code>ListTutorial</code></a></h4>
 <div class="paragraph">
 <p>Displays the list of students in a tutorial and their corresponding attendance for a particular week in the GUI.
 Format: <code>listTutorial tutorialIndex/INDEX week/INDEX</code></p>
@@ -395,6 +397,7 @@ Format: <code>listTutorial tutorialIndex/INDEX week/INDEX</code></p>
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
@@ -412,4 +415,4 @@ Format: <code>listTutorial tutorialIndex/INDEX week/INDEX</code></p>
 <p><em>To be updated</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-24 14:09:03 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-24 14:38:49 UTC</div></div></div></body></html>

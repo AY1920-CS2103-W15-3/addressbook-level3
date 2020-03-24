@@ -14,40 +14,14 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-student-code-add-code">3.2. Adding a student: <code>add</code></a></li>
-<li><a href="#listing-all-students-code-list-code">3.3. Listing all students : <code>list</code></a></li>
-<li><a href="#editing-a-student-code-edit-code">3.4. Editing a student : <code>edit</code></a></li>
-<li><a href="#locating-students-by-name-code-find-code">3.5. Locating students by name: <code>find</code></a></li>
-<li><a href="#deleting-a-student-code-delete-code">3.6. Deleting a student : <code>delete</code></a></li>
-<li><a href="#adding-a-consult-code-addconsult-code">3.7. Adding a consult: <code>addConsult</code></a></li>
-<li><a href="#editing-a-consult-code-editconsult-code">3.8. Editing a consult: <code>editConsult</code></a></li>
-<li><a href="#listing-all-consults-code-listconsult-code">3.9. Listing all consults : <code>listConsult</code></a></li>
-<li><a href="#deleting-a-consult-code-deleteconsult-code">3.10. Deleting a consult: <code>deleteConsult</code></a></li>
-<li><a href="#clearing-all-consults-code-clearconsult-code">3.11. Clearing all consults : <code>clearConsult</code></a></li>
-<li><a href="#locating-consultations-by-date-or-place-code-findconsult-code">3.12. Locating consultations by date or place: <code>findConsult</code></a></li>
-<li><a href="#add-a-tutorial-slot-code-addtutorial-code">3.13. Add a tutorial slot: <code>addTutorial</code></a></li>
-<li><a href="#delete-a-tutorial-slot-code-deletetutorial-code">3.14. Delete a tutorial slot: <code>deleteTutorial</code></a></li>
-<li><a href="#marks-students-as-present-code-markpresent-code">3.15. Marks students as present: <code>markPresent</code></a></li>
-<li><a href="#marks-students-as-absent-code-markabsent-code">3.16. Marks students as absent: <code>markAbsent</code></a></li>
-<li><a href="#add-student-to-tutorial-code-addtutorialstudent-code">3.17. Add student to tutorial: <code>addTutorialStudent</code></a></li>
-<li><a href="#remove-student-from-tutorial-code-deletetutorialstudent-code">3.18. Remove student from tutorial: <code>deleteTutorialStudent</code></a></li>
-<li><a href="#display-students-and-attendance-of-a-tutorial-code-listtutorial-code">3.19. Display students and attendance of a tutorial: <code>ListTutorial</code></a></li>
-<li><a href="#add-module-into-database-code-addmodule-code">3.20. Add Module into database: <code>addModule</code></a></li>
-<li><a href="#edit-module-description-code-editmodule-code">3.21. Edit Module description: <code>editModule</code></a></li>
-<li><a href="#add-link-to-module-with-appropriate-tag-code-linkmodule-code">3.22. Add link to module with appropriate tag: <code>linkModule</code></a></li>
-<li><a href="#add-lecture-timeslot-code-addlecture-code-coming-in-v2-0">3.23. Add lecture timeslot: <code>addLecture</code> [coming in v2.0]</a></li>
-<li><a href="#clear-all-lecture-timeslots-code-clearlecture-code-coming-in-v2-0">3.24. Clear all lecture timeslots: <code>clearLecture</code> [coming in v2.0]</a></li>
-<li><a href="#view-module-code-viewmodule-code">3.25. View Module: <code>viewModule</code></a></li>
-<li><a href="#adding-a-reminder-code-addreminder-code">3.26. Adding a reminder: <code>addReminder</code></a></li>
-<li><a href="#list-all-reminders-code-listreminder-code">3.27. List all reminders: <code>listReminder</code></a></li>
-<li><a href="#marking-a-reminder-as-done-code-donereminder-code">3.28. Marking a reminder as done: <code>doneReminder</code></a></li>
-<li><a href="#deleting-a-reminder-code-deletereminder-code">3.29. Deleting a reminder: <code>deleteReminder</code></a></li>
-<li><a href="#editing-a-reminder-code-editreminder-code">3.30. Editing a reminder: <code>editReminder</code></a></li>
-<li><a href="#finding-reminders-by-information-or-date-code-findreminder-code">3.31. Finding reminders by information or date: <code>findReminder</code></a></li>
-<li><a href="#snoozing-a-reminder-code-snoozereminder-code">3.32. Snoozing a reminder: <code>snoozeReminder</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.33. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.34. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.35. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#students-feature">3.2. Students Feature</a></li>
+<li><a href="#consults-feature">3.3. Consults Feature</a></li>
+<li><a href="#tutorials-feature">3.4. Tutorials Feature</a></li>
+<li><a href="#module-feature">3.5. Module Feature</a></li>
+<li><a href="#reminder-feature">3.6. Reminder Feature</a></li>
+<li><a href="#calendar-feature">3.7. Calendar Feature</a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.9. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -97,9 +71,6 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>listStudent</code></strong> : lists all students</p>
 </li>
 <li>
-<p><strong><code>addStudent</code></strong><code>n/John Doe m/A0188888H e/johnd@example.com</code> : adds a student named <code>John Doe</code> to TAble.</p>
-</li>
-<li>
 <p><strong><code>deleteStudent</code></strong><code>3</code> : deletes the 3rd student shown in the current list</p>
 </li>
 <li>
@@ -146,12 +117,21 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="paragraph">
 <p>Format: <code>help</code></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>A window containing the link to our User Guide will appear. Click on the Copy Link button to copy the link to our User Guide.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-student-code-add-code"><a class="link" href="#adding-a-student-code-add-code">3.2. Adding a student: <code>add</code></a></h3>
+<h3 id="students-feature"><a class="link" href="#students-feature">3.2. Students Feature</a></h3>
+<div class="sect3">
+<h4 id="adding-a-student-code-add-code"><a class="link" href="#adding-a-student-code-add-code">3.2.1. Adding a student: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Adds a student to TAble<br>
-Format: <code>addStudent n/NAME m/MATRIC_NUMBER e/EMAIL [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>addStudent name/NAME matric/MATRIC_NUMBER email/EMAIL [tag/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -179,18 +159,18 @@ A person can have any number of tags (including 0)
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listing-all-students-code-list-code"><a class="link" href="#listing-all-students-code-list-code">3.3. Listing all students : <code>list</code></a></h3>
+<div class="sect3">
+<h4 id="listing-all-students-code-liststudent-code"><a class="link" href="#listing-all-students-code-liststudent-code">3.2.2. Listing all students : <code>listStudent</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all students in TAble.<br>
-Format: <code>list</code></p>
+Format: <code>listStudent</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">3.4. Editing a student : <code>edit</code></a></h3>
+<div class="sect3">
+<h4 id="editing-a-student-code-editstudent-code"><a class="link" href="#editing-a-student-code-editstudent-code">3.2.3. Editing a student : <code>editStudent</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing student in TAble.<br>
-Format: <code>editStudent INDEX [n/NAME] [m/MATRIC_NUMBER] [e/EMAIL] [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>editStudent INDEX [name/NAME] [matric/MATRIC_NUMBER] [email/EMAIL] [tag/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -209,7 +189,7 @@ Format: <code>editStudent INDEX [n/NAME] [m/MATRIC_NUMBER] [e/EMAIL] [t/TAG]&#82
 <p>When editing tags, the existing tags of the student will be removed i.e adding of tags is not cumulative.</p>
 </li>
 <li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+<p>You can remove all the person&#8217;s tags by typing <code>tag/</code> without specifying any tags after it.</p>
 </li>
 </ul>
 </div>
@@ -221,21 +201,21 @@ Format: <code>editStudent INDEX [n/NAME] [m/MATRIC_NUMBER] [e/EMAIL] [t/TAG]&#82
 <div class="ulist">
 <ul>
 <li>
-<p><code>editStudent 1 e/johndoe@example.com</code><br>
-Edits the matric number and email address of the 1st person to be <code>A9999999Z</code> and <code>johndoe@example.com</code> respectively.</p>
+<p><code>editStudent 1 email/johndoe@example.com</code><br>
+Edits the email address of the 1st person to be <code>johndoe@example.com</code>.</p>
 </li>
 <li>
-<p><code>editStudent 2 n/Betsy Crower t/</code><br>
+<p><code>editStudent 2 name/Betsy Crower t/</code><br>
 Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="locating-students-by-name-code-find-code"><a class="link" href="#locating-students-by-name-code-find-code">3.5. Locating students by name: <code>find</code></a></h3>
+<div class="sect3">
+<h4 id="locating-students-by-name-code-findstudent-code"><a class="link" href="#locating-students-by-name-code-findstudent-code">3.2.4. Locating students by name: <code>findStudent</code></a></h4>
 <div class="paragraph">
 <p>Finds students whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+Format: <code>findStudent KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -276,8 +256,8 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-student-code-delete-code"><a class="link" href="#deleting-a-student-code-delete-code">3.6. Deleting a student : <code>delete</code></a></h3>
+<div class="sect3">
+<h4 id="deleting-a-student-code-delete-code"><a class="link" href="#deleting-a-student-code-delete-code">3.2.5. Deleting a student : <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified student from TAble.<br>
 Format: <code>deleteStudent INDEX</code></p>
@@ -317,8 +297,11 @@ Deletes the 1st student in the results of the <code>find</code> command.</p>
 </ul>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="adding-a-consult-code-addconsult-code"><a class="link" href="#adding-a-consult-code-addconsult-code">3.7. Adding a consult: <code>addConsult</code></a></h3>
+<h3 id="consults-feature"><a class="link" href="#consults-feature">3.3. Consults Feature</a></h3>
+<div class="sect3">
+<h4 id="adding-a-consult-code-addconsult-code"><a class="link" href="#adding-a-consult-code-addconsult-code">3.3.1. Adding a consult: <code>addConsult</code></a></h4>
 <div class="paragraph">
 <p>Add a consultation slot at the given time, date and place.<br>
 Format: <code>addConsult student/STUDENT_INDEX beginDateTime/BEGIN_DATE_TIME endDateTime/END_DATE_TIME place/PLACE</code></p>
@@ -351,8 +334,8 @@ Format: <code>addConsult student/STUDENT_INDEX beginDateTime/BEGIN_DATE_TIME end
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="editing-a-consult-code-editconsult-code"><a class="link" href="#editing-a-consult-code-editconsult-code">3.8. Editing a consult: <code>editConsult</code></a></h3>
+<div class="sect3">
+<h4 id="editing-a-consult-code-editconsult-code"><a class="link" href="#editing-a-consult-code-editconsult-code">3.3.2. Editing a consult: <code>editConsult</code></a></h4>
 <div class="paragraph">
 <p>Edit the time, date or place of an existing consultation slot.<br>
 Format: <code>editConsult INDEX [beginDateTime/BEGINDATETIME] [endDateTime/ENDDATETIME] [place/PLACE]</code></p>
@@ -387,21 +370,21 @@ Format: <code>editConsult INDEX [beginDateTime/BEGINDATETIME] [endDateTime/ENDDA
 Edits the beginning time of the 1st consult to be at 2020-03-03, 15:00 hours i.e 3.00 p.m.</p>
 </li>
 <li>
-<p><code>edit 2 place/SR3</code><br>
+<p><code>editConsult 2 place/SR3</code><br>
 Edits the place of the 2nd consult to be at SR3.</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listing-all-consults-code-listconsult-code"><a class="link" href="#listing-all-consults-code-listconsult-code">3.9. Listing all consults : <code>listConsult</code></a></h3>
+<div class="sect3">
+<h4 id="listing-all-consults-code-listconsult-code"><a class="link" href="#listing-all-consults-code-listconsult-code">3.3.3. Listing all consults : <code>listConsult</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all consultations in TAble.<br>
 Format: <code>listConsult</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-consult-code-deleteconsult-code"><a class="link" href="#deleting-a-consult-code-deleteconsult-code">3.10. Deleting a consult: <code>deleteConsult</code></a></h3>
+<div class="sect3">
+<h4 id="deleting-a-consult-code-deleteconsult-code"><a class="link" href="#deleting-a-consult-code-deleteconsult-code">3.3.4. Deleting a consult: <code>deleteConsult</code></a></h4>
 <div class="paragraph">
 <p>Removes an existing consultation slot.<br>
 Format: <code>deleteConsult INDEX</code></p>
@@ -436,15 +419,15 @@ Deletes the 2nd consultation in TAble.</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="clearing-all-consults-code-clearconsult-code"><a class="link" href="#clearing-all-consults-code-clearconsult-code">3.11. Clearing all consults : <code>clearConsult</code></a></h3>
+<div class="sect3">
+<h4 id="clearing-all-consults-code-clearconsult-code"><a class="link" href="#clearing-all-consults-code-clearconsult-code">3.3.5. Clearing all consults : <code>clearConsult</code></a></h4>
 <div class="paragraph">
 <p>Clears all consultations slots in TAble.<br>
 Format: <code>clearConsults</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="locating-consultations-by-date-or-place-code-findconsult-code"><a class="link" href="#locating-consultations-by-date-or-place-code-findconsult-code">3.12. Locating consultations by date or place: <code>findConsult</code></a></h3>
+<div class="sect3">
+<h4 id="locating-consultations-by-date-or-place-code-findconsult-code"><a class="link" href="#locating-consultations-by-date-or-place-code-findconsult-code">3.3.6. Locating consultations by date or place: <code>findConsult</code></a></h4>
 <div class="paragraph">
 <p>Finds consultations whose date or place match any of the given keywords.<br>
 Format: <code>findConsult [DATE] [PLACE]</code></p>
@@ -485,8 +468,11 @@ Returns any consults that are held at SR3</p>
 </ul>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="add-a-tutorial-slot-code-addtutorial-code"><a class="link" href="#add-a-tutorial-slot-code-addtutorial-code">3.13. Add a tutorial slot: <code>addTutorial</code></a></h3>
+<h3 id="tutorials-feature"><a class="link" href="#tutorials-feature">3.4. Tutorials Feature</a></h3>
+<div class="sect3">
+<h4 id="add-a-tutorial-slot-code-addtutorial-code"><a class="link" href="#add-a-tutorial-slot-code-addtutorial-code">3.4.1. Add a tutorial slot: <code>addTutorial</code></a></h4>
 <div class="paragraph">
 <p>Add a tutorial slot for a particular module at the given time, day and place.<br>
 Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEEKDAY_VALUE beginTime/START_TIME endTIme/END_TIME place/PLACE</code></p>
@@ -525,8 +511,8 @@ Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEE
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="delete-a-tutorial-slot-code-deletetutorial-code"><a class="link" href="#delete-a-tutorial-slot-code-deletetutorial-code">3.14. Delete a tutorial slot: <code>deleteTutorial</code></a></h3>
+<div class="sect3">
+<h4 id="delete-a-tutorial-slot-code-deletetutorial-code"><a class="link" href="#delete-a-tutorial-slot-code-deletetutorial-code">3.4.2. Delete a tutorial slot: <code>deleteTutorial</code></a></h4>
 <div class="paragraph">
 <p>Delete a tutorial slot for a particular module.<br>
 Format: <code>deleteTutorial INDEX</code></p>
@@ -560,8 +546,8 @@ Format: <code>deleteTutorial INDEX</code></p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="marks-students-as-present-code-markpresent-code"><a class="link" href="#marks-students-as-present-code-markpresent-code">3.15. Marks students as present: <code>markPresent</code></a></h3>
+<div class="sect3">
+<h4 id="marks-students-as-present-code-markpresent-code"><a class="link" href="#marks-students-as-present-code-markpresent-code">3.4.3. Marks students as present: <code>markPresent</code></a></h4>
 <div class="paragraph">
 <p>Takes attendance of students in a tutorial class by marking them as present for a particular week. Present students will be marked with a :heavy_check_mark:.<br>
 Format: <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT [OPTIONAL]</code></p>
@@ -608,8 +594,8 @@ Marks all students as present in week 7 in tutorial at index 2</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="marks-students-as-absent-code-markabsent-code"><a class="link" href="#marks-students-as-absent-code-markabsent-code">3.16. Marks students as absent: <code>markAbsent</code></a></h3>
+<div class="sect3">
+<h4 id="marks-students-as-absent-code-markabsent-code"><a class="link" href="#marks-students-as-absent-code-markabsent-code">3.4.4. Marks students as absent: <code>markAbsent</code></a></h4>
 <div class="paragraph">
 <p>Takes attendance of students in a tutorial class by marking them as absent for a particular week. Absent students will be marked with a :x:.<br>
 Format: <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT</code></p>
@@ -656,8 +642,8 @@ Marks all students in week 7 as absent in tutorial at index 3 (oh no!)</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="add-student-to-tutorial-code-addtutorialstudent-code"><a class="link" href="#add-student-to-tutorial-code-addtutorialstudent-code">3.17. Add student to tutorial: <code>addTutorialStudent</code></a></h3>
+<div class="sect3">
+<h4 id="add-student-to-tutorial-code-addtutorialstudent-code"><a class="link" href="#add-student-to-tutorial-code-addtutorialstudent-code">3.4.5. Add student to tutorial: <code>addTutorialStudent</code></a></h4>
 <div class="paragraph">
 <p>Enroll an existing student to an existing tutorial.
 Format: <code>addTutorialStudent tutorialIndex/INDEX student/STUDENT</code></p>
@@ -696,8 +682,8 @@ Format: <code>addTutorialStudent tutorialIndex/INDEX student/STUDENT</code></p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="remove-student-from-tutorial-code-deletetutorialstudent-code"><a class="link" href="#remove-student-from-tutorial-code-deletetutorialstudent-code">3.18. Remove student from tutorial: <code>deleteTutorialStudent</code></a></h3>
+<div class="sect3">
+<h4 id="remove-student-from-tutorial-code-deletetutorialstudent-code"><a class="link" href="#remove-student-from-tutorial-code-deletetutorialstudent-code">3.4.6. Remove student from tutorial: <code>deleteTutorialStudent</code></a></h4>
 <div class="paragraph">
 <p>Remove an existing student from an existing tutorial.
 Format: <code>deleteTutorialStudent tutorialIndex/INDEX student/STUDENT</code></p>
@@ -736,8 +722,8 @@ Format: <code>deleteTutorialStudent tutorialIndex/INDEX student/STUDENT</code></
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="display-students-and-attendance-of-a-tutorial-code-listtutorial-code"><a class="link" href="#display-students-and-attendance-of-a-tutorial-code-listtutorial-code">3.19. Display students and attendance of a tutorial: <code>ListTutorial</code></a></h3>
+<div class="sect3">
+<h4 id="display-students-and-attendance-of-a-tutorial-code-listtutorial-code"><a class="link" href="#display-students-and-attendance-of-a-tutorial-code-listtutorial-code">3.4.7. Display students and attendance of a tutorial: <code>ListTutorial</code></a></h4>
 <div class="paragraph">
 <p>Displays the list of students in a tutorial and their corresponding attendance for a particular week in the GUI.
 Format: <code>listTutorial tutorialIndex/INDEX week/INDEX</code></p>
@@ -776,8 +762,11 @@ Format: <code>listTutorial tutorialIndex/INDEX week/INDEX</code></p>
 </ul>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="add-module-into-database-code-addmodule-code"><a class="link" href="#add-module-into-database-code-addmodule-code">3.20. Add Module into database: <code>addModule</code></a></h3>
+<h3 id="module-feature"><a class="link" href="#module-feature">3.5. Module Feature</a></h3>
+<div class="sect3">
+<h4 id="add-module-into-database-code-addmodule-code"><a class="link" href="#add-module-into-database-code-addmodule-code">3.5.1. Add Module into database: <code>addModule</code></a></h4>
 <div class="paragraph">
 <p>Adds module into TAble.<br>
 Format: <code>addModule modCode/MODULE_CODE modName/MODULE_NAME</code></p>
@@ -807,8 +796,8 @@ Format: <code>addModule modCode/MODULE_CODE modName/MODULE_NAME</code></p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="edit-module-description-code-editmodule-code"><a class="link" href="#edit-module-description-code-editmodule-code">3.21. Edit Module description: <code>editModule</code></a></h3>
+<div class="sect3">
+<h4 id="edit-module-description-code-editmodule-code"><a class="link" href="#edit-module-description-code-editmodule-code">3.5.2. Edit Module description: <code>editModule</code></a></h4>
 <div class="paragraph">
 <p>Edits corresponding description of module.<br>
 Format: <code>editModule modCode/MODULE_CODE d/DESCRIPTION</code></p>
@@ -836,8 +825,8 @@ When viewing the module page for CS1010S, the description will be updated to sho
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="add-link-to-module-with-appropriate-tag-code-linkmodule-code"><a class="link" href="#add-link-to-module-with-appropriate-tag-code-linkmodule-code">3.22. Add link to module with appropriate tag: <code>linkModule</code></a></h3>
+<div class="sect3">
+<h4 id="add-link-to-module-with-appropriate-tag-code-linkmodule-code"><a class="link" href="#add-link-to-module-with-appropriate-tag-code-linkmodule-code">3.5.3. Add link to module with appropriate tag: <code>linkModule</code></a></h4>
 <div class="paragraph">
 <p>Edit module to include links to appropriate websites (e.g. Google Drive Folder, Module Website etc.)<br>
 Format: <code>linkModule modCode/MODULE_CODE l/LINK t/TAG</code></p>
@@ -868,8 +857,8 @@ When viewing he module page for CS1231, there will be an additional clickable li
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="add-lecture-timeslot-code-addlecture-code-coming-in-v2-0"><a class="link" href="#add-lecture-timeslot-code-addlecture-code-coming-in-v2-0">3.23. Add lecture timeslot: <code>addLecture</code> [coming in v2.0]</a></h3>
+<div class="sect3">
+<h4 id="add-lecture-timeslot-code-addlecture-code-coming-in-v2-0"><a class="link" href="#add-lecture-timeslot-code-addlecture-code-coming-in-v2-0">3.5.4. Add lecture timeslot: <code>addLecture</code> [coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>Adds lecture timeslot to module.<br>
 Format: <code>addLecture m/MODULE d/DAY from/TIME to/TIME p/LOCATION</code></p>
@@ -885,8 +874,8 @@ Format: <code>addLecture m/MODULE d/DAY from/TIME to/TIME p/LOCATION</code></p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="clear-all-lecture-timeslots-code-clearlecture-code-coming-in-v2-0"><a class="link" href="#clear-all-lecture-timeslots-code-clearlecture-code-coming-in-v2-0">3.24. Clear all lecture timeslots: <code>clearLecture</code> [coming in v2.0]</a></h3>
+<div class="sect3">
+<h4 id="clear-all-lecture-timeslots-code-clearlecture-code-coming-in-v2-0"><a class="link" href="#clear-all-lecture-timeslots-code-clearlecture-code-coming-in-v2-0">3.5.5. Clear all lecture timeslots: <code>clearLecture</code> [coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>Clears all lectures associated with a certain module.<br>
 Format: <code>clearLecture m/MODULE</code></p>
@@ -902,8 +891,8 @@ Format: <code>clearLecture m/MODULE</code></p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="view-module-code-viewmodule-code"><a class="link" href="#view-module-code-viewmodule-code">3.25. View Module: <code>viewModule</code></a></h3>
+<div class="sect3">
+<h4 id="view-module-code-viewmodule-code"><a class="link" href="#view-module-code-viewmodule-code">3.5.6. View Module: <code>viewModule</code></a></h4>
 <div class="paragraph">
 <p>Opens the view for the selected module to view module description, links and lecture timeslots.</p>
 </div>
@@ -911,8 +900,11 @@ Format: <code>clearLecture m/MODULE</code></p>
 <p>Format: <code>viewModule modCode/MODULE_CODE</code></p>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="adding-a-reminder-code-addreminder-code"><a class="link" href="#adding-a-reminder-code-addreminder-code">3.26. Adding a reminder: <code>addReminder</code></a></h3>
+<h3 id="reminder-feature"><a class="link" href="#reminder-feature">3.6. Reminder Feature</a></h3>
+<div class="sect3">
+<h4 id="adding-a-reminder-code-addreminder-code"><a class="link" href="#adding-a-reminder-code-addreminder-code">3.6.1. Adding a reminder: <code>addReminder</code></a></h4>
 <div class="paragraph">
 <p>Adds a reminder to the reminder list.<br>
 Format: <code>addReminder desc/DESCRIPTION date/DATE time/TIME</code></p>
@@ -957,15 +949,15 @@ Reminders will alert the user during the stipulated date and time.
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="list-all-reminders-code-listreminder-code"><a class="link" href="#list-all-reminders-code-listreminder-code">3.27. List all reminders: <code>listReminder</code></a></h3>
+<div class="sect3">
+<h4 id="list-all-reminders-code-listreminder-code"><a class="link" href="#list-all-reminders-code-listreminder-code">3.6.2. List all reminders: <code>listReminder</code></a></h4>
 <div class="paragraph">
 <p>Lists all the reminders that the TA have added on TAble.<br>
 Format: <code>listReminder</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="marking-a-reminder-as-done-code-donereminder-code"><a class="link" href="#marking-a-reminder-as-done-code-donereminder-code">3.28. Marking a reminder as done: <code>doneReminder</code></a></h3>
+<div class="sect3">
+<h4 id="marking-a-reminder-as-done-code-donereminder-code"><a class="link" href="#marking-a-reminder-as-done-code-donereminder-code">3.6.3. Marking a reminder as done: <code>doneReminder</code></a></h4>
 <div class="paragraph">
 <p>Marks the reminder from the reminder list as done.<br>
 Format: <code>doneReminder INDEX</code></p>
@@ -1012,8 +1004,8 @@ Mark the 3rd reminder in TAble as done.</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-reminder-code-deletereminder-code"><a class="link" href="#deleting-a-reminder-code-deletereminder-code">3.29. Deleting a reminder: <code>deleteReminder</code></a></h3>
+<div class="sect3">
+<h4 id="deleting-a-reminder-code-deletereminder-code"><a class="link" href="#deleting-a-reminder-code-deletereminder-code">3.6.4. Deleting a reminder: <code>deleteReminder</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified reminder from the reminder list.<br>
 Format: <code>deleteReminder INDEX</code></p>
@@ -1048,8 +1040,8 @@ Deletes the 3rd reminder in TAble.</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="editing-a-reminder-code-editreminder-code"><a class="link" href="#editing-a-reminder-code-editreminder-code">3.30. Editing a reminder: <code>editReminder</code></a></h3>
+<div class="sect3">
+<h4 id="editing-a-reminder-code-editreminder-code"><a class="link" href="#editing-a-reminder-code-editreminder-code">3.6.5. Editing a reminder: <code>editReminder</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing reminder in the reminder list.<br>
 Format: <code>editReminder INDEX [desc/DESCRIPTION] [date/DATE] [time/TIME]</code></p>
@@ -1087,8 +1079,8 @@ Edits the date of the 3rd reminder to 20th May 2020 18:00 hours i.e. 6.00 p.m.</
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="finding-reminders-by-information-or-date-code-findreminder-code"><a class="link" href="#finding-reminders-by-information-or-date-code-findreminder-code">3.31. Finding reminders by information or date: <code>findReminder</code></a></h3>
+<div class="sect3">
+<h4 id="finding-reminders-by-information-or-date-code-findreminder-code"><a class="link" href="#finding-reminders-by-information-or-date-code-findreminder-code">3.6.6. Finding reminders by information or date: <code>findReminder</code></a></h4>
 <div class="paragraph">
 <p>Finds reminders matching with the given keyword or date.
 Format: <code>findReminder [desc/DESCRIPTION] [date/DATE]</code></p>
@@ -1126,8 +1118,8 @@ Returns all reminders on 05 May 2020.</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="snoozing-a-reminder-code-snoozereminder-code"><a class="link" href="#snoozing-a-reminder-code-snoozereminder-code">3.32. Snoozing a reminder: <code>snoozeReminder</code></a></h3>
+<div class="sect3">
+<h4 id="snoozing-a-reminder-code-snoozereminder-code"><a class="link" href="#snoozing-a-reminder-code-snoozereminder-code">3.6.7. Snoozing a reminder: <code>snoozeReminder</code></a></h4>
 <div class="paragraph">
 <p>Snoozes a reminder in the reminder list.<br>
 Format: <code>snoozeReminder INDEX [day/DAY] [hour/HOUR] [minute/MINUTE]</code></p>
@@ -1165,24 +1157,50 @@ Postpone the fourth reminder to 30 minutes later.</p>
 </ul>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.33. Exiting the program : <code>exit</code></a></h3>
+<h3 id="calendar-feature"><a class="link" href="#calendar-feature">3.7. Calendar Feature</a></h3>
+<div class="sect3">
+<h4 id="display-the-calendar-window-code-calendar-code"><a class="link" href="#display-the-calendar-window-code-calendar-code">3.7.1. Display the calendar window: <code>calendar</code></a></h4>
+<div class="paragraph">
+<p>Brings up the calendar window.
+Format: <code>calendar</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The calendar will be brought up, displaying the current month and year.</p>
+</li>
+<li>
+<p>For each month, the number of tutorials and consults each day will be displayed in the calendar.</p>
+</li>
+<li>
+<p>Click on the left and right arrows to change the month displayed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-consults-and-tutorials-on-a-particular-day-coming-in-v2-0"><a class="link" href="#view-consults-and-tutorials-on-a-particular-day-coming-in-v2-0">3.7.2. View consults and tutorials on a particular day [Coming in v2.0]</a></h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.34. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.9. Saving the data</a></h3>
 <div class="paragraph">
 <p>Data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.35. Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 </div>
@@ -1229,4 +1247,4 @@ e.g. <code>findStudent James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-24 14:09:03 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-24 14:38:49 UTC</div></div></div></body></html>
