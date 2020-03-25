@@ -472,7 +472,14 @@ Returns any consults that are held at SR3</p>
 <div class="sect2">
 <h3 id="tutorials-feature"><a class="link" href="#tutorials-feature">3.4. Tutorials Feature</a></h3>
 <div class="sect3">
-<h4 id="add-a-tutorial-slot-code-addtutorial-code"><a class="link" href="#add-a-tutorial-slot-code-addtutorial-code">3.4.1. Add a tutorial slot: <code>addTutorial</code></a></h4>
+<h4 id="switch-gui-display-to-tutorial-list-view-code-listtutorial-code"><a class="link" href="#switch-gui-display-to-tutorial-list-view-code-listtutorial-code">3.4.1. Switch GUI Display to Tutorial List View: <code>ListTutorial</code></a></h4>
+<div class="paragraph">
+<p>Focuses the display in the GUI to the Tutorials list view, without requiring the user to click on the tab.
+Format: <code>ListTutorial</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-a-tutorial-slot-code-addtutorial-code"><a class="link" href="#add-a-tutorial-slot-code-addtutorial-code">3.4.2. Add a tutorial slot: <code>addTutorial</code></a></h4>
 <div class="paragraph">
 <p>Add a tutorial slot for a particular module at the given time, day and place.<br>
 Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEEKDAY_VALUE beginTime/START_TIME endTIme/END_TIME place/PLACE</code></p>
@@ -512,7 +519,7 @@ Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEE
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-a-tutorial-slot-code-deletetutorial-code"><a class="link" href="#delete-a-tutorial-slot-code-deletetutorial-code">3.4.2. Delete a tutorial slot: <code>deleteTutorial</code></a></h4>
+<h4 id="delete-a-tutorial-slot-code-deletetutorial-code"><a class="link" href="#delete-a-tutorial-slot-code-deletetutorial-code">3.4.3. Delete a tutorial slot: <code>deleteTutorial</code></a></h4>
 <div class="paragraph">
 <p>Delete a tutorial slot for a particular module.<br>
 Format: <code>deleteTutorial INDEX</code></p>
@@ -547,7 +554,7 @@ Format: <code>deleteTutorial INDEX</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="marks-students-as-present-code-markpresent-code"><a class="link" href="#marks-students-as-present-code-markpresent-code">3.4.3. Marks students as present: <code>markPresent</code></a></h4>
+<h4 id="marks-students-as-present-code-markpresent-code"><a class="link" href="#marks-students-as-present-code-markpresent-code">3.4.4. Marks students as present: <code>markPresent</code></a></h4>
 <div class="paragraph">
 <p>Takes attendance of students in a tutorial class by marking them as present for a particular week. Present students will be marked with a :heavy_check_mark:.<br>
 Format: <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT [OPTIONAL]</code></p>
@@ -595,7 +602,7 @@ Marks all students as present in week 7 in tutorial at index 2</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="marks-students-as-absent-code-markabsent-code"><a class="link" href="#marks-students-as-absent-code-markabsent-code">3.4.4. Marks students as absent: <code>markAbsent</code></a></h4>
+<h4 id="marks-students-as-absent-code-markabsent-code"><a class="link" href="#marks-students-as-absent-code-markabsent-code">3.4.5. Marks students as absent: <code>markAbsent</code></a></h4>
 <div class="paragraph">
 <p>Takes attendance of students in a tutorial class by marking them as absent for a particular week. Absent students will be marked with a :x:.<br>
 Format: <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT</code></p>
@@ -643,7 +650,7 @@ Marks all students in week 7 as absent in tutorial at index 3 (oh no!)</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-student-to-tutorial-code-addtutorialstudent-code"><a class="link" href="#add-student-to-tutorial-code-addtutorialstudent-code">3.4.5. Add student to tutorial: <code>addTutorialStudent</code></a></h4>
+<h4 id="add-student-to-tutorial-code-addtutorialstudent-code"><a class="link" href="#add-student-to-tutorial-code-addtutorialstudent-code">3.4.6. Add student to tutorial: <code>addTutorialStudent</code></a></h4>
 <div class="paragraph">
 <p>Enroll an existing student to an existing tutorial.
 Format: <code>addTutorialStudent tutorialIndex/INDEX student/STUDENT</code></p>
@@ -683,7 +690,7 @@ Format: <code>addTutorialStudent tutorialIndex/INDEX student/STUDENT</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="remove-student-from-tutorial-code-deletetutorialstudent-code"><a class="link" href="#remove-student-from-tutorial-code-deletetutorialstudent-code">3.4.6. Remove student from tutorial: <code>deleteTutorialStudent</code></a></h4>
+<h4 id="remove-student-from-tutorial-code-deletetutorialstudent-code"><a class="link" href="#remove-student-from-tutorial-code-deletetutorialstudent-code">3.4.7. Remove student from tutorial: <code>deleteTutorialStudent</code></a></h4>
 <div class="paragraph">
 <p>Remove an existing student from an existing tutorial.
 Format: <code>deleteTutorialStudent tutorialIndex/INDEX student/STUDENT</code></p>
@@ -723,10 +730,10 @@ Format: <code>deleteTutorialStudent tutorialIndex/INDEX student/STUDENT</code></
 </div>
 </div>
 <div class="sect3">
-<h4 id="display-students-and-attendance-of-a-tutorial-code-listtutorial-code"><a class="link" href="#display-students-and-attendance-of-a-tutorial-code-listtutorial-code">3.4.7. Display students and attendance of a tutorial: <code>ListTutorial</code></a></h4>
+<h4 id="display-students-and-attendance-of-a-tutorial-code-listattendance-code"><a class="link" href="#display-students-and-attendance-of-a-tutorial-code-listattendance-code">3.4.8. Display students and attendance of a tutorial: <code>ListAttendance</code></a></h4>
 <div class="paragraph">
 <p>Displays the list of students in a tutorial and their corresponding attendance for a particular week in the GUI.
-Format: <code>listTutorial tutorialIndex/INDEX week/INDEX</code></p>
+Format: <code>listAttendance tutorialIndex/INDEX week/INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -757,7 +764,7 @@ Format: <code>listTutorial tutorialIndex/INDEX week/INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>listTutorial tutorialIndex/2 week/10</code></p>
+<p><code>listAttendance tutorialIndex/2 week/10</code></p>
 </li>
 </ul>
 </div>
@@ -1247,4 +1254,4 @@ e.g. <code>findStudent James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 10:02:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 10:18:48 UTC</div></div></div></body></html>
