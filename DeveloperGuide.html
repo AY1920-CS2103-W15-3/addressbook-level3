@@ -701,6 +701,15 @@ However, a <code>Student</code> object, as we are implementing it, does not cont
 From a software engineering perspective, it is the responsibility of the <code>tutorial</code> to keep track of the attendance, not the <code>Student</code> 's.
 This allows attendance of a <code>Student</code> to be easily referenced and marked in a <code>tutorial</code> without requiring the <code>Student</code> to be privy to that information, and allows for convenient retrieval of attendance by week or by student.</p>
 </div>
+<div class="paragraph">
+<p>As such, the following activity diagram of the system illustrates what occurs when the user calls the markPresent command to mark a student in a tutorial as present, for a specified week in the school semester.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TutorialMarkPresentActivityDiagram.png" alt="TutorialMarkPresentActivityDiagram">
+</div>
+<div class="title">Figure 11. Activity diagram for the command markPresent in the tutorial feature</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -717,7 +726,7 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 <div class="content">
 <img src="images/ModClassDiagram.png" alt="ModClassDiagram">
 </div>
-<div class="title">Figure 11. Class diagram of 'Mod' feature, displaying only directly related classes</div>
+<div class="title">Figure 12. Class diagram of 'Mod' feature, displaying only directly related classes</div>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram shows how notes of a module can be updated with the <code>noteMod</code> command.</p>
@@ -726,7 +735,7 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 <div class="content">
 <img src="images/NoteModSequenceDiagram.png" alt="NoteModSequenceDiagram">
 </div>
-<div class="title">Figure 12. Sequence diagram of updating Mod notes</div>
+<div class="title">Figure 13. Sequence diagram of updating Mod notes</div>
 </div>
 <div class="paragraph">
 <p>Module links are stored as ModLink objects in TAble. The collection of ModLinks are stored as <code>List&lt;Pair&lt;String, ModLink&gt;&gt;</code> since each module link can be described differently. This allows for more flexibility in naming the module links, rather than solely using an index based notation, and ensures that the order of addition into the collection is maintained. The activity diagram of adding module links is shown below.</p>
@@ -735,7 +744,7 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 <div class="content">
 <img src="images/AddModLinkActivityDiagram.png" alt="AddModLinkActivityDiagram">
 </div>
-<div class="title">Figure 13. Activity diagram of adding ModLinks to Mod</div>
+<div class="title">Figure 14. Activity diagram of adding ModLinks to Mod</div>
 </div>
 </div>
 <div class="sect3">
@@ -2199,4 +2208,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-28 08:04:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-28 11:46:41 UTC</div></div></div></body></html>

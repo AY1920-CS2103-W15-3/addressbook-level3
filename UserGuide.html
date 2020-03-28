@@ -25,7 +25,15 @@
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#command-summary">5. Command Summary</a>
+<ul class="sectlevel2">
+<li><a href="#student">5.1. Student</a></li>
+<li><a href="#consult">5.2. Consult</a></li>
+<li><a href="#tutorial">5.3. Tutorial</a></li>
+<li><a href="#module">5.4. Module</a></li>
+<li><a href="#reminder">5.5. Reminder</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -128,7 +136,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect2">
 <h3 id="students-feature"><a class="link" href="#students-feature">3.2. Students Feature</a></h3>
 <div class="sect3">
-<h4 id="adding-a-student-code-add-code"><a class="link" href="#adding-a-student-code-add-code">3.2.1. Adding a student: <code>add</code></a></h4>
+<h4 id="adding-a-student-code-addstudent-code"><a class="link" href="#adding-a-student-code-addstudent-code">3.2.1. Adding a student: <code>addStudent</code></a></h4>
 <div class="paragraph">
 <p>Adds a student to TAble<br>
 Format: <code>addStudent name/NAME matric/MATRIC_NUMBER email/EMAIL [tag/TAG]&#8230;&#8203;</code></p>
@@ -257,7 +265,7 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-student-code-delete-code"><a class="link" href="#deleting-a-student-code-delete-code">3.2.5. Deleting a student : <code>delete</code></a></h4>
+<h4 id="deleting-a-student-code-deletestudent-code"><a class="link" href="#deleting-a-student-code-deletestudent-code">3.2.5. Deleting a student : <code>deleteStudent</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified student from TAble.<br>
 Format: <code>deleteStudent INDEX</code></p>
@@ -274,6 +282,9 @@ Format: <code>deleteStudent INDEX</code></p>
 </li>
 <li>
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Deleting the student from TAble also deletes the student from any tutorial they are enrolled in.</p>
 </li>
 </ul>
 </div>
@@ -472,10 +483,10 @@ Returns any consults that are held at SR3</p>
 <div class="sect2">
 <h3 id="tutorials-feature"><a class="link" href="#tutorials-feature">3.4. Tutorials Feature</a></h3>
 <div class="sect3">
-<h4 id="switch-gui-display-to-tutorial-list-view-code-listtutorial-code"><a class="link" href="#switch-gui-display-to-tutorial-list-view-code-listtutorial-code">3.4.1. Switch GUI Display to Tutorial List View: <code>ListTutorial</code></a></h4>
+<h4 id="switch-gui-display-to-tutorial-list-view-code-listtutorial-code"><a class="link" href="#switch-gui-display-to-tutorial-list-view-code-listtutorial-code">3.4.1. Switch GUI Display to Tutorial List View: <code>listTutorial</code></a></h4>
 <div class="paragraph">
 <p>Focuses the display in the GUI to the Tutorials list view, without requiring the user to click on the tab.
-Format: <code>ListTutorial</code></p>
+Format: <code>listTutorial</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -499,6 +510,9 @@ Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEE
 </li>
 <li>
 <p>The place provided should be any valid string</p>
+</li>
+<li>
+<p>Note that you are not allowed to add tutorials with clashing times (ie. periods overlap)</p>
 </li>
 </ul>
 </div>
@@ -554,10 +568,50 @@ Format: <code>deleteTutorial INDEX</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="marks-students-as-present-code-markpresent-code"><a class="link" href="#marks-students-as-present-code-markpresent-code">3.4.4. Marks students as present: <code>markPresent</code></a></h4>
+<h4 id="add-student-to-tutorial-code-addtutorialstudent-code"><a class="link" href="#add-student-to-tutorial-code-addtutorialstudent-code">3.4.4. Add student to tutorial: <code>addTutorialStudent</code></a></h4>
 <div class="paragraph">
-<p>Takes attendance of students in a tutorial class by marking them as present for a particular week. Present students will be marked by a green background in the respective attendance list.<br>
-Format: <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT [OPTIONAL]</code></p>
+<p>Enroll an existing student to an existing tutorial.
+Format: <code>addTutorialStudent tutorialIndex/INDEX student/STUDENT_INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the displayed tutorial list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The <code>STUDENT_INDEX</code> should be referred to by index as referred to in the student list.</p>
+</li>
+<li>
+<p>The student should already exist in TAble.</p>
+</li>
+<li>
+<p>The tutorial should already exist in TAble.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addTutorialStudent tutorialIndex/3 student/12</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="marks-students-as-present-code-markpresent-code"><a class="link" href="#marks-students-as-present-code-markpresent-code">3.4.5. Marks students as present: <code>markPresent</code></a></h4>
+<div class="paragraph">
+<p>Takes attendance of students in a tutorial class by marking them as present for a particular week. Present students will be marked by a <strong>green</strong> background in the respective attendance list.<br>
+Format: <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT_INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -573,10 +627,10 @@ Format: <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT [OPTIONA
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>The <code>STUDENT</code> may either be an integer index <strong>or</strong> <code>all</code> to select all students in the specified tutorial.</p>
+<p>The <code>STUDENT_INDEX</code> may either be an integer index <strong>or</strong> <code>all</code> to select all students in the specified tutorial.</p>
 </li>
 <li>
-<p>The <code>STUDENT</code>, if an integer, should be referred to by the index as referred to in the student list <strong>relative to the specified tutorial</strong>.</p>
+<p>The <code>STUDENT_INDEX</code>, if an integer, should be referred to by the index as referred to in the student list <strong>relative to the specified tutorial</strong>.</p>
 </li>
 <li>
 <p>The week should be in numerical format, and accepts only numbers in the range 1 to 13 (inclusive)</p>
@@ -602,10 +656,10 @@ Marks all students as present in week 7 in tutorial at index 2</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="marks-students-as-absent-code-markabsent-code"><a class="link" href="#marks-students-as-absent-code-markabsent-code">3.4.5. Marks students as absent: <code>markAbsent</code></a></h4>
+<h4 id="marks-students-as-absent-code-markabsent-code"><a class="link" href="#marks-students-as-absent-code-markabsent-code">3.4.6. Marks students as absent: <code>markAbsent</code></a></h4>
 <div class="paragraph">
-<p>Takes attendance of students in a tutorial class by marking them as absent for a particular week. Absent students will be marked by a red background in the respective attendance list.<br>
-Format: <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT</code></p>
+<p>Takes attendance of students in a tutorial class by marking them as absent for a particular week. Absent students will be marked by a <strong>red</strong> background in the respective attendance list.<br>
+Format: <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT_INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -621,10 +675,10 @@ Format: <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT</code></
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>The <code>STUDENT</code> may either be an integer index <strong>or</strong> <code>all</code> to select all students in the specified tutorial.</p>
+<p>The <code>STUDENT_INDEX</code> may either be an integer index <strong>or</strong> <code>all</code> to select all students in the specified tutorial.</p>
 </li>
 <li>
-<p>The <code>STUDENT</code>, if an integer, should be referred to by the index as referred to in the student list <strong>relative to the specified tutorial</strong>.</p>
+<p>The <code>STUDENT_INDEX</code>, if an integer, should be referred to by the index as referred to in the student list <strong>relative to the specified tutorial</strong>.</p>
 </li>
 <li>
 <p>The week should be in numerical format, and accepts only numbers in the range 1 to 13 (inclusive)</p>
@@ -650,50 +704,10 @@ Marks all students in week 7 as absent in tutorial at index 3 (oh no!)</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-student-to-tutorial-code-addtutorialstudent-code"><a class="link" href="#add-student-to-tutorial-code-addtutorialstudent-code">3.4.6. Add student to tutorial: <code>addTutorialStudent</code></a></h4>
-<div class="paragraph">
-<p>Enroll an existing student to an existing tutorial.
-Format: <code>addTutorialStudent tutorialIndex/INDEX student/STUDENT</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The index refers to the index number shown in the displayed tutorial list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>The <code>STUDENT</code> should be referred to by index as referred to in the student list.</p>
-</li>
-<li>
-<p>The student should already exist.</p>
-</li>
-<li>
-<p>The tutorial should already exist.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>addTutorialStudent tutorialIndex/3 student/12</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
 <h4 id="remove-student-from-tutorial-code-deletetutorialstudent-code"><a class="link" href="#remove-student-from-tutorial-code-deletetutorialstudent-code">3.4.7. Remove student from tutorial: <code>deleteTutorialStudent</code></a></h4>
 <div class="paragraph">
 <p>Remove an existing student from an existing tutorial.
-Format: <code>deleteTutorialStudent tutorialIndex/INDEX student/STUDENT</code></p>
+Format: <code>deleteTutorialStudent tutorialIndex/INDEX student/STUDENT_INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -706,13 +720,16 @@ Format: <code>deleteTutorialStudent tutorialIndex/INDEX student/STUDENT</code></
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>The <code>STUDENT</code> should be referred to by the index as referred to in the student list <strong>relative to the specified tutorial</strong>.</p>
+<p>The <code>STUDENT_INDEX</code> should be referred to by the index as referred to in the student list <strong>relative to the specified tutorial</strong>.</p>
 </li>
 <li>
-<p>The student should already exist <strong>and</strong> exist in the tutorial being deleted from.</p>
+<p>The student should already exist in TAble <strong>and</strong> exist in the tutorial being deleted from.</p>
 </li>
 <li>
-<p>The tutorial should already exist.</p>
+<p>The tutorial should already exist in TAble.</p>
+</li>
+<li>
+<p>Note that deleting the student from the tutorial does <em>not</em> delete the student from the TAble database.</p>
 </li>
 </ul>
 </div>
@@ -730,7 +747,7 @@ Format: <code>deleteTutorialStudent tutorialIndex/INDEX student/STUDENT</code></
 </div>
 </div>
 <div class="sect3">
-<h4 id="display-students-and-attendance-of-a-tutorial-code-listattendance-code"><a class="link" href="#display-students-and-attendance-of-a-tutorial-code-listattendance-code">3.4.8. Display students and attendance of a tutorial: <code>ListAttendance</code></a></h4>
+<h4 id="display-students-and-attendance-of-a-tutorial-code-listattendance-code"><a class="link" href="#display-students-and-attendance-of-a-tutorial-code-listattendance-code">3.4.8. Display students and attendance of a tutorial: <code>listAttendance</code></a></h4>
 <div class="paragraph">
 <p>Displays the list of students in a tutorial and their corresponding attendance for a particular week in the GUI.
 Format: <code>listAttendance tutorialIndex/INDEX week/INDEX</code></p>
@@ -749,7 +766,7 @@ Format: <code>listAttendance tutorialIndex/INDEX week/INDEX</code></p>
 <p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>The tutorial should already exist.</p>
+<p>The tutorial should already exist in TAble.</p>
 </li>
 <li>
 <p>The week should be in numerical format, and accepts only numbers in the range 1 to 13 (inclusive)</p>
@@ -1335,10 +1352,12 @@ There is no need to save manually.</p>
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="student"><a class="link" href="#student">5.1. Student</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>addStudent n/NAME m/MATRIC_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
+<p><strong>Add</strong> : <code>addStudent n/NAME m/MATRIC_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>addStudent n/James Ho m/A0123456X e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
 </li>
 <li>
@@ -1346,7 +1365,7 @@ e.g. <code>addStudent n/James Ho m/A0123456X e/jamesho@example.com a/123, Clemen
 </li>
 <li>
 <p><strong>Delete</strong> : <code>deleteStudent INDEX</code><br>
-e.g. <code>delete 3</code></p>
+e.g. <code>deleteStudent 3</code></p>
 </li>
 <li>
 <p><strong>Edit</strong> : <code>editStudent INDEX [n/NAME] [m/MATRIC_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
@@ -1359,10 +1378,64 @@ e.g. <code>findStudent James Jake</code></p>
 <li>
 <p><strong>List</strong> : <code>listStudent</code></p>
 </li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="consult"><a class="link" href="#consult">5.2. Consult</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="tutorial"><a class="link" href="#tutorial">5.3. Tutorial</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add</strong> : <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEEKDAY_VALUE beginTime/START_TIME endTIme/END_TIME place/PLACE</code><br>
+e.g. <code>addTutorial modCode/CS2103 tutorialName/T02 day/3 beginTime/12:00 endTime/13:00 place/SR3</code></p>
+</li>
+<li>
+<p><strong>Delete</strong> : <code>deleteTutorial INDEX</code><br>
+e.g. <code>deleteTutorial 2</code></p>
+</li>
+<li>
+<p><strong>Add Tutorial Student</strong> : <code>addTutorialStudent tutorialIndex/INDEX student/STUDENT_INDEX</code><br>
+e.g. <code>addTutorialStudent tutorialIndex/1 student/3</code></p>
+</li>
+<li>
+<p><strong>Mark Present</strong> : <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT_INDEX</code><br>
+e.g. <code>markPresent tutorialIndex/3 week/7 student/2</code></p>
+</li>
+<li>
+<p><strong>Mark Absent</strong> : <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT_INDEX</code><br>
+e.g. <code>markAbsent tutorialIndex/3 week/7 student/2</code></p>
+</li>
+<li>
+<p><strong>Delete Tutorial Student</strong> : <code>deleteTutorialStudent tutorialIndex/INDEX student/STUDENT_INDEX</code><br>
+e.g. <code>deleteTutorialStudent tutorialIndex/3 student/12</code></p>
+</li>
+<li>
+<p><strong>List Tutorial</strong> : <code>listTutorial</code></p>
+</li>
+<li>
+<p><strong>List Attendance</strong> : <code>listAttendance tutorialIndex/INDEX week/INDEX</code><br>
+e.g. <code>listAttendance tutorialIndex/2 week/10</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="module"><a class="link" href="#module">5.4. Module</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="reminder"><a class="link" href="#reminder">5.5. Reminder</a></h3>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-28 08:04:46 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-28 11:46:41 UTC</div></div></div></body></html>
