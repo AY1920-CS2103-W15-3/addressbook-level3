@@ -10,7 +10,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>TAble is your handy desktop app, optimized for TAs who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI)! Mark attendance, arrange consults, add module notes, and more with TAble! It has a GUI created with JavaFX and written in Java, and has about 10 kLoC.</p>
+<p>TAble is your handy desktop app, optimized for TAs who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI)! Mark attendance, arrange consults, add module notes, and more with TAble! It has a GUI created with JavaFX and written in Java, and has about 20 kLoC.</p>
 </div>
 </div>
 </div>
@@ -20,23 +20,23 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to insert Module description/links/time</strong></p>
+<p><strong>Major enhancement</strong>: added the ability to <strong>insert Module description/links/time</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does:</p>
+<p>What it does: Represents module information critical to a Teaching Assistant&#8217;s role in their work, from notes of the module to handling module links.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Justification: Teaching Assistants need to view general module information and associate Tutorials with modules. This helps consolidate general information about the module (through its notes and module links).</p>
+</li>
+<li>
+<p>Highlights: Module links can be stored in TAble and shared easily with the command to copy links into the user&#8217;s clipboard. Additionally, note of the module can also be updated to store important information like grade breakdown.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Dead link - Functional code</a>] [<a href="https://github.com">Dead link - Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: <a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=Nigelnnk&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">As seen on RepoSense</a></p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -47,7 +47,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed Graphical User Interface :''''''(</p>
+<p>Managed Graphical User Interface for the Main Window of the application <a href="https://github.com/AY1920S2-CS2103-W15-3/main/pull/30">#30</a> <a href="https://github.com/AY1920S2-CS2103-W15-3/main/pull/85">#85</a></p>
 </li>
 </ul>
 </div>
@@ -67,7 +67,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Updated graphics for Developer&#8217;s Guide, for PlantUML diagrams: <a href="https://github.com/AY1920S2-CS2103-W15-3/main/pull/97">#97</a></p>
 </li>
 </ul>
 </div>
@@ -87,7 +87,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Fix and Maintain Product Website</p>
+<p>Fix and Maintain Product Website <a href="https://github.com/AY1920S2-CS2103-W15-3/main/pull/29">#29</a></p>
+</li>
+<li>
+<p>Maintain Travis and Coveralls Integration <a href="https://github.com/AY1920S2-CS2103-W15-3/main/pull/95">#95</a></p>
 </li>
 </ul>
 </div>
@@ -118,10 +121,10 @@
 <div class="sect2">
 <h3 id="module-feature"><a class="link" href="#module-feature">Module Feature</a></h3>
 <div class="sect3">
-<h4 id="add-module-into-database-code-addmodule-code"><a class="link" href="#add-module-into-database-code-addmodule-code">Add Module into database: <code>addModule</code></a></h4>
+<h4 id="add-module-into-database-code-addmod-code"><a class="link" href="#add-module-into-database-code-addmod-code">Add Module into database: <code>addMod</code></a></h4>
 <div class="paragraph">
 <p>Adds module into TAble.<br>
-Format: <code>addModule modCode/MODULE_CODE modName/MODULE_NAME</code></p>
+Format: <code>addMod modCode/MODULE_CODE modName/MODULE_NAME</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -131,7 +134,7 @@ Format: <code>addModule modCode/MODULE_CODE modName/MODULE_NAME</code></p>
 <p>The module code provided is case insensitive, e.g. <code>Cs2103</code> is equivalent to <code>CS2103</code>. It should be prefixed by at most three characters, then four numbers, and finally no more than two characters as suffix.</p>
 </li>
 <li>
-<p>The module name provided should be any valid string</p>
+<p>The module name provided should be any valid string.</p>
 </li>
 </ul>
 </div>
@@ -149,17 +152,20 @@ Format: <code>addModule modCode/MODULE_CODE modName/MODULE_NAME</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-module-description-code-editmodule-code"><a class="link" href="#edit-module-description-code-editmodule-code">Edit Module description: <code>editModule</code></a></h4>
+<h4 id="delete-module-from-database-code-deletemod-code"><a class="link" href="#delete-module-from-database-code-deletemod-code">Delete Module from database: <code>deleteMod</code></a></h4>
 <div class="paragraph">
-<p>Edits corresponding description of module.<br>
-Format: <code>editModule modCode/MODULE_CODE d/DESCRIPTION</code></p>
+<p>Deletes a module from TAble.<br>
+Format: <code>deleteMod modCode/MODULE_CODE</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The description provided should be any valid string.</p>
+<p>The module code provided is case insensitive, e.g. <code>Cs2103</code> is equivalent to <code>CS2103</code>. It should be prefixed by at most three characters, then four numbers, and finally no more than two characters as suffix.</p>
+</li>
+<li>
+<p>The module code should correspond to an existing module in the database.</p>
 </li>
 </ul>
 </div>
@@ -171,24 +177,58 @@ Format: <code>editModule modCode/MODULE_CODE d/DESCRIPTION</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>editModule modCode/CS1010S d/How cool is that?</code><br>
-When viewing the module page for CS1010S, the description will be updated to show "How cool is that?"</p>
+<p><code>addModule modCode/CS1010S modName/Programming Methodology</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-link-to-module-with-appropriate-tag-code-linkmodule-code"><a class="link" href="#add-link-to-module-with-appropriate-tag-code-linkmodule-code">Add link to module with appropriate tag: <code>linkModule</code></a></h4>
+<h4 id="edit-module-note-code-notemod-code"><a class="link" href="#edit-module-note-code-notemod-code">Edit Module note: <code>noteMod</code></a></h4>
 <div class="paragraph">
-<p>Edit module to include links to appropriate websites (e.g. Google Drive Folder, Module Website etc.)<br>
-Format: <code>linkModule modCode/MODULE_CODE l/LINK t/TAG</code></p>
+<p>Edits corresponding note of module.<br>
+Format: <code>noteMod modCode/MODULE_CODE modNote/NOTE</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The module link should correspond to a valid URL format.</p>
+<p>The module code should correspond to an existing module in the database.</p>
+</li>
+<li>
+<p>The note provided should be any valid string, and replaces the current note of the module.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>noteModule modCode/CS1010S modNote/How cool is that?</code><br>
+When viewing the module info for CS1010S, the note will be updated to show "How cool is that?"</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-link-to-module-with-appropriate-name-code-addmodlink-code"><a class="link" href="#add-link-to-module-with-appropriate-name-code-addmodlink-code">Add link to module with appropriate name: <code>addModLink</code></a></h4>
+<div class="paragraph">
+<p>Edit module to include links to appropriate websites (e.g. Google Drive Folder, Module Website etc.)<br>
+Format: <code>addModLink modCode/MODULE_CODE modLink/LINK modLinkName/NAME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The module code should correspond to an existing module in the database.</p>
+</li>
+<li>
+<p>The module link should correspond to a valid URL format (protocol optional). Hence the first character should be alphanumeric, followed by any character in the set [-a-zA-Z0-9+&amp;@#/%?=~_|!:,.;], and end with [-a-zA-Z0-9+&amp;@#/%=~_|].</p>
 </li>
 <li>
 <p>The tag provided should be any valid string.</p>
@@ -203,17 +243,28 @@ Format: <code>linkModule modCode/MODULE_CODE l/LINK t/TAG</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>linkModule modCode/CS1231 l/https://comp.nus.edu.sg/~cs1231 t/Website</code><br>
-When viewing he module page for CS1231, there will be an additional clickable link that is labelled "Website" and points to <a href="https://comp.nus.edu.sg/~cs1231" class="bare">https://comp.nus.edu.sg/~cs1231</a>.</p>
+<p><code>addModLink modCode/CS1231</code><br>
+When viewing the module page for CS1231, there will be an additional label with "Module Website" and points to <a href="https://comp.nus.edu.sg/~cs1231" class="bare">https://comp.nus.edu.sg/~cs1231</a>.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-lecture-timeslot-code-addlecture-code-coming-in-v2-0"><a class="link" href="#add-lecture-timeslot-code-addlecture-code-coming-in-v2-0">Add lecture timeslot: <code>addLecture</code> [coming in v2.0]</a></h4>
+<h4 id="clear-all-module-links-from-module-in-database-code-clearmodlink-code"><a class="link" href="#clear-all-module-links-from-module-in-database-code-clearmodlink-code">Clear all module links from module in database: <code>clearModLink</code></a></h4>
 <div class="paragraph">
-<p>Adds lecture timeslot to module.<br>
-Format: <code>addLecture m/MODULE d/DAY from/TIME to/TIME p/LOCATION</code></p>
+<p>Removes all module links from a module in TAble.<br>
+Format: <code>deleteMod modCode/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The module code should correspond to an existing module in the database.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -221,16 +272,88 @@ Format: <code>addLecture m/MODULE d/DAY from/TIME to/TIME p/LOCATION</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addLecture m/CS1010S d/WED from/1400 to/1600 p/LT27</code></p>
+<p><code>clearModLink modCode/CS1231</code><br>
+When viewing the module page for CS1231, there will not be any module links shown.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="clear-all-lecture-timeslots-code-clearlecture-code-coming-in-v2-0"><a class="link" href="#clear-all-lecture-timeslots-code-clearlecture-code-coming-in-v2-0">Clear all lecture timeslots: <code>clearLecture</code> [coming in v2.0]</a></h4>
+<h4 id="copy-module-link-into-clipboard-code-copymodlink-code"><a class="link" href="#copy-module-link-into-clipboard-code-copymodlink-code">Copy Module Link into Clipboard: <code>copyModLink</code></a></h4>
+<div class="paragraph">
+<p>Copies a module link from the links currently associated with a module. Index corresponding to module link can be seen when viewing the module info using <code>viewModInfo</code>.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>copyModLink INDEX modCode/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The module code should correspond to an existing module in the database.</p>
+</li>
+<li>
+<p>The index should correspond to a valid index in the module links.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>copyModLink 1 modCode/CS1231</code><br>
+The module website for CS1231 is copied into the user&#8217;s clipboard.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-module-code-viewmodinfo-code"><a class="link" href="#view-module-code-viewmodinfo-code">View Module: <code>viewModInfo</code></a></h4>
+<div class="paragraph">
+<p>Opens the view for the selected module to view module description, links and (coming in v2.0) lecture timeslots.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>viewModInfo modCode/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The module code should correspond to an existing module in the database.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-lecture-timeslot-code-addmodlecture-code-coming-in-v2-0"><a class="link" href="#add-lecture-timeslot-code-addmodlecture-code-coming-in-v2-0">Add lecture timeslot: <code>addModLecture</code> [coming in v2.0]</a></h4>
+<div class="paragraph">
+<p>Adds lecture timeslot to module. This is to be included to integrate with the consultation finding feature.<br>
+Format: <code>addModLecture modCode/MODULE_CODE d/DAY from/TIME to/TIME p/LOCATION</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addModLecture modCode/CS1010S d/WED from/1400 to/1600 p/LT27</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clear-all-lecture-timeslots-code-clearmodlecture-code-coming-in-v2-0"><a class="link" href="#clear-all-lecture-timeslots-code-clearmodlecture-code-coming-in-v2-0">Clear all lecture timeslots: <code>clearModLecture</code> [coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>Clears all lectures associated with a certain module.<br>
-Format: <code>clearLecture m/MODULE</code></p>
+Format: <code>clearModLecture modCode/MODULE_CODE</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -238,18 +361,9 @@ Format: <code>clearLecture m/MODULE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>clearLecture m/CS1010S</code></p>
+<p><code>clearModLecture modCode/CS1010S</code></p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="view-module-code-viewmodule-code"><a class="link" href="#view-module-code-viewmodule-code">View Module: <code>viewModule</code></a></h4>
-<div class="paragraph">
-<p>Opens the view for the selected module to view module description, links and lecture timeslots.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>viewModule modCode/MODULE_CODE</code></p>
 </div>
 </div>
 </div>
@@ -338,4 +452,4 @@ Format: <code>clearLecture m/MODULE</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-26 09:16:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-28 08:04:46 UTC</div></div></div></body></html>
