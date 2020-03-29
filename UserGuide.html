@@ -32,6 +32,7 @@
 <li><a href="#tutorial">5.3. Tutorial</a></li>
 <li><a href="#module">5.4. Module</a></li>
 <li><a href="#reminder">5.5. Reminder</a></li>
+<li><a href="#calendar">5.6. Calendar</a></li>
 </ul>
 </li>
 </ul>
@@ -1361,7 +1362,7 @@ There is no need to save manually.</p>
 e.g. <code>addStudent n/James Ho m/A0123456X e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p><strong>Clear</strong> : <code>clearStudent</code></p>
 </li>
 <li>
 <p><strong>Delete</strong> : <code>deleteStudent INDEX</code><br>
@@ -1383,7 +1384,28 @@ e.g. <code>findStudent James Jake</code></p>
 </div>
 <div class="sect2">
 <h3 id="consult"><a class="link" href="#consult">5.2. Consult</a></h3>
-
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add</strong> : <code>addConsult student/STUDENT_INDEX beginDateTime/BEGIN_DATE_TIME endDateTime/END_DATE_TIME place/PLACE</code><br>
+e.g. <code>addConsult student/1 beginDateTime/2020-03-03 10:00 endDateTime/2020-03-03 12:00 place/Deck</code></p>
+</li>
+<li>
+<p><strong>Clear</strong> : <code>clearConsult</code></p>
+</li>
+<li>
+<p><strong>Delete</strong> : <code>deleteConsult INDEX</code><br>
+e.g. <code>deleteConsult 3</code></p>
+</li>
+<li>
+<p><strong>Edit</strong> : <code>editConsult INDEX [beginDateTime/BEGINDATETIME] [endDateTime/ENDDATETIME] [place/PLACE]</code>
++ e.g `editConsult 3 place/The Deck</p>
+</li>
+<li>
+<p><strong>List</strong> : <code>listConsult</code></p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="tutorial"><a class="link" href="#tutorial">5.3. Tutorial</a></h3>
@@ -1429,8 +1451,15 @@ e.g. <code>listAttendance tutorialIndex/2 week/10</code></p>
 </div>
 <div class="sect2">
 <h3 id="reminder"><a class="link" href="#reminder">5.5. Reminder</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="calendar"><a class="link" href="#calendar">5.6. Calendar</a></h3>
 <div class="ulist">
 <ul>
+<li>
+<p><strong>View Calendar</strong> : <code>calendar</code></p>
+</li>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
@@ -1438,4 +1467,4 @@ e.g. <code>listAttendance tutorialIndex/2 week/10</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-29 07:52:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-29 10:51:52 UTC</div></div></div></body></html>
