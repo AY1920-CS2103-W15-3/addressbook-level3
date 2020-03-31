@@ -109,10 +109,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>addStudent name/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>addStudent name/John Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>name/NAME [t/TAG]</code> can be used as <code>name/John Doe t/friend</code> or as <code>name/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>name/NAME [t/TAG]</code> can be used as <code>name/John Doe tag/friend</code> or as <code>name/John Doe</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[tag/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>tag/friend</code>, <code>tag/friend tag/family</code> etc.</p>
 </li>
 <li>
 <p>Parameters can be in any order e.g. if the command specifies <code>name/NAME email/EMAIL</code>, <code>email/EMAIL name/NAME</code> is also acceptable.</p>
@@ -163,7 +163,7 @@ A student can have any number of tags (including 0)
 <p><code>addStudent name/John Doe matric/A0123456X email/johnd@example.com</code></p>
 </li>
 <li>
-<p><code>addStudent name/Betsy Crowe Daphne matric/A1234567X t/friend email/betsycrowe@example.com t/CS2103</code></p>
+<p><code>addStudent name/Betsy Crowe Daphne matric/A1234567X tag/friend email/betsycrowe@example.com tag/CS2103</code></p>
 </li>
 </ul>
 </div>
@@ -214,7 +214,7 @@ Format: <code>editStudent INDEX [name/NAME] [matric/MATRIC_NUMBER] [email/EMAIL]
 Edits the email address of the 1st student to be <code>johndoe@example.com</code>.</p>
 </li>
 <li>
-<p><code>editStudent 2 name/Betsy Crower t/</code><br>
+<p><code>editStudent 2 name/Betsy Crower tag/</code><br>
 Edits the name of the 2nd student to be <code>Betsy Crower</code> and clears all existing tags.</p>
 </li>
 <li>
@@ -336,6 +336,9 @@ Format: <code>addConsult student/STUDENT_INDEX beginDateTime/BEGIN_DATE_TIME end
 <li>
 <p>The location provided should be any valid string i.e, must be alphanumeric</p>
 </li>
+<li>
+<p>The consult must be held within the same day, thus the begin and end DateTime objects should have the same date.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -437,7 +440,7 @@ Deletes the 2nd consultation in TAble.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-consults-code-clearconsult-code"><a class="link" href="#clearing-all-consults-code-clearconsult-code">3.3.5. Clearing all consults : <code>clearConsult</code></a></h4>
+<h4 id="clearing-all-consults-code-clearconsults-code"><a class="link" href="#clearing-all-consults-code-clearconsults-code">3.3.5. Clearing all consults : <code>clearConsults</code></a></h4>
 <div class="paragraph">
 <p>Clears all consultations slots in TAble.<br>
 Format: <code>clearConsults</code></p>
@@ -513,6 +516,9 @@ Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEE
 </li>
 <li>
 <p>The module code provided is case insensitive, e.g. <code>Cs2103</code> is equivalent to <code>CS2103</code></p>
+</li>
+<li>
+<p>The module with the referenced module code should already be present in TAble</p>
 </li>
 <li>
 <p>The place provided should be any valid string</p>
@@ -655,7 +661,7 @@ Format: <code>markPresent tutorialIndex/INDEX week/WEEK student/STUDENT_INDEX</c
 Marks only student at index 2 (for tutorial at index 3) as present in week 7 for tutorial at index 3</p>
 </li>
 <li>
-<p><code>markPresent tutorialIndex/2 tutorialName/T02 week/7 student/all</code><br>
+<p><code>markPresent tutorialIndex/2 week/7 student/all</code><br>
 Marks all students as present in week 7 in tutorial at index 2</p>
 </li>
 </ul>
@@ -1656,4 +1662,4 @@ e.g <code>findReminder desc/midterms date/2020-03-15</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-31 14:45:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-31 15:56:16 UTC</div></div></div></body></html>
