@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>TAble - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>AY1920-CS2103-W15-3</code>      Since: <code>Feb 2020</code>      Licence: <code>MIT</code></p>
+<p>By: <code>AY1920-CS2103-W15-3</code>      Since: <code>Apr 2020</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -790,7 +790,50 @@ Format: <code>copyTutorialEmails tutorialIndex/INDEX</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="display-students-and-attendance-of-a-tutorial-code-listattendance-code"><a class="link" href="#display-students-and-attendance-of-a-tutorial-code-listattendance-code">3.4.9. Display students and attendance of a tutorial: <code>listAttendance</code></a></h4>
+<h4 id="export-tutorial-attendance-to-csv-file-code-exportattendance-code"><a class="link" href="#export-tutorial-attendance-to-csv-file-code-exportattendance-code">3.4.9. Export tutorial attendance to csv file: <code>exportAttendance</code></a></h4>
+<div class="paragraph">
+<p>Exports the attendance data of all enrolled students in a tutorial group to a csv file, where the filepath is specified by the user.
+Format: <code>exportAttendance tutorialIndex/INDEX csvFilePath/FILEPATH</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The index refers to the index number shown in the displayed tutorial list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The tutorial should already exist in TAble.</p>
+</li>
+<li>
+<p>TAble must be able to write to the file specified.</p>
+</li>
+<li>
+<p>The filepath must end in ".csv" as it is a csv file.</p>
+</li>
+<li>
+<p>Attendance data from all weeks are exported into a csv file, where a 0 indicates absence and 1 indicates presence.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>exportAttendance tutorialIndex/1 csvFilePath/./data/attendance.csv</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="display-students-and-attendance-of-a-tutorial-code-listattendance-code"><a class="link" href="#display-students-and-attendance-of-a-tutorial-code-listattendance-code">3.4.10. Display students and attendance of a tutorial: <code>listAttendance</code></a></h4>
 <div class="paragraph">
 <p>Displays the list of students in a tutorial and their corresponding attendance for a particular week in the GUI.
 Format: <code>listAttendance tutorialIndex/INDEX week/INDEX</code></p>
@@ -835,8 +878,22 @@ Format: <code>listAttendance tutorialIndex/INDEX week/INDEX</code></p>
 <div class="sect3">
 <h4 id="add-module-into-database-code-addmod-code"><a class="link" href="#add-module-into-database-code-addmod-code">3.5.1. Add Module into database: <code>addMod</code></a></h4>
 <div class="paragraph">
-<p>Adds module into TAble.<br>
-Format: <code>addMod modCode/MODULE_CODE modName/MODULE_NAME</code></p>
+<p>Adds a module into TAble.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Due to naming restrictions in java, all code references to modules are named Mod instead of Module.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>addMod modCode/MODULE_CODE modName/MODULE_NAME</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1505,12 +1562,48 @@ e.g. <code>deleteTutorialStudent tutorialIndex/3 student/12</code></p>
 <p><strong>List Attendance</strong> : <code>listAttendance tutorialIndex/INDEX week/INDEX</code><br>
 e.g. <code>listAttendance tutorialIndex/2 week/10</code></p>
 </li>
+<li>
+<p><strong>Export attendance to CSV file</strong> : <code>exportAttendance tutorialIndex/INDEX csvFilePath/CSV_FILEPATH</code>
+e.g. <code>exportAttendance tutorialIndex/1 csvFilePath/./data/attendance.csv</code></p>
+</li>
 </ul>
 </div>
 </div>
 <div class="sect2">
 <h3 id="module"><a class="link" href="#module">5.4. Module</a></h3>
-
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add</strong> : <code>addMod modCode/MODULE_CODE modName/MODULE_NAME</code><br>
+e.g. <code>addMod modCode/CS2103 modName/Software Engineering</code></p>
+</li>
+<li>
+<p><strong>Delete</strong> : <code>deleteMod modCode/MODULE_CODE</code><br>
+e.g. <code>deleteMod modCode/CS2103</code></p>
+</li>
+<li>
+<p><strong>Edit module Note</strong> : <code>noteMod modCode/MODULE_CODE modNote/MODULE_NOTE</code><br>
+e.g. <code>noteMod modCode/CS2103 modNote/SWE is fun!</code></p>
+</li>
+<li>
+<p><strong>Add module website link</strong> : <code>addModLink modCode/MODULE_CODE modLink/MODULE_LINK modLinkName/MODULE_LINK_NAME</code><br>
+e.g. <code>addModLink modCode/CS2103 modLink/comp.nus.edu.sg/~cs2103 modLinkName/Module Website</code></p>
+</li>
+<li>
+<p><strong>Clear all module links</strong> : <code>clearModLink modCode/MODULE_CODE</code></p>
+</li>
+<li>
+<p><strong>View module info</strong> : <code>viewModInfo modCode/MODULE_CODE</code></p>
+</li>
+<li>
+<p><strong>Copy module link into clipboard</strong> : <code>copyModLink INDEX modCode/MODULE_CODE</code><br>
+e.g. <code>copyModLink 1 modCode/CS2013</code></p>
+</li>
+<li>
+<p><strong>List Mods</strong> : <code>listMod</code></p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reminder"><a class="link" href="#reminder">5.5. Reminder</a></h3>
@@ -1563,4 +1656,4 @@ e.g <code>findReminder desc/midterms date/2020-03-15</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-31 06:42:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-31 09:13:00 UTC</div></div></div></body></html>
