@@ -741,21 +741,21 @@ Furthermore, they are hard to test due to their volatile nature and including th
 <p>Is a NUS SoC Teaching Assistant</p>
 </li>
 <li>
-<p>prefer desktop apps over other types</p>
+<p>Prefers desktop apps over other types</p>
 </li>
 <li>
-<p>can type fast</p>
+<p>Can type fast</p>
 </li>
 <li>
-<p>prefers typing over mouse input</p>
+<p>Prefers typing over mouse input</p>
 </li>
 <li>
-<p>is reasonably comfortable using CLI apps</p>
+<p>Is reasonably comfortable using CLI apps</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: manage students faster than a typical mouse/GUI driven app</p>
+<p><strong>Value proposition</strong>: Manage students faster than a typical mouse/GUI driven app</p>
 </div>
 </div>
 </div>
@@ -932,6 +932,12 @@ Furthermore, they are hard to test due to their volatile nature and including th
 <td class="tableblock halign-left valign-top"><p class="tableblock">update module resources</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teaching assistant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have a calendar view</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">track all of my consults, tutorials and reminders in a single calendar window.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
@@ -996,14 +1002,14 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-schedule-consult-uxx" class="discrete">Use case: Schedule consult (UXX)</h3>
+<h3 id="use-case-add-consult-u02" class="discrete">Use case: Add consult (U02)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to add consult with date, time and location of consult included</p>
+<p>User requests to add consult with student, date, time and location of consult included</p>
 </li>
 <li>
 <p>System saves the new consult into the database</p>
@@ -1019,11 +1025,11 @@ Furthermore, they are hard to test due to their volatile nature and including th
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. The date, time or location of consult is not included.</p>
+<p>1a. The student, date, time or location of consult is not included.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. System shows an error message that date, time and location must all be included.</p>
+<p>1a1. System shows an error message that student, date, time and location must all be included.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1033,7 +1039,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-update-consult-uxx" class="discrete">Use case: Update consult (UXX)</h3>
+<h3 id="use-case-edit-consult-u03" class="discrete">Use case: Edit consult (U03)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1068,9 +1074,22 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </ul>
 </div>
 </li>
+<li>
+<p>1b. The time, date or place provided is in the wrong format.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System shows an error message that time, date or place must be provided in the correct format.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
 </ul>
 </div>
-<h3 id="use-case-delete-consult-uxx" class="discrete">Use case: Delete consult (UXX)</h3>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-consult-u04" class="discrete">Use case: Delete consult (U04)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1105,9 +1124,22 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </ul>
 </div>
 </li>
+<li>
+<p>1b. The user enters the delete consult command in the wrong format.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System shows an error message that the wrong delete consult command format was given.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
 </ul>
 </div>
-<h3 id="use-case-list-consults-uxx" class="discrete">Use case: List consults (UXX)</h3>
+</li>
+</ul>
+</div>
+<h3 id="use-case-list-consults-u05" class="discrete">Use case: List consults (U05)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1117,7 +1149,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 <p>User requests to list all existing consults</p>
 </li>
 <li>
-<p>System returns a list with all the existing consult information from the database</p>
+<p>System brings up the panel that stores all of the existing consults in the database</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1137,7 +1169,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-add-tutorial-uxx" class="discrete">Use case: Add tutorial (UXX)</h3>
+<h3 id="use-case-add-tutorial-u06" class="discrete">Use case: Add tutorial (U06)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1174,7 +1206,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-delete-tutorial-uxx" class="discrete">Use case: Delete tutorial (UXX)</h3>
+<h3 id="use-case-delete-tutorial-u07" class="discrete">Use case: Delete tutorial (U07)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1228,7 +1260,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-list-tutorials-uxx" class="discrete">Use case: List tutorials (UXX)</h3>
+<h3 id="use-case-list-tutorials-u08" class="discrete">Use case: List tutorials (U08)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1245,7 +1277,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ol>
 </div>
-<h3 id="use-case-add-a-student-to-an-existing-tutorial-uxx" class="discrete">Use case: Add a student to an existing tutorial (UXX)</h3>
+<h3 id="use-case-add-a-student-to-an-existing-tutorial-u09" class="discrete">Use case: Add a student to an existing tutorial (U09)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1316,7 +1348,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-remove-a-student-from-an-existing-tutorial-uxx" class="discrete">Use case: Remove a student from an existing tutorial (UXX)</h3>
+<h3 id="use-case-remove-a-student-from-an-existing-tutorial-u10" class="discrete">Use case: Remove a student from an existing tutorial (U10)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1387,7 +1419,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-mark-attendance-of-student-uxx" class="discrete">Use case: Mark attendance of student (UXX)</h3>
+<h3 id="use-case-mark-attendance-of-student-u11" class="discrete">Use case: Mark attendance of student (U11)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1441,7 +1473,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-view-attendance-sheet-uxx" class="discrete">Use case: View attendance sheet (UXX)</h3>
+<h3 id="use-case-view-attendance-sheet-u12" class="discrete">Use case: View attendance sheet (U12)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1451,14 +1483,14 @@ Furthermore, they are hard to test due to their volatile nature and including th
 <p>User requests to view attendance of students from a particular tutorial.</p>
 </li>
 <li>
-<p>System returns the list of students and their attendance from the database.</p>
+<p>System brings up the attendance panel, and shows all students in a tutorial and their attendance from the database.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
 </div>
-<h3 id="use-case-add-reminder-uxx" class="discrete">Use case: Add reminder (UXX)</h3>
+<h3 id="use-case-add-reminder-u13" class="discrete">Use case: Add reminder (U13)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1495,7 +1527,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-mark-reminder-as-done-uxx" class="discrete">Use case: Mark reminder as done (UXX)</h3>
+<h3 id="use-case-mark-reminder-as-done-u14" class="discrete">Use case: Mark reminder as done (U14)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1545,7 +1577,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-update-reminder-uxx" class="discrete">Use case: Update reminder (UXX)</h3>
+<h3 id="use-case-update-reminder-u15" class="discrete">Use case: Update reminder (U15)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1595,7 +1627,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-delete-reminder-uxx" class="discrete">Use case: Delete reminder (UXX)</h3>
+<h3 id="use-case-delete-reminder-u16" class="discrete">Use case: Delete reminder (U16)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1632,7 +1664,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-list-reminders-uxx" class="discrete">Use case: List reminders (UXX)</h3>
+<h3 id="use-case-list-reminders-u17" class="discrete">Use case: List reminders (U17)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1642,7 +1674,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 <p>User requests to list all existing reminders</p>
 </li>
 <li>
-<p>System returns a list with all the existing reminders from the database</p>
+<p>System returns all the existing reminders from the database</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1662,7 +1694,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-find-reminders-uxx" class="discrete">Use case: Find reminders (UXX)</h3>
+<h3 id="use-case-find-reminders-u18" class="discrete">Use case: Find reminders (U18)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1705,7 +1737,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-snooze-reminder-uxx" class="discrete">Use case: Snooze reminder (UXX)</h3>
+<h3 id="use-case-snooze-reminder-u19" class="discrete">Use case: Snooze reminder (U19)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1755,7 +1787,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-create-module-uxx" class="discrete">Use case: Create Module (UXX)</h3>
+<h3 id="use-case-create-module-u20" class="discrete">Use case: Create Module (U20)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1802,7 +1834,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
-<h3 id="use-case-view-module-uxx" class="discrete">Use case: View Module (UXX)</h3>
+<h3 id="use-case-view-module-u21" class="discrete">Use case: View Module (U21)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1839,7 +1871,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-update-module-uxx" class="discrete">Use case: Update Module (UXX)</h3>
+<h3 id="use-case-update-module-u22" class="discrete">Use case: Update Module (U22)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1876,7 +1908,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-include-module-links-uxx" class="discrete">Use case: Include Module links (UXX)</h3>
+<h3 id="use-case-include-module-links-u23" class="discrete">Use case: Include Module links (U23)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1913,7 +1945,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
-<h3 id="use-case-clear-all-module-links-uxx" class="discrete">Use case: Clear All Module links (UXX)</h3>
+<h3 id="use-case-clear-all-module-links-u24" class="discrete">Use case: Clear All Module links (U24)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1950,8 +1982,22 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </li>
 </ul>
 </div>
+<h3 id="use-case-open-calendar-window-u25" class="discrete">Use case: Open Calendar Window (U25)</h3>
 <div class="paragraph">
-<p><em>{More to be added}</em></p>
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to open the calendar window</p>
+</li>
+<li>
+<p>System displays a calendar window with all of the user&#8217;s reminders, consults and tutorials.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1981,6 +2027,9 @@ Furthermore, they are hard to test due to their volatile nature and including th
 <li>
 <p>Data stored into TAble should be available to users without any data corruption.</p>
 </li>
+<li>
+<p>Teaching assistant is able to teach as many tutorial slots as possible, with no limit.</p>
+</li>
 </ol>
 </div>
 </div>
@@ -1992,7 +2041,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 <dl>
 <dt class="hdlist1"><a id="events"></a> Events</dt>
 <dd>
-<p>Events are things which the Teaching Assistant is required to take note of.
+<p>Events are things which the <a href="#teaching-assistant">Teaching Assistant</a> is required to take note of.
 The Teaching Assistant will be required to attend these events, which can be in the form of tutorials or consultations.</p>
 </dd>
 <dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
@@ -2133,6 +2182,10 @@ Expected: No new <code>Calendar</code> window appears. Error details shown in th
 <p>Test case: Click on the left/right arrow in the <code>Calendar</code> window.<br>
 Expected: The new month before/after the current displayed month is displayed in the new <code>Calendar</code> window.</p>
 </li>
+<li>
+<p>Test case: <code>closeCalendar</code><br>
+Expected: The <code>Calendar</code> window will be closed. Alternatively, the user may choose to click the cross on the top right corner of the <code>Calendar</code> window to close it.</p>
+</li>
 </ol>
 </div>
 </li>
@@ -2140,4 +2193,4 @@ Expected: The new month before/after the current displayed month is displayed in
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-31 04:38:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-31 06:42:28 UTC</div></div></div></body></html>
