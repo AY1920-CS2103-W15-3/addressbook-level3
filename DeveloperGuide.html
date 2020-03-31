@@ -24,8 +24,8 @@
 <ul class="sectlevel2">
 <li><a href="#consult-feature">3.1. Consult feature</a></li>
 <li><a href="#tutorial-feature">3.2. Tutorial feature</a></li>
-<li><a href="#implementation-3">3.3. Implementation</a></li>
-<li><a href="#module-feature">3.4. Module feature</a></li>
+<li><a href="#module-feature">3.3. Module feature</a></li>
+<li><a href="#reminder-feature">3.4. Reminder feature</a></li>
 <li><a href="#logging">3.5. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
 </ul>
@@ -427,9 +427,8 @@ The <code>beginDateTime</code> and <code>endDateTime</code> attributes are repre
 <p><strong>TAble</strong> allows NUS teaching assistants to track and record all the tutorials they are teaching, and maintain details of the tutorial, such as the module it is under, start and end time of the tutorial, and the location it is held.
 Tutorials in <strong>TAble</strong> also allow teaching assistants to enroll students in a tutorial and mark their attendance for every week of the semester, and allows for convenient referencing (particularly when there&#8217;s a pandemic and contact tracing is critical).</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="implementation-3"><a class="link" href="#implementation-3">3.3. Implementation</a></h3>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
 <div class="paragraph">
 <p>Since a <code>Tutorial</code> in <strong>TAble</strong> has to manage many parameters and attributes, different components of <strong>TAble</strong> were distinctly separated in order to ensure maintainability and adhere to good coding practices.
 The following illustrates the sequence diagram for AddTutorialCommand, in which a tutorial is added to <strong>TAble</strong>.</p>
@@ -444,8 +443,9 @@ The following illustrates the sequence diagram for AddTutorialCommand, in which 
 <p>As can be observed, each step of the process is clearly separated, with each component only responsible for single task (eg. parsing user input, executing the actual command etc.)
 This enables bugs to be easily caught, and for the process to be structured and comprehensible.</p>
 </div>
+</div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.1. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>As a <code>Tutorial</code> in TAble should be able to keep track of enrolled students and mark their attendance, the <code>Tutorial</code> object will have to contain a list of <code>Student</code> objects (ie. the enrolled students).
 However, a <code>Student</code> object, as we are implementing it, does not contain the attribute of whether they are present or not for a particular <code>tutorial</code>.</p>
@@ -491,12 +491,12 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 </div>
 </div>
 <div class="sect2">
-<h3 id="module-feature"><a class="link" href="#module-feature">3.4. Module feature</a></h3>
+<h3 id="module-feature"><a class="link" href="#module-feature">3.3. Module feature</a></h3>
 <div class="paragraph">
 <p><strong>TAble</strong> allows NUS SoC teaching assistants to track and record all modules that they are teaching. Users can leave notes on the modules that they are teaching and store a list of links for the module that are useful for reference.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">3.4.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.3.1. Implementation</a></h4>
 <div class="paragraph">
 <p>A module can be stored as a Mod object in TAble (renamed due to naming restrictions on Java keywords). The main components are the module code, which is used to identify unique modules, and module name. Mod can also store the user&#8217;s notes of the module through its description parameter, as well as a set of module links which are relevant to the course.</p>
 </div>
@@ -526,7 +526,7 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="modlink-behaviour"><a class="link" href="#modlink-behaviour">ModLink behaviour</a></h5>
 <table class="tableblock frame-all grid-all spread">
@@ -555,6 +555,106 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 </table>
 <div class="paragraph">
 <p>Reason for choosing Alternative 1: On a user design perspective, it is less jarring to copy link into the user&#8217;s clipboard, since the user can choose when they want to access the link and have the flexibility to share the link to others. Additionally, opening a new browser page requires more complicated code that depends on another program.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="reminder-feature"><a class="link" href="#reminder-feature">3.4. Reminder feature</a></h3>
+<div class="paragraph">
+<p><strong>TAble</strong> allows NUS SoC teaching assistants to create reminders to help them in keeping track of their ongoing or upcoming tasks.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-5"><a class="link" href="#implementation-5">3.4.1. Implementation</a></h4>
+<div class="paragraph">
+<p>A reminder is make up of a description, date and time which uniquely identify each reminder. Each reminder has a boolean attribute to indicate if the task is done.</p>
+</div>
+<div class="paragraph">
+<p>To find a reminder in the reminder list, user must key in at least one of the optional predicates, <code>DescriptionContainsKeywordsPredicate</code> or <code>DatePredicate</code>. <code>DescriptionContainsKeywordsPredicate</code> contains a list of strings entered by the user while <code>DatePredicate</code> contains the input <code>LocalDate</code>.</p>
+</div>
+<div class="paragraph">
+<p>The list of strings are matched against the description of the reminders in the reminder list while the <code>LocalDate</code> is matched against the date field. The reminder list is then updated with the list of matching reminders via <code>updatedFilteredReminderList</code> in <code>Model</code>. Below shows a sequence diagram of the execution.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindReminderSequenceDiagram.png" alt="FindReminderSequenceDiagram">
+</div>
+<div class="title">Figure 15. Sequence diagram for finding reminders</div>
+</div>
+<div class="paragraph">
+<p>A snooze reminder feature is also implemented for the users to easily postpone a reminder. It&#8217;s implementation is similar to the <code>editReminderCommand</code> where it creates a new reminder to replace the specified reminder instead of editing the current reminder directly. This is to ensure the reminders are immutable which improves the stability of the application.</p>
+</div>
+<div class="paragraph">
+<p>User can choose to snooze the reminder in any/all of the following time units: days, hours and/or minutes. Only positive integer are allowed as the user are not supposed to snooze the reminders backwards or snooze it by zero duration. Following is an activity digram for the command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SnoozeReminderActivityDiagram.png" alt="SnoozeReminderActivityDiagram">
+</div>
+<div class="title">Figure 16. Activity diagram for the command snoozeReminder in the reminder feature</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="sorting-the-reminders"><a class="link" href="#sorting-the-reminders">Sorting the reminders</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Automatically sorts the reminder list whenever a reminder is added</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Sorts the reminder list only when user enters a sort command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is intuitive for the reminder list to be sorted according to their done status and deadline.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User can decide how they want the list to be sorted (e.g. in alphabetical order).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User are not able to sort the list according to their preferences.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User have to type the sort command each time a new task is added.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1:  We believe that automatically sorting the list provide with a better user experience as they could immediately see the most urgent tasks in the reminder&#8217;s list upon startup without first typing a sort command.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="ways-to-inform-user-about-their-upcoming-tasks"><a class="link" href="#ways-to-inform-user-about-their-upcoming-tasks">Ways to inform user about their upcoming tasks</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1: (Current Choice)</strong> Each reminder displays the duration left before the task is due</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> A pop-up notification when a reminder is due or about to due</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User could see clearly the duration left for each task at a glance.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User are notified of upcoming tasks without having to look through the list of reminders.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reminders that are about to due could be missed out.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiple pop-up notifications from the reminders could cause annoyance for the user.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1: Pop-up notifications can be intrusive and potentially cause lag to the program which negatively impacts user&#8217;s experience.
+Furthermore, they are hard to test due to their volatile nature and including them might decrease the stability of the application.</p>
 </div>
 </div>
 </div>
@@ -1481,7 +1581,7 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 </div>
 </li>
 <li>
-<p>1b. The description, date and time of reminder is not included.</p>
+<p>1b. The description, date and time of reminder are not included.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -1542,7 +1642,7 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 <p>User requests to list all existing reminders</p>
 </li>
 <li>
-<p>System returns a list with all the existing reminders information from the database</p>
+<p>System returns a list with all the existing reminders from the database</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1554,6 +1654,49 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 </div>
 <div class="ulist none">
 <ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-reminders-uxx" class="discrete">Use case: Find reminders (UXX)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find all reminders matching with some particular keywords and/or date.</p>
+</li>
+<li>
+<p>System returns a list with all the matching reminders from the database</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The keyword and date are not included.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that at least a keyword or date must be included.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
 <li>
 <p>2a. The list is empty.</p>
 <div class="paragraph">
@@ -1873,6 +2016,11 @@ The Teaching Assistant will be required to attend these events, which can be in 
 <p>Course that Teaching Assistant teaches and Students register for.
 Due to naming restrictions, Module is shortened to Mod in file names.</p>
 </dd>
+<dt class="hdlist1"><a id="reminder"></a> Reminders</dt>
+<dd>
+<p>Additional notes or tasking the Teaching Assistant wants to keep track of.
+Each reminder has a deadline and status attached to them.</p>
+</dd>
 </dl>
 </div>
 </div>
@@ -1983,7 +2131,7 @@ Expected: No new <code>Calendar</code> window appears. Error details shown in th
 </li>
 <li>
 <p>Test case: Click on the left/right arrow in the <code>Calendar</code> window.<br>
-Exepected: The new month before/after the current displayed month is displayed in the new <code>Calendar</code> window.</p>
+Expected: The new month before/after the current displayed month is displayed in the new <code>Calendar</code> window.</p>
 </li>
 </ol>
 </div>
@@ -1992,4 +2140,4 @@ Exepected: The new month before/after the current displayed month is displayed i
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-30 18:17:09 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-31 03:27:34 UTC</div></div></div></body></html>
