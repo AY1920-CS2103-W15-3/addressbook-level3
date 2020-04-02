@@ -26,8 +26,9 @@
 <li><a href="#tutorial-feature">3.2. Tutorial feature</a></li>
 <li><a href="#module-feature">3.3. Module feature</a></li>
 <li><a href="#reminder-feature">3.4. Reminder feature</a></li>
-<li><a href="#logging">3.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
+<li><a href="#calendar-feature">3.5. Calendar feature</a></li>
+<li><a href="#logging">3.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -356,6 +357,24 @@ The <code>beginDateTime</code> and <code>endDateTime</code> attributes are repre
 <div class="paragraph">
 <p>A <code>ConsultTAble</code> that has a <code>UniqueConsultList</code> stores and manages all <code>ConsultS</code>. When a <code>consult</code> is added to the ConsultTAble, there will first be a check that the <code>consult</code> does not already exist in the <code>UniqueConsultList</code>.</p>
 </div>
+<div class="paragraph">
+<p>Given the class diagram and the understanding of how the <code>Consult</code> class interacts with other classes, let us examine how an <code>addConsult</code> command behaves, by using the following activity diagram of the system.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddConsultActivityDiagram.png" alt="AddConsultActivityDiagram">
+</div>
+<div class="title">Figure 10. Activity diagram for the command addConsult in the <code>Consult</code> feature</div>
+</div>
+<div class="paragraph">
+<p>The workflow above shows how a <code>Consult</code> is added and the various checks that occurs at the different points throughout the workflow.</p>
+</div>
+<div class="paragraph">
+<p>To summarize the above activity diagram, there are 5 key checks which TAble checks for when the user is adding a <code>consult</code>. Firstly, TAble checks if all 4 prefixes are present in the command.
+Then, TAble checks if all prefixes present are formatted correctly. Following which, TAble will check if each of the data passed for the prefixes are in the right format. Firstly, it checks if
+the <code>Student</code> index provided is within the range of the <code>Student</code> list. Then, it checks if the timing and <code>Location</code> provided are in the correct format. Lastly, and most importantly, it checks if the
+<code>Consult</code> timing provided clashes with other existing <code>Consult</code> timings.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
@@ -410,13 +429,43 @@ The <code>beginDateTime</code> and <code>endDateTime</code> attributes are repre
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">It is not as intuitive as currently, the <code>consult</code> class only stores certain attributes of the <code>Student</code> that is attending the <code>consult</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is not as intuitive as currently, the <code>Consult</code> class only stores certain attributes of the <code>Student</code> that is attending the <code>consult</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">It will be harder to test due to the high degree of coupling.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
 <p>Reason for choosing Alternative 1: Due to the time constraint of this project, our group has decided to choose alternative 1, as it not only reduces coupling, but is sufficient for us to uniquely identify the <code>Student</code> participating in the <code>consult</code> as the <code>MatricNumber</code> would be unique.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="sorting-the-consults"><a class="link" href="#sorting-the-consults">Sorting the consults</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Automatically sorts the consult list by the time of the consult, whenever a consult is added</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Sorts the consult list only when user enters a sort command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is intuitive for the consult list to be sorted according to their date and time.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User can decide how they want the list to be sorted (e.g. by alphabetical order for location).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User are not able to sort the list according to their preferences.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User have to type the sort command each time a new consult is added.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1:  We believe that automatically sorting the consult list provides  a better user experience as the user can immediately see the upcoming consults in the panel, without having to type a sort command.</p>
 </div>
 </div>
 </div>
@@ -437,7 +486,7 @@ The following illustrates the sequence diagram for AddTutorialCommand, in which 
 <div class="content">
 <img src="images/TutorialCommandSequenceDiagram.png" alt="TutorialCommandSequenceDiagram">
 </div>
-<div class="title">Figure 10. Sequence diagram for the command to add a tutorial</div>
+<div class="title">Figure 11. Sequence diagram for the command to add a tutorial</div>
 </div>
 <div class="paragraph">
 <p>As can be observed, each step of the process is clearly separated, with each component only responsible for single task (eg. parsing user input, executing the actual command etc.)
@@ -486,7 +535,7 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 <div class="content">
 <img src="images/TutorialMarkPresentActivityDiagram.png" alt="TutorialMarkPresentActivityDiagram">
 </div>
-<div class="title">Figure 11. Activity diagram for the command markPresent in the tutorial feature</div>
+<div class="title">Figure 12. Activity diagram for the command markPresent in the tutorial feature</div>
 </div>
 </div>
 </div>
@@ -504,7 +553,7 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 <div class="content">
 <img src="images/ModClassDiagram.png" alt="ModClassDiagram">
 </div>
-<div class="title">Figure 12. Class diagram of 'Mod' feature, displaying only directly related classes</div>
+<div class="title">Figure 13. Class diagram of 'Mod' feature, displaying only directly related classes</div>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram shows how notes of a module can be updated with the <code>noteMod</code> command.</p>
@@ -513,7 +562,7 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 <div class="content">
 <img src="images/NoteModSequenceDiagram.png" alt="NoteModSequenceDiagram">
 </div>
-<div class="title">Figure 13. Sequence diagram of updating Mod notes</div>
+<div class="title">Figure 14. Sequence diagram of updating Mod notes</div>
 </div>
 <div class="paragraph">
 <p>Module links are stored as ModLink objects in TAble. The collection of ModLinks are stored as <code>List&lt;Pair&lt;String, ModLink&gt;&gt;</code> since each module link can be described differently. This allows for more flexibility in naming the module links, rather than solely using an index based notation, and ensures that the order of addition into the collection is maintained. The activity diagram of adding module links is shown below.</p>
@@ -522,7 +571,7 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 <div class="content">
 <img src="images/AddModLinkActivityDiagram.png" alt="AddModLinkActivityDiagram">
 </div>
-<div class="title">Figure 14. Activity diagram of adding ModLinks to Mod</div>
+<div class="title">Figure 15. Activity diagram of adding ModLinks to Mod</div>
 </div>
 </div>
 <div class="sect3">
@@ -579,7 +628,7 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 <div class="content">
 <img src="images/FindReminderSequenceDiagram.png" alt="FindReminderSequenceDiagram">
 </div>
-<div class="title">Figure 15. Sequence diagram for finding reminders</div>
+<div class="title">Figure 16. Sequence diagram for finding reminders</div>
 </div>
 <div class="paragraph">
 <p>A snooze reminder feature is also implemented for the users to easily postpone a reminder. It&#8217;s implementation is similar to the <code>editReminderCommand</code> where it creates a new reminder to replace the specified reminder instead of editing the current reminder directly. This is to ensure the reminders are immutable which improves the stability of the application.</p>
@@ -591,7 +640,7 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 <div class="content">
 <img src="images/SnoozeReminderActivityDiagram.png" alt="SnoozeReminderActivityDiagram">
 </div>
-<div class="title">Figure 16. Activity diagram for the command snoozeReminder in the reminder feature</div>
+<div class="title">Figure 17. Activity diagram for the command snoozeReminder in the reminder feature</div>
 </div>
 </div>
 <div class="sect3">
@@ -660,14 +709,120 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
+<h3 id="calendar-feature"><a class="link" href="#calendar-feature">3.5. Calendar feature</a></h3>
+<div class="paragraph">
+<p><strong>TAble</strong> allows NUS SoC teaching assistants to bring up a calendar view of all their upcoming consults, tutorials and reminders.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-6"><a class="link" href="#implementation-6">3.5.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The key command which users can call is the <code>calendar</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram demonstrates how the <code>calendar</code> command works, as a <code>Calendar</code> window is displayed to the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ConsultsCommandClassDiagram.png" alt="ConsultsCommandClassDiagram">
+</div>
+<div class="title">Figure 18. Sequence diagram of 'viewCalendar' command</div>
+</div>
+<div class="paragraph">
+<p>A consultation slot is represented by the <code>Consult</code> class which contains 5 key attributes, the <code>beginDateTime</code>, <code>endDateTime</code>, <code>location</code>, <code>studentMatricNumber</code> and <code>studentName</code>.
+The <code>beginDateTime</code> and <code>endDateTime</code> attributes are represented using Java&#8217;s <code>LocalDateTime</code> class. The <code>studentMatricNumber</code> and <code>studentName</code> attributes are classes that belong to a certain <code>Student</code>. The <code>studentMatricNumber</code> is used to uniquely identify the <code>Student</code> involved in the consultation, while the studentName is used in the front end of the application, displayed to the TA.</p>
+</div>
+<div class="paragraph">
+<p>The <code>XYZConsultCommand</code> class represent classes that extend the abstract class <code>Command</code> and allows the TA to add, edit, delete, view and clear consultations added to TAble. These <code>XYZConsultCommandS</code> are created by the respective <code>XYZConsultCommandParserS</code>.</p>
+</div>
+<div class="paragraph">
+<p>A <code>ConsultTAble</code> that has a <code>UniqueConsultList</code> stores and manages all <code>ConsultS</code>. When a <code>consult</code> is added to the ConsultTAble, there will first be a check that the <code>consult</code> does not already exist in the <code>UniqueConsultList</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given the class diagram and the understanding of how the <code>Consult</code> class interacts with other classes, let us examine how an <code>addConsult</code> command behaves, by using the following activity diagram of the system.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TutorialMarkPresentActivityDiagram.png" alt="TutorialMarkPresentActivityDiagram">
+</div>
+<div class="title">Figure 19. Activity diagram for the command addConsult in the <code>Consult</code> feature</div>
+</div>
+<div class="paragraph">
+<p>The workflow above shows how a <code>Consult</code> is added and the various checks that occurs at the different points throughout the workflow.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="length-of-command-prefixes-for-all-features-2"><a class="link" href="#length-of-command-prefixes-for-all-features-2">Length of command prefixes (For all features)</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Make the prefixes of the command descriptive, such as <code>student/</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Make the prefixes of the commands short, by using the first few letters of the command word, such as <code>s/</code> for students.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is more clear and intuitive for the user to type in the full prefix.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is easier for the user to type in shorter command prefixes, so that it is less tedious to input the commands.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lower user experience as the user has to type in longer commands to use the TAble application.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It may be confusing for the user, as certain command prefixes may share similar initials, such as <code>tags</code> and <code>time</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1:  We believe that the user experience will be better when using more descriptive command prefixes, as the user will not be required to constantly check on the user guide since the command prefixes are intuitive.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="consult-storing-matric-number-and-name-2"><a class="link" href="#consult-storing-matric-number-and-name-2">Consult storing Matric Number and Name</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Make the consult store the matric number and name of the student that is attending the consult.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Make the consult store the entire Student class that is attending the consult.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is easier to implement and coupling will be reduced as <code>Student</code> will not be directly related to the <code>consult</code> class.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is easier to visualise as the entire <code>Student</code> related to the <code>consult</code> will be stored.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is not as intuitive as currently, the <code>Consult</code> class only stores certain attributes of the <code>Student</code> that is attending the <code>consult</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It will be harder to test due to the high degree of coupling.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1: Due to the time constraint of this project, our group has decided to choose alternative 1, as it not only reduces coupling, but is sufficient for us to uniquely identify the <code>Student</code> participating in the <code>consult</code> as the <code>MatricNumber</code> would be unique.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -698,7 +853,7 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2193,4 +2348,4 @@ Expected: The <code>Calendar</code> window will be closed. Alternatively, the us
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-01 11:59:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-02 03:19:46 UTC</div></div></div></body></html>
