@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>TAble - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>TAble - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>TAble - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>AY1920-CS2103-W15-3</code>      Since: <code>Apr 2020</code>      Licence: <code>MIT</code></p>
@@ -536,6 +536,11 @@ Returns any consults that are held at SR3</p>
 <p>Focuses the display in the GUI to the Tutorials list view, without requiring the user to click on the tab.
 Format: <code>listTutorial</code></p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/listTutorial.png" alt="listTutorial">
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="add-a-tutorial-slot-code-addtutorial-code"><a class="link" href="#add-a-tutorial-slot-code-addtutorial-code">3.4.2. Add a tutorial slot: <code>addTutorial</code></a></h4>
@@ -582,6 +587,11 @@ Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEE
 </li>
 </ul>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/addTutorial.png" alt="addTutorial">
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="delete-a-tutorial-slot-code-deletetutorial-code"><a class="link" href="#delete-a-tutorial-slot-code-deletetutorial-code">3.4.3. Delete a tutorial slot: <code>deleteTutorial</code></a></h4>
@@ -617,6 +627,11 @@ Format: <code>deleteTutorial INDEX</code></p>
 </li>
 </ul>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/deleteTutorial.png" alt="deleteTutorial">
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="add-student-to-tutorial-code-addtutorialstudent-code"><a class="link" href="#add-student-to-tutorial-code-addtutorialstudent-code">3.4.4. Add student to tutorial: <code>addTutorialStudent</code></a></h4>
@@ -643,6 +658,9 @@ Format: <code>addTutorialStudent tutorialIndex/INDEX student/STUDENT_INDEX</code
 <li>
 <p>The tutorial should already exist in TAble.</p>
 </li>
+<li>
+<p>Note that <code>listAttendance</code> (see Section 3.4.9) has to be called after adding a student to view the updated list</p>
+</li>
 </ul>
 </div>
 </div>
@@ -656,6 +674,12 @@ Format: <code>addTutorialStudent tutorialIndex/INDEX student/STUDENT_INDEX</code
 <p><code>addTutorialStudent tutorialIndex/3 student/12</code></p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/addTutorialStudent.png" alt="addTutorialStudent">
+</div>
+<div class="title">Figure 1. After adding student Roy and calling <code>listAttendance</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -705,6 +729,18 @@ Marks all students as present in week 7 in tutorial at index 2</p>
 </li>
 </ul>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/markPresent_indiv.png" alt="markPresent indiv">
+</div>
+<div class="title">Figure 2. Only mark the student at index 2 of the tutorial as present</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/markPresent_all.png" alt="markPresent all">
+</div>
+<div class="title">Figure 3. Mark all students present</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="marks-students-as-absent-code-markabsent-code"><a class="link" href="#marks-students-as-absent-code-markabsent-code">3.4.6. Marks students as absent: <code>markAbsent</code></a></h4>
@@ -753,6 +789,18 @@ Marks all students in week 7 as absent in tutorial at index 3 (oh no!)</p>
 </li>
 </ul>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/markAbsent_indiv.png" alt="markAbsent indiv">
+</div>
+<div class="title">Figure 4. Only mark the student at index 3 of the tutorial as absent</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/markPresent_all.png" alt="markPresent all">
+</div>
+<div class="title">Figure 5. Mark all students absent</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="remove-student-from-tutorial-code-deletetutorialstudent-code"><a class="link" href="#remove-student-from-tutorial-code-deletetutorialstudent-code">3.4.7. Remove student from tutorial: <code>deleteTutorialStudent</code></a></h4>
@@ -782,6 +830,9 @@ Format: <code>deleteTutorialStudent tutorialIndex/INDEX student/STUDENT_INDEX</c
 <li>
 <p>Note that deleting the student from the tutorial does <em>not</em> delete the student from the TAble database.</p>
 </li>
+<li>
+<p>Note that <code>listAttendance</code> (see Section 3.4.9) has to be called after deleting a student to view the updated list</p>
+</li>
 </ul>
 </div>
 </div>
@@ -795,6 +846,12 @@ Format: <code>deleteTutorialStudent tutorialIndex/INDEX student/STUDENT_INDEX</c
 <p><code>deleteTutorialStudent tutorialIndex/3 student/12</code></p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/deleteTutorialStudent.png" alt="deleteTutorialStudent">
+</div>
+<div class="title">Figure 6. After deleting student Alex from a tutorial and calling <code>listAttendance</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -835,7 +892,52 @@ Format: <code>copyTutorialEmails tutorialIndex/INDEX</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="export-tutorial-attendance-to-csv-file-code-exportattendance-code"><a class="link" href="#export-tutorial-attendance-to-csv-file-code-exportattendance-code">3.4.9. Export tutorial attendance to csv file: <code>exportAttendance</code></a></h4>
+<h4 id="display-students-and-attendance-of-a-tutorial-code-listattendance-code"><a class="link" href="#display-students-and-attendance-of-a-tutorial-code-listattendance-code">3.4.9. Display students and attendance of a tutorial: <code>listAttendance</code></a></h4>
+<div class="paragraph">
+<p>Displays the list of students in a tutorial and their corresponding attendance for a particular week in the GUI.
+Format: <code>listAttendance tutorialIndex/INDEX week/INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Shows the attendance for tutorial at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed tutorial list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The tutorial should already exist in TAble.</p>
+</li>
+<li>
+<p>The week should be in numerical format, and accepts only numbers in the range 1 to 13 (inclusive)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listAttendance tutorialIndex/2 week/10</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/listAttendance.png" alt="listAttendance">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="export-tutorial-attendance-to-csv-file-code-exportattendance-code"><a class="link" href="#export-tutorial-attendance-to-csv-file-code-exportattendance-code">3.4.10. Export tutorial attendance to csv file: <code>exportAttendance</code></a></h4>
 <div class="paragraph">
 <p>Exports the attendance data of all enrolled students in a tutorial group to a csv file, where the filepath is specified by the user.
 Format: <code>exportAttendance tutorialIndex/INDEX csvFilePath/FILEPATH</code></p>
@@ -873,46 +975,6 @@ Format: <code>exportAttendance tutorialIndex/INDEX csvFilePath/FILEPATH</code></
 <ul>
 <li>
 <p><code>exportAttendance tutorialIndex/1 csvFilePath/./data/attendance.csv</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="display-students-and-attendance-of-a-tutorial-code-listattendance-code"><a class="link" href="#display-students-and-attendance-of-a-tutorial-code-listattendance-code">3.4.10. Display students and attendance of a tutorial: <code>listAttendance</code></a></h4>
-<div class="paragraph">
-<p>Displays the list of students in a tutorial and their corresponding attendance for a particular week in the GUI.
-Format: <code>listAttendance tutorialIndex/INDEX week/INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Shows the attendance for tutorial at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed tutorial list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>The tutorial should already exist in TAble.</p>
-</li>
-<li>
-<p>The week should be in numerical format, and accepts only numbers in the range 1 to 13 (inclusive)</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>listAttendance tutorialIndex/2 week/10</code></p>
 </li>
 </ul>
 </div>
@@ -1612,7 +1674,7 @@ e.g. <code>deleteTutorialStudent tutorialIndex/3 student/12</code></p>
 e.g. <code>listAttendance tutorialIndex/2 week/10</code></p>
 </li>
 <li>
-<p><strong>Export attendance to CSV file</strong> : <code>exportAttendance tutorialIndex/INDEX csvFilePath/CSV_FILEPATH</code>
+<p><strong>Export attendance to CSV file</strong> : <code>exportAttendance tutorialIndex/INDEX csvFilePath/CSV_FILEPATH</code><br>
 e.g. <code>exportAttendance tutorialIndex/1 csvFilePath/./data/attendance.csv</code></p>
 </li>
 </ul>
@@ -1705,4 +1767,4 @@ e.g <code>findReminder desc/midterms date/2020-03-15</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-02 13:55:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-02 14:37:21 UTC</div></div></div></body></html>
