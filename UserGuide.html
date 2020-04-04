@@ -15,9 +15,9 @@
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
 <li><a href="#students-feature">3.2. Students Feature</a></li>
-<li><a href="#consults-feature">3.3. Consults Feature</a></li>
+<li><a href="#module-feature">3.3. Module Feature</a></li>
 <li><a href="#tutorials-feature">3.4. Tutorials Feature</a></li>
-<li><a href="#module-feature">3.5. Module Feature</a></li>
+<li><a href="#consults-feature">3.5. Consults Feature</a></li>
 <li><a href="#reminder-feature">3.6. Reminder Feature</a></li>
 <li><a href="#calendar-feature">3.7. Calendar Feature</a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></li>
@@ -28,9 +28,9 @@
 <li><a href="#command-summary">5. Command Summary</a>
 <ul class="sectlevel2">
 <li><a href="#student">5.1. Student</a></li>
-<li><a href="#consult">5.2. Consult</a></li>
+<li><a href="#module">5.2. Module</a></li>
 <li><a href="#tutorial">5.3. Tutorial</a></li>
-<li><a href="#module">5.4. Module</a></li>
+<li><a href="#consult">5.4. Consult</a></li>
 <li><a href="#reminder">5.5. Reminder</a></li>
 <li><a href="#calendar">5.6. Calendar</a></li>
 </ul>
@@ -93,6 +93,18 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 <li>
 <p>Example of the Tutorial and Consult panels.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The consults that are overdue will appear in red to highlight that these consults are ready to be deleted!
+</td>
+</tr>
+</table>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/TutConsult.png" alt="TutConsult" width="750">
@@ -133,7 +145,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>addStudent name/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>addStudent name/John Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>name/NAME [t/TAG]</code> can be used as <code>name/John Doe tag/friend</code> or as <code>name/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>name/NAME [tag/TAG]</code> can be used as <code>name/John Doe tag/friend</code> or as <code>name/John Doe</code>.</p>
 </li>
 <li>
 <p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[tag/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>tag/friend</code>, <code>tag/friend tag/family</code> etc.</p>
@@ -386,7 +398,12 @@ Deletes the 1st student in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="consults-feature"><a class="link" href="#consults-feature">3.3. Consults Feature</a></h3>
+<h3 id="module-feature"><a class="link" href="#module-feature">3.3. Module Feature</a></h3>
+<div class="sect3">
+<h4 id="add-module-into-database-code-addmod-code"><a class="link" href="#add-module-into-database-code-addmod-code">3.3.1. Add Module into database: <code>addMod</code></a></h4>
+<div class="paragraph">
+<p>Adds a module into TAble.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -394,32 +411,23 @@ Deletes the 1st student in the results of the <code>find</code> command.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The consults that are overdue will appear in red to highlight that these consults are ready to be deleted!
+Due to naming restrictions in java, all code references to modules are named Mod instead of Module.
 </td>
 </tr>
 </table>
 </div>
-<div class="sect3">
-<h4 id="adding-a-consult-code-addconsult-code"><a class="link" href="#adding-a-consult-code-addconsult-code">3.3.1. Adding a consult: <code>addConsult</code></a></h4>
 <div class="paragraph">
-<p>Add a consultation slot at the given time, date and place.<br>
-Format: <code>addConsult student/STUDENT_INDEX beginDateTime/BEGIN_DATE_TIME endDateTime/END_DATE_TIME place/PLACE</code></p>
+<p>Format: <code>addMod modCode/MODULE_CODE modName/MODULE_NAME</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The 'STUDENT_INDEX' should be referred to by the index as referred to in the student list</p>
+<p>The module code provided is case insensitive, e.g. <code>Cs2103</code> is equivalent to <code>CS2103</code>. It should be prefixed by at most three characters, then four numbers, and finally no more than two characters as suffix.</p>
 </li>
 <li>
-<p>The begin and end date time provided must be in the yyyy-MM-dd HH:mm format</p>
-</li>
-<li>
-<p>The location provided should be any valid string i.e, must be alphanumeric</p>
-</li>
-<li>
-<p>The consult must be held within the same day, thus the begin and end DateTime objects should have the same date.</p>
+<p>The module name provided should be any valid string.</p>
 </li>
 </ul>
 </div>
@@ -431,32 +439,26 @@ Format: <code>addConsult student/STUDENT_INDEX beginDateTime/BEGIN_DATE_TIME end
 <div class="ulist">
 <ul>
 <li>
-<p><code>addConsult student/1 beginDateTime/2020-03-03 10:00 endDateTime/2020-03-03 12:00 place/Deck</code></p>
+<p><code>addMod modCode/CS1010S modName/Programming Methodology</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-consult-code-editconsult-code"><a class="link" href="#editing-a-consult-code-editconsult-code">3.3.2. Editing a consult: <code>editConsult</code></a></h4>
+<h4 id="delete-module-from-database-code-deletemod-code"><a class="link" href="#delete-module-from-database-code-deletemod-code">3.3.2. Delete Module from database: <code>deleteMod</code></a></h4>
 <div class="paragraph">
-<p>Edit the time, date or place of an existing consultation slot.<br>
-Format: <code>editConsult INDEX [beginDateTime/BEGINDATETIME] [endDateTime/ENDDATETIME] [place/PLACE]</code></p>
+<p>Deletes a module from TAble.<br>
+Format: <code>deleteMod modCode/MODULE_CODE</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the consult at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed consultation list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The module code provided is case insensitive, e.g. <code>Cs2103</code> is equivalent to <code>CS2103</code>. It should be prefixed by at most three characters, then four numbers, and finally no more than two characters as suffix.</p>
 </li>
 <li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>Note that one cannot edit the student involved in the consult, as it is unlikely that the TA will need to change the student at that consult timing.</p>
+<p>The module code should correspond to an existing module in the database.</p>
 </li>
 </ul>
 </div>
@@ -468,41 +470,26 @@ Format: <code>editConsult INDEX [beginDateTime/BEGINDATETIME] [endDateTime/ENDDA
 <div class="ulist">
 <ul>
 <li>
-<p><code>editConsult 1 beginDateTime/2020-03-03 15:00</code><br>
-Edits the beginning time of the 1st consult to be at 2020-03-03, 15:00 hours i.e 3.00 p.m.</p>
-</li>
-<li>
-<p><code>editConsult 2 place/SR3</code><br>
-Edits the place of the 2nd consult to be at SR3.</p>
+<p><code>addModule modCode/CS1010S modName/Programming Methodology</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-all-consults-code-listconsult-code"><a class="link" href="#listing-all-consults-code-listconsult-code">3.3.3. Listing all consults : <code>listConsult</code></a></h4>
+<h4 id="edit-module-note-code-notemod-code"><a class="link" href="#edit-module-note-code-notemod-code">3.3.3. Edit Module note: <code>noteMod</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all consultations in TAble.<br>
-Format: <code>listConsult</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deleting-a-consult-code-deleteconsult-code"><a class="link" href="#deleting-a-consult-code-deleteconsult-code">3.3.4. Deleting a consult: <code>deleteConsult</code></a></h4>
-<div class="paragraph">
-<p>Removes an existing consultation slot.<br>
-Format: <code>deleteConsult INDEX</code></p>
+<p>Edits corresponding note of module.<br>
+Format: <code>noteMod modCode/MODULE_CODE modNote/NOTE</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the consultation at the specified <code>INDEX</code>.</p>
+<p>The module code should correspond to an existing module in the database.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed consultation list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The note provided should be any valid string, and replaces the current note of the module.</p>
 </li>
 </ul>
 </div>
@@ -514,58 +501,160 @@ Format: <code>deleteConsult INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>listConsult</code><br>
-<code>deleteConsult 2</code><br>
-Deletes the 2nd consultation in TAble.</p>
+<p><code>noteModule modCode/CS1010S modNote/How cool is that?</code><br>
+When viewing the module info for CS1010S, the note will be updated to show "How cool is that?"</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-consults-code-clearconsults-code"><a class="link" href="#clearing-all-consults-code-clearconsults-code">3.3.5. Clearing all consults : <code>clearConsults</code></a></h4>
+<h4 id="add-link-to-module-with-appropriate-name-code-addmodlink-code"><a class="link" href="#add-link-to-module-with-appropriate-name-code-addmodlink-code">3.3.4. Add link to module with appropriate name: <code>addModLink</code></a></h4>
 <div class="paragraph">
-<p>Clears all consultations slots in TAble.<br>
-Format: <code>clearConsults</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="locating-consultations-by-date-or-place-code-findconsult-code-coming-in-v2-0"><a class="link" href="#locating-consultations-by-date-or-place-code-findconsult-code-coming-in-v2-0">3.3.6. Locating consultations by date or place: <code>findConsult</code> [coming in v2.0]</a></h4>
-<div class="paragraph">
-<p>Finds consultations whose date or place match any of the given keywords.<br>
-Format: <code>findConsult [DATE] [PLACE]</code></p>
+<p>Edit module to include links to appropriate websites (e.g. Google Drive Folder, Module Website etc.)<br>
+Format: <code>addModLink modCode/MODULE_CODE modLink/LINK modLinkName/NAME</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>At least one of the optional fields must be provided</p>
+<p>The module code should correspond to an existing module in the database.</p>
 </li>
 <li>
-<p>If both optional fields are provided, only consults that meet both criterion will be returned</p>
+<p>The module link should correspond to a valid URL format (protocol optional). Hence the first character should be alphanumeric, followed by any character in the set [-a-zA-Z0-9+&amp;@#/%?=~_|!:,.;], and end with [-a-zA-Z0-9+&amp;@#/%=~_|].</p>
 </li>
 <li>
-<p>The search is case insensitive. e.g <code>SR1</code> will match <code>sr1</code></p>
-</li>
-<li>
-<p>The order of the keywords matters. e.g. <code>find SR1 03-03-2020</code> will throw an error</p>
+<p>The tag provided should be any valid string.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>findConsult 03-03-2020</code><br>
-Returns all consults on 03-03-2020</p>
+<p><code>addModLink modCode/CS1231</code><br>
+When viewing the module page for CS1231, there will be an additional label with "Module Website" and points to <a href="https://comp.nus.edu.sg/~cs1231" class="bare">https://comp.nus.edu.sg/~cs1231</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clear-all-module-links-from-module-in-database-code-clearmodlink-code"><a class="link" href="#clear-all-module-links-from-module-in-database-code-clearmodlink-code">3.3.5. Clear all module links from module in database: <code>clearModLink</code></a></h4>
+<div class="paragraph">
+<p>Removes all module links from a module in TAble.<br>
+Format: <code>clearModLink modCode/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The module code should correspond to an existing module in the database.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clearModLink modCode/CS1231</code><br>
+When viewing the module page for CS1231, there will not be any module links shown.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="copy-module-link-into-clipboard-code-copymodlink-code"><a class="link" href="#copy-module-link-into-clipboard-code-copymodlink-code">3.3.6. Copy Module Link into Clipboard: <code>copyModLink</code></a></h4>
+<div class="paragraph">
+<p>Copies a module link from the links currently associated with a module. Index corresponding to module link can be seen when viewing the module info using <code>viewModInfo</code>.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>copyModLink INDEX modCode/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The module code should correspond to an existing module in the database.</p>
 </li>
 <li>
-<p><code>findConsult SR3</code><br>
-Returns any consults that are held at SR3</p>
+<p>The index should correspond to a valid index in the module links.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>copyModLink 1 modCode/CS1231</code><br>
+The module website for CS1231 is copied into the user&#8217;s clipboard.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-module-code-viewmodinfo-code"><a class="link" href="#view-module-code-viewmodinfo-code">3.3.7. View Module: <code>viewModInfo</code></a></h4>
+<div class="paragraph">
+<p>Opens the view for the selected module to view module description, links and (coming in v2.0) lecture timeslots.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>viewModInfo modCode/MODULE_CODE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The module code should correspond to an existing module in the database.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-lecture-timeslot-code-addmodlecture-code-coming-in-v2-0"><a class="link" href="#add-lecture-timeslot-code-addmodlecture-code-coming-in-v2-0">3.3.8. Add lecture timeslot: <code>addModLecture</code> [coming in v2.0]</a></h4>
+<div class="paragraph">
+<p>Adds lecture timeslot to module. This is to be included to integrate with the consultation finding feature.<br>
+Format: <code>addModLecture modCode/MODULE_CODE d/DAY from/TIME to/TIME p/LOCATION</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addModLecture modCode/CS1010S d/WED from/1400 to/1600 p/LT27</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clear-all-lecture-timeslots-code-clearmodlecture-code-coming-in-v2-0"><a class="link" href="#clear-all-lecture-timeslots-code-clearmodlecture-code-coming-in-v2-0">3.3.9. Clear all lecture timeslots: <code>clearModLecture</code> [coming in v2.0]</a></h4>
+<div class="paragraph">
+<p>Clears all lectures associated with a certain module.<br>
+Format: <code>clearModLecture modCode/MODULE_CODE</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clearModLecture modCode/CS1010S</code></p>
 </li>
 </ul>
 </div>
@@ -584,7 +673,7 @@ Format: <code>listTutorial</code></p>
 <h4 id="add-a-tutorial-slot-code-addtutorial-code"><a class="link" href="#add-a-tutorial-slot-code-addtutorial-code">3.4.2. Add a tutorial slot: <code>addTutorial</code></a></h4>
 <div class="paragraph">
 <p>Add a tutorial slot for a particular module at the given time, day and place.<br>
-Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEEKDAY_VALUE beginTime/START_TIME endTIme/END_TIME place/PLACE</code></p>
+Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEEKDAY_VALUE beginTime/START_TIME endTime/END_TIME place/PLACE</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -595,6 +684,18 @@ Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEE
 <td class="content">
 A tutorial is distinguished by its module and name. Only one session is allowed per tutorial.
 If you wish to have a tutorial with multiple slots per week, you may use unique tutorial names (eg. T02A and T02B).
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The module for <code>addTutorial</code> MODULE_CODE should already exist in TAble before adding the desired <code>Tutorial</code>
 </td>
 </tr>
 </table>
@@ -619,7 +720,7 @@ If you wish to have a tutorial with multiple slots per week, you may use unique 
 <p>The module with the referenced module code should already be present in TAble</p>
 </li>
 <li>
-<p>The place provided should be any valid string</p>
+<p>The place provided can be any valid string</p>
 </li>
 <li>
 <p>Note that you are not allowed to add tutorials with clashing times (ie. periods overlap)</p>
@@ -1018,12 +1119,7 @@ Format: <code>exportAttendance tutorialIndex/INDEX csvFilePath/FILEPATH</code></
 </div>
 </div>
 <div class="sect2">
-<h3 id="module-feature"><a class="link" href="#module-feature">3.5. Module Feature</a></h3>
-<div class="sect3">
-<h4 id="add-module-into-database-code-addmod-code"><a class="link" href="#add-module-into-database-code-addmod-code">3.5.1. Add Module into database: <code>addMod</code></a></h4>
-<div class="paragraph">
-<p>Adds a module into TAble.</p>
-</div>
+<h3 id="consults-feature"><a class="link" href="#consults-feature">3.5. Consults Feature</a></h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1031,23 +1127,32 @@ Format: <code>exportAttendance tutorialIndex/INDEX csvFilePath/FILEPATH</code></
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Due to naming restrictions in java, all code references to modules are named Mod instead of Module.
+The consults that are overdue will appear in red to highlight that these consults are ready to be deleted!
 </td>
 </tr>
 </table>
 </div>
+<div class="sect3">
+<h4 id="adding-a-consult-code-addconsult-code"><a class="link" href="#adding-a-consult-code-addconsult-code">3.5.1. Adding a consult: <code>addConsult</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>addMod modCode/MODULE_CODE modName/MODULE_NAME</code></p>
+<p>Add a consultation slot at the given time, date and place.<br>
+Format: <code>addConsult student/STUDENT_INDEX beginDateTime/BEGIN_DATE_TIME endDateTime/END_DATE_TIME place/PLACE</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The module code provided is case insensitive, e.g. <code>Cs2103</code> is equivalent to <code>CS2103</code>. It should be prefixed by at most three characters, then four numbers, and finally no more than two characters as suffix.</p>
+<p>The 'STUDENT_INDEX' should be referred to by the index as referred to in the student list</p>
 </li>
 <li>
-<p>The module name provided should be any valid string.</p>
+<p>The begin and end date time provided must be in the yyyy-MM-dd HH:mm format</p>
+</li>
+<li>
+<p>The location provided should be any valid string i.e, must be alphanumeric</p>
+</li>
+<li>
+<p>The consult must be held within the same day, thus the begin and end DateTime objects should have the same date.</p>
 </li>
 </ul>
 </div>
@@ -1059,26 +1164,32 @@ Due to naming restrictions in java, all code references to modules are named Mod
 <div class="ulist">
 <ul>
 <li>
-<p><code>addModule modCode/CS1010S modName/Programming Methodology</code></p>
+<p><code>addConsult student/1 beginDateTime/2020-03-03 10:00 endDateTime/2020-03-03 12:00 place/Deck</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-module-from-database-code-deletemod-code"><a class="link" href="#delete-module-from-database-code-deletemod-code">3.5.2. Delete Module from database: <code>deleteMod</code></a></h4>
+<h4 id="editing-a-consult-code-editconsult-code"><a class="link" href="#editing-a-consult-code-editconsult-code">3.5.2. Editing a consult: <code>editConsult</code></a></h4>
 <div class="paragraph">
-<p>Deletes a module from TAble.<br>
-Format: <code>deleteMod modCode/MODULE_CODE</code></p>
+<p>Edit the time, date or place of an existing consultation slot.<br>
+Format: <code>editConsult INDEX [beginDateTime/BEGINDATETIME] [endDateTime/ENDDATETIME] [place/PLACE]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The module code provided is case insensitive, e.g. <code>Cs2103</code> is equivalent to <code>CS2103</code>. It should be prefixed by at most three characters, then four numbers, and finally no more than two characters as suffix.</p>
+<p>Edits the consult at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed consultation list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>The module code should correspond to an existing module in the database.</p>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>Note that one cannot edit the student involved in the consult, as it is unlikely that the TA will need to change the student at that consult timing.</p>
 </li>
 </ul>
 </div>
@@ -1090,26 +1201,41 @@ Format: <code>deleteMod modCode/MODULE_CODE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addModule modCode/CS1010S modName/Programming Methodology</code></p>
+<p><code>editConsult 1 beginDateTime/2020-03-03 15:00</code><br>
+Edits the beginning time of the 1st consult to be at 2020-03-03, 15:00 hours i.e 3.00 p.m.</p>
+</li>
+<li>
+<p><code>editConsult 2 place/SR3</code><br>
+Edits the place of the 2nd consult to be at SR3.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-module-note-code-notemod-code"><a class="link" href="#edit-module-note-code-notemod-code">3.5.3. Edit Module note: <code>noteMod</code></a></h4>
+<h4 id="listing-all-consults-code-listconsult-code"><a class="link" href="#listing-all-consults-code-listconsult-code">3.5.3. Listing all consults : <code>listConsult</code></a></h4>
 <div class="paragraph">
-<p>Edits corresponding note of module.<br>
-Format: <code>noteMod modCode/MODULE_CODE modNote/NOTE</code></p>
+<p>Shows a list of all consultations in TAble.<br>
+Format: <code>listConsult</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-consult-code-deleteconsult-code"><a class="link" href="#deleting-a-consult-code-deleteconsult-code">3.5.4. Deleting a consult: <code>deleteConsult</code></a></h4>
+<div class="paragraph">
+<p>Removes an existing consultation slot.<br>
+Format: <code>deleteConsult INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The module code should correspond to an existing module in the database.</p>
+<p>Deletes the consultation at the specified <code>INDEX</code>.</p>
 </li>
 <li>
-<p>The note provided should be any valid string, and replaces the current note of the module.</p>
+<p>The index refers to the index number shown in the displayed consultation list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 </ul>
 </div>
@@ -1121,160 +1247,58 @@ Format: <code>noteMod modCode/MODULE_CODE modNote/NOTE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>noteModule modCode/CS1010S modNote/How cool is that?</code><br>
-When viewing the module info for CS1010S, the note will be updated to show "How cool is that?"</p>
+<p><code>listConsult</code><br>
+<code>deleteConsult 2</code><br>
+Deletes the 2nd consultation in TAble.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-link-to-module-with-appropriate-name-code-addmodlink-code"><a class="link" href="#add-link-to-module-with-appropriate-name-code-addmodlink-code">3.5.4. Add link to module with appropriate name: <code>addModLink</code></a></h4>
+<h4 id="clearing-all-consults-code-clearconsults-code"><a class="link" href="#clearing-all-consults-code-clearconsults-code">3.5.5. Clearing all consults : <code>clearConsults</code></a></h4>
 <div class="paragraph">
-<p>Edit module to include links to appropriate websites (e.g. Google Drive Folder, Module Website etc.)<br>
-Format: <code>addModLink modCode/MODULE_CODE modLink/LINK modLinkName/NAME</code></p>
+<p>Clears all consultations slots in TAble.<br>
+Format: <code>clearConsults</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="locating-consultations-by-date-or-place-code-findconsult-code-coming-in-v2-0"><a class="link" href="#locating-consultations-by-date-or-place-code-findconsult-code-coming-in-v2-0">3.5.6. Locating consultations by date or place: <code>findConsult</code> [coming in v2.0]</a></h4>
+<div class="paragraph">
+<p>Finds consultations whose date or place match any of the given keywords.<br>
+Format: <code>findConsult [DATE] [PLACE]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The module code should correspond to an existing module in the database.</p>
+<p>At least one of the optional fields must be provided</p>
 </li>
 <li>
-<p>The module link should correspond to a valid URL format (protocol optional). Hence the first character should be alphanumeric, followed by any character in the set [-a-zA-Z0-9+&amp;@#/%?=~_|!:,.;], and end with [-a-zA-Z0-9+&amp;@#/%=~_|].</p>
+<p>If both optional fields are provided, only consults that meet both criterion will be returned</p>
 </li>
 <li>
-<p>The tag provided should be any valid string.</p>
+<p>The search is case insensitive. e.g <code>SR1</code> will match <code>sr1</code></p>
 </li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
 <li>
-<p><code>addModLink modCode/CS1231</code><br>
-When viewing the module page for CS1231, there will be an additional label with "Module Website" and points to <a href="https://comp.nus.edu.sg/~cs1231" class="bare">https://comp.nus.edu.sg/~cs1231</a>.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="clear-all-module-links-from-module-in-database-code-clearmodlink-code"><a class="link" href="#clear-all-module-links-from-module-in-database-code-clearmodlink-code">3.5.5. Clear all module links from module in database: <code>clearModLink</code></a></h4>
-<div class="paragraph">
-<p>Removes all module links from a module in TAble.<br>
-Format: <code>deleteMod modCode/MODULE_CODE</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The module code should correspond to an existing module in the database.</p>
+<p>The order of the keywords matters. e.g. <code>find SR1 03-03-2020</code> will throw an error</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>clearModLink modCode/CS1231</code><br>
-When viewing the module page for CS1231, there will not be any module links shown.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="copy-module-link-into-clipboard-code-copymodlink-code"><a class="link" href="#copy-module-link-into-clipboard-code-copymodlink-code">3.5.6. Copy Module Link into Clipboard: <code>copyModLink</code></a></h4>
-<div class="paragraph">
-<p>Copies a module link from the links currently associated with a module. Index corresponding to module link can be seen when viewing the module info using <code>viewModInfo</code>.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>copyModLink INDEX modCode/MODULE_CODE</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The module code should correspond to an existing module in the database.</p>
+<p><code>findConsult 03-03-2020</code><br>
+Returns all consults on 03-03-2020</p>
 </li>
 <li>
-<p>The index should correspond to a valid index in the module links.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>copyModLink 1 modCode/CS1231</code><br>
-The module website for CS1231 is copied into the user&#8217;s clipboard.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="view-module-code-viewmodinfo-code"><a class="link" href="#view-module-code-viewmodinfo-code">3.5.7. View Module: <code>viewModInfo</code></a></h4>
-<div class="paragraph">
-<p>Opens the view for the selected module to view module description, links and (coming in v2.0) lecture timeslots.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>viewModInfo modCode/MODULE_CODE</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The module code should correspond to an existing module in the database.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="add-lecture-timeslot-code-addmodlecture-code-coming-in-v2-0"><a class="link" href="#add-lecture-timeslot-code-addmodlecture-code-coming-in-v2-0">3.5.8. Add lecture timeslot: <code>addModLecture</code> [coming in v2.0]</a></h4>
-<div class="paragraph">
-<p>Adds lecture timeslot to module. This is to be included to integrate with the consultation finding feature.<br>
-Format: <code>addModLecture modCode/MODULE_CODE d/DAY from/TIME to/TIME p/LOCATION</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>addModLecture modCode/CS1010S d/WED from/1400 to/1600 p/LT27</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="clear-all-lecture-timeslots-code-clearmodlecture-code-coming-in-v2-0"><a class="link" href="#clear-all-lecture-timeslots-code-clearmodlecture-code-coming-in-v2-0">3.5.9. Clear all lecture timeslots: <code>clearModLecture</code> [coming in v2.0]</a></h4>
-<div class="paragraph">
-<p>Clears all lectures associated with a certain module.<br>
-Format: <code>clearModLecture modCode/MODULE_CODE</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>clearModLecture modCode/CS1010S</code></p>
+<p><code>findConsult SR3</code><br>
+Returns any consults that are held at SR3</p>
 </li>
 </ul>
 </div>
@@ -1626,8 +1650,8 @@ There is no need to save manually.</p>
 e.g. <code>addStudent name/James Tan matric/A0123456X email/jamesho@example.com tag/friend tag/colleague</code></p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code>
-e.g. <code>clear</code></p>
+<p><strong>Clear</strong> : <code>clearStudent</code>
+e.g. <code>clearStudent</code></p>
 </li>
 <li>
 <p><strong>Delete</strong> : <code>deleteStudent INDEX</code><br>
@@ -1652,26 +1676,37 @@ e.g. <code>findStudentMatricNumber matric/A0123456A</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="consult"><a class="link" href="#consult">5.2. Consult</a></h3>
+<h3 id="module"><a class="link" href="#module">5.2. Module</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> : <code>addConsult student/STUDENT_INDEX beginDateTime/BEGIN_DATE_TIME endDateTime/END_DATE_TIME place/PLACE</code><br>
-e.g. <code>addConsult student/1 beginDateTime/2020-03-03 10:00 endDateTime/2020-03-03 12:00 place/Deck</code></p>
+<p><strong>Add</strong> : <code>addMod modCode/MODULE_CODE modName/MODULE_NAME</code><br>
+e.g. <code>addMod modCode/CS2103 modName/Software Engineering</code></p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clearConsult</code></p>
+<p><strong>Delete</strong> : <code>deleteMod modCode/MODULE_CODE</code><br>
+e.g. <code>deleteMod modCode/CS2103</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>deleteConsult INDEX</code><br>
-e.g. <code>deleteConsult 3</code></p>
+<p><strong>Edit module Note</strong> : <code>noteMod modCode/MODULE_CODE modNote/MODULE_NOTE</code><br>
+e.g. <code>noteMod modCode/CS2103 modNote/SWE is fun!</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>editConsult INDEX [beginDateTime/BEGINDATETIME] [endDateTime/ENDDATETIME] [place/PLACE]</code><br>
-e.g <code>editConsult 3 place/The Deck</code></p>
+<p><strong>Add module website link</strong> : <code>addModLink modCode/MODULE_CODE modLink/MODULE_LINK modLinkName/MODULE_LINK_NAME</code><br>
+e.g. <code>addModLink modCode/CS2103 modLink/comp.nus.edu.sg/~cs2103 modLinkName/Module Website</code></p>
 </li>
 <li>
-<p><strong>List</strong> : <code>listConsult</code></p>
+<p><strong>Clear all module links</strong> : <code>clearModLink modCode/MODULE_CODE</code></p>
+</li>
+<li>
+<p><strong>View module info</strong> : <code>viewModInfo modCode/MODULE_CODE</code></p>
+</li>
+<li>
+<p><strong>Copy module link into clipboard</strong> : <code>copyModLink INDEX modCode/MODULE_CODE</code><br>
+e.g. <code>copyModLink 1 modCode/CS2013</code></p>
+</li>
+<li>
+<p><strong>List Mods</strong> : <code>listMod</code></p>
 </li>
 </ul>
 </div>
@@ -1723,37 +1758,26 @@ e.g. <code>exportAttendance tutorialIndex/1 csvFilePath/./data/attendance.csv</c
 </div>
 </div>
 <div class="sect2">
-<h3 id="module"><a class="link" href="#module">5.4. Module</a></h3>
+<h3 id="consult"><a class="link" href="#consult">5.4. Consult</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> : <code>addMod modCode/MODULE_CODE modName/MODULE_NAME</code><br>
-e.g. <code>addMod modCode/CS2103 modName/Software Engineering</code></p>
+<p><strong>Add</strong> : <code>addConsult student/STUDENT_INDEX beginDateTime/BEGIN_DATE_TIME endDateTime/END_DATE_TIME place/PLACE</code><br>
+e.g. <code>addConsult student/1 beginDateTime/2020-03-03 10:00 endDateTime/2020-03-03 12:00 place/Deck</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>deleteMod modCode/MODULE_CODE</code><br>
-e.g. <code>deleteMod modCode/CS2103</code></p>
+<p><strong>Clear</strong> : <code>clearConsult</code></p>
 </li>
 <li>
-<p><strong>Edit module Note</strong> : <code>noteMod modCode/MODULE_CODE modNote/MODULE_NOTE</code><br>
-e.g. <code>noteMod modCode/CS2103 modNote/SWE is fun!</code></p>
+<p><strong>Delete</strong> : <code>deleteConsult INDEX</code><br>
+e.g. <code>deleteConsult 3</code></p>
 </li>
 <li>
-<p><strong>Add module website link</strong> : <code>addModLink modCode/MODULE_CODE modLink/MODULE_LINK modLinkName/MODULE_LINK_NAME</code><br>
-e.g. <code>addModLink modCode/CS2103 modLink/comp.nus.edu.sg/~cs2103 modLinkName/Module Website</code></p>
+<p><strong>Edit</strong> : <code>editConsult INDEX [beginDateTime/BEGINDATETIME] [endDateTime/ENDDATETIME] [place/PLACE]</code><br>
+e.g <code>editConsult 3 place/The Deck</code></p>
 </li>
 <li>
-<p><strong>Clear all module links</strong> : <code>clearModLink modCode/MODULE_CODE</code></p>
-</li>
-<li>
-<p><strong>View module info</strong> : <code>viewModInfo modCode/MODULE_CODE</code></p>
-</li>
-<li>
-<p><strong>Copy module link into clipboard</strong> : <code>copyModLink INDEX modCode/MODULE_CODE</code><br>
-e.g. <code>copyModLink 1 modCode/CS2013</code></p>
-</li>
-<li>
-<p><strong>List Mods</strong> : <code>listMod</code></p>
+<p><strong>List</strong> : <code>listConsult</code></p>
 </li>
 </ul>
 </div>
@@ -1797,7 +1821,7 @@ e.g <code>findReminder desc/midterms date/2020-03-15</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>View Calendar</strong> : <code>calendar</code></p>
+<p><strong>View Calendar</strong> : <code>viewCalendar</code></p>
 </li>
 <li>
 <p><strong>Close Calendar</strong>: <code>closeCalendar</code></p>
@@ -1809,4 +1833,4 @@ e.g <code>findReminder desc/midterms date/2020-03-15</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 03:35:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 08:04:13 UTC</div></div></div></body></html>

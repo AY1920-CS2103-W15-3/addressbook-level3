@@ -118,7 +118,7 @@ Format: <code>listTutorial</code></p>
 <h4 id="add-a-tutorial-slot-code-addtutorial-code"><a class="link" href="#add-a-tutorial-slot-code-addtutorial-code">Add a tutorial slot: <code>addTutorial</code></a></h4>
 <div class="paragraph">
 <p>Add a tutorial slot for a particular module at the given time, day and place.<br>
-Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEEKDAY_VALUE beginTime/START_TIME endTIme/END_TIME place/PLACE</code></p>
+Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEEKDAY_VALUE beginTime/START_TIME endTime/END_TIME place/PLACE</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -129,6 +129,18 @@ Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEE
 <td class="content">
 A tutorial is distinguished by its module and name. Only one session is allowed per tutorial.
 If you wish to have a tutorial with multiple slots per week, you may use unique tutorial names (eg. T02A and T02B).
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The module for <code>addTutorial</code> MODULE_CODE should already exist in TAble before adding the desired <code>Tutorial</code>
 </td>
 </tr>
 </table>
@@ -153,7 +165,7 @@ If you wish to have a tutorial with multiple slots per week, you may use unique 
 <p>The module with the referenced module code should already be present in TAble</p>
 </li>
 <li>
-<p>The place provided should be any valid string</p>
+<p>The place provided can be any valid string</p>
 </li>
 <li>
 <p>Note that you are not allowed to add tutorials with clashing times (ie. periods overlap)</p>
@@ -527,4 +539,4 @@ Format: <code>listAttendance tutorialIndex/INDEX week/INDEX</code></p>
 <p><em>To be updated</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 03:35:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 08:04:13 UTC</div></div></div></body></html>
