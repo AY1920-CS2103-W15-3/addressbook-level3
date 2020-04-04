@@ -145,7 +145,21 @@ Due to naming restrictions in java, all code references to modules are named Mod
 <div class="ulist">
 <ul>
 <li>
-<p>The module code provided is case insensitive, e.g. <code>Cs2103</code> is equivalent to <code>CS2103</code>. It should be prefixed by at most three characters, then four numbers, and finally no more than two characters as suffix.</p>
+<p>The module code provided is case insensitive, e.g. <code>Cs2103</code> is equivalent to <code>CS2103</code>.<br>
+Module codes consist of three parts: Department Code, Number, then Subcode. They should adhere to the following constraints:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The department code should only contain either two or three capital letters.</p>
+</li>
+<li>
+<p>This is followed by 4 numbers, with the first not being zero.</p>
+</li>
+<li>
+<p>The Subcode cannot be more than 2 capital letters long.</p>
+</li>
+</ol>
+</div>
 </li>
 <li>
 <p>The module name provided should be any valid string.</p>
@@ -180,6 +194,9 @@ Format: <code>deleteMod modCode/MODULE_CODE</code></p>
 </li>
 <li>
 <p>The module code should correspond to an existing module in the database.</p>
+</li>
+<li>
+<p>Modules cannot be deleted if there are tutorials associated with it in TAble (i.e. User cannot delete CS2103 if there are still tutorials with module code CS2103).</p>
 </li>
 </ul>
 </div>
@@ -434,6 +451,36 @@ Format: <code>clearModLecture modCode/MODULE_CODE</code></p>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
+<h5 id="unable-to-delete-module-with-associated-tutorials"><a class="link" href="#unable-to-delete-module-with-associated-tutorials">Unable to delete module with associated tutorials</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1: (Current Choice)</strong> Disable deletion of module with associated tutorials</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Delete module together with its associated tutorials</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Informs user if there are any dependencies between module to be deleted and tutorials in TAble.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fast deletion of module and related objects.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User needs to individually delete associated tutorials before module can be deleted.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Information in TAble will be lost easily as user may not be aware of such an association. As there is no undo command, it will not be easy to undo this command and revert TAble to its original state.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1: On a user design perspective, it is not advisable to delete all objects associated with module, as the user may be unaware of these associated objects. By individually confirming the objects to be deleted, the user is made more aware of any information that they may want to export or save first before deleting said information.</p>
+</div>
+</div>
+<div class="sect4">
 <h5 id="modlink-behaviour"><a class="link" href="#modlink-behaviour">ModLink behaviour</a></h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -466,4 +513,4 @@ Format: <code>clearModLecture modCode/MODULE_CODE</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 08:04:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 09:15:26 UTC</div></div></div></body></html>

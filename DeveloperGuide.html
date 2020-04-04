@@ -22,13 +22,14 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#consult-feature">3.1. Consult feature</a></li>
-<li><a href="#module-feature">3.2. Module feature</a></li>
-<li><a href="#tutorial-feature">3.3. Tutorial feature</a></li>
+<li><a href="#module-feature">3.1. Module feature</a></li>
+<li><a href="#tutorial-feature">3.2. Tutorial feature</a></li>
+<li><a href="#consult-feature">3.3. Consult feature</a></li>
 <li><a href="#reminder-feature">3.4. Reminder feature</a></li>
 <li><a href="#calendar-feature">3.5. Calendar feature</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#common-design-considerations">3.6. Common Design Considerations</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -332,12 +333,185 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="consult-feature"><a class="link" href="#consult-feature">3.1. Consult feature</a></h3>
+<h3 id="module-feature"><a class="link" href="#module-feature">3.1. Module feature</a></h3>
+<div class="paragraph">
+<p><strong>TAble</strong> allows NUS SoC teaching assistants to track and record all modules that they are teaching. Users can leave notes on the modules that they are teaching and store a list of links for the module that are useful for reference.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
+<div class="paragraph">
+<p>A module can be stored as a Mod object in TAble (renamed due to naming restrictions on Java keywords). The main components are the module code, which is used to identify unique modules, and module name. Mod can also store the user&#8217;s notes of the module through its description parameter, as well as a set of module links which are relevant to the course.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModClassDiagram.png" alt="ModClassDiagram">
+</div>
+<div class="title">Figure 9. Class diagram of 'Mod' feature, displaying only directly related classes</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how notes of a module can be updated with the <code>noteMod</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/NoteModSequenceDiagram.png" alt="NoteModSequenceDiagram">
+</div>
+<div class="title">Figure 10. Sequence diagram of updating Mod notes</div>
+</div>
+<div class="paragraph">
+<p>Module links are stored as ModLink objects in TAble. The collection of ModLinks are stored as <code>List&lt;Pair&lt;String, ModLink&gt;&gt;</code> since each module link can be described differently. This allows for more flexibility in naming the module links, rather than solely using an index based notation, and ensures that the order of addition into the collection is maintained. The activity diagram of adding module links is shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddModLinkActivityDiagram.png" alt="AddModLinkActivityDiagram">
+</div>
+<div class="title">Figure 11. Activity diagram of adding ModLinks to Mod</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="unable-to-delete-module-with-associated-tutorials"><a class="link" href="#unable-to-delete-module-with-associated-tutorials">Unable to delete module with associated tutorials</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1: (Current Choice)</strong> Disable deletion of module with associated tutorials</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Delete module together with its associated tutorials</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Informs user if there are any dependencies between module to be deleted and tutorials in TAble.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fast deletion of module and related objects.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User needs to individually delete associated tutorials before module can be deleted.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Information in TAble will be lost easily as user may not be aware of such an association. As there is no undo command, it will not be easy to undo this command and revert TAble to its original state.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1: On a user design perspective, it is not advisable to delete all objects associated with module, as the user may be unaware of these associated objects. By individually confirming the objects to be deleted, the user is made more aware of any information that they may want to export or save first before deleting said information.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="modlink-behaviour"><a class="link" href="#modlink-behaviour">ModLink behaviour</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1: (Current Choice)</strong> Copy link into user&#8217;s clipboard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Open a new browser page</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows for easier access and sharing of link.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fast access to module&#8217;s weblink by directly opening a browser.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User needs to open a browser before accessing link.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Very distracting when opening link, as focus changes from TAble to browser unexpectedly (depending on when browser loads).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1: On a user design perspective, it is less jarring to copy link into the user&#8217;s clipboard, since the user can choose when they want to access the link and have the flexibility to share the link to others. Additionally, opening a new browser page requires more complicated code that depends on another program.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tutorial-feature"><a class="link" href="#tutorial-feature">3.2. Tutorial feature</a></h3>
+<div class="paragraph">
+<p><strong>TAble</strong> allows NUS teaching assistants to track and record all the tutorials they are teaching, and maintain details of the tutorial, such as the module it is under, start and end time of the tutorial, and the location it is held.
+Tutorials in <strong>TAble</strong> also allow teaching assistants to enroll students in a tutorial and mark their attendance for every week of the semester, and allows for convenient referencing (particularly when there&#8217;s a pandemic and contact tracing is critical).</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
+<div class="paragraph">
+<p>Since a <code>Tutorial</code> in <strong>TAble</strong> has to manage many parameters and attributes, different components of <strong>TAble</strong> were distinctly separated in order to ensure maintainability and adhere to good coding practices.
+The following illustrates the sequence diagram for AddTutorialCommand, in which a tutorial is added to <strong>TAble</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TutorialCommandSequenceDiagram.png" alt="TutorialCommandSequenceDiagram">
+</div>
+<div class="title">Figure 12. Sequence diagram for the command to add a tutorial</div>
+</div>
+<div class="paragraph">
+<p>As can be observed, each step of the process is clearly separated, with each component only responsible for single task (eg. parsing user input, executing the actual command etc.)
+This enables bugs to be easily caught, and for the process to be structured and comprehensible.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>As a <code>Tutorial</code> in TAble should be able to keep track of enrolled students and mark their attendance, the <code>Tutorial</code> object will have to contain a list of <code>Student</code> objects (ie. the enrolled students).
+However, a <code>Student</code> object, as we are implementing it, does not contain the attribute of whether they are present or not for a particular <code>tutorial</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1:</strong> Include an attendance attribute to each <code>Student</code> such that they keep track of their own attendance for every tutorial they are enrolled in.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 : (Current Choice)</strong> Each <code>Tutorial</code> contains an attendance sheet, comprised of a list of 13 nested lists of booleans. Each nested list represents each week of a typical NUS school semester, while the size in each of the nested lists corresponds to the number of enrolled students.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Efficient to mark the attendance of just a single student, and retrieve all attendance information of a particular <code>Student</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Efficient to mark the attendance of all students in a given tutorial as the whole attendance sheet is stored in <code>Tutorial</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Difficult to mark attendance of all students in a tutorial as the system will have to individually search and modify the correct boolean in each <code>Student</code> in the tutorial.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Difficult to mark attendance by student instead of tutorial, and inefficient in retrieving attendance information for a particular student as the system will have to iterate through every tutorial that the student is enrolled in.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 2:  From a user design perspective, it is more likely that a teaching assistant will want to mark his attendance by tutorial and week rather than by student, hence it is more practical and efficient to choose Alternative 2.
+From a software engineering perspective, it is the responsibility of the <code>Tutorial</code> to keep track of the attendance, not the <code>Student</code> 's.
+This allows attendance of a <code>Student</code> to be easily referenced and marked in a <code>Tutorial</code> without requiring the <code>Student</code> to be privy to that information, and allows for convenient retrieval of attendance by week or by student.</p>
+</div>
+<div class="paragraph">
+<p>As such, the following activity diagram of the system illustrates what occurs when the user calls the markPresent command to mark a student in a tutorial as present, for a specified week in the school semester.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TutorialMarkPresentActivityDiagram.png" alt="TutorialMarkPresentActivityDiagram">
+</div>
+<div class="title">Figure 13. Activity diagram for the command markPresent in the tutorial feature</div>
+</div>
+<div class="paragraph">
+<p>When executing the markPresent command, the system will first ensure that all prefixes are present and formatted correctly, before subsequently checking if the specified tutorial exists in the TAble database.
+If the tutorial does exist, then the system attempts to retrieve and update the attendance of the respective student in the tutorial. If the student does not exist, an error message is shown, informing the user.
+If successful, the updated information is then saved.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="consult-feature"><a class="link" href="#consult-feature">3.3. Consult feature</a></h3>
 <div class="paragraph">
 <p><strong>TAble</strong> allows NUS SoC teaching assistants to track and record all their consultations scheduled with their students.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.3.1. Implementation</a></h4>
 <div class="paragraph">
 <p>A <code>Consult</code> class stores all of the relevant information of consults. The class diagram below shows how all the different components interact to allow the consult feature to function. Note that the XYZConsultCommand and XYZConsultCommandParser refers to all Consult related commands like add, edit, delete etc.</p>
 </div>
@@ -345,7 +519,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="content">
 <img src="images/ConsultsCommandClassDiagram.png" alt="ConsultsCommandClassDiagram">
 </div>
-<div class="title">Figure 9. Class diagram of 'Consults' feature</div>
+<div class="title">Figure 14. Class diagram of 'Consults' feature</div>
 </div>
 <div class="paragraph">
 <p>A consultation slot is represented by the <code>Consult</code> class which contains 5 key attributes, the <code>beginDateTime</code>, <code>endDateTime</code>, <code>location</code>, <code>studentMatricNumber</code> and <code>studentName</code>.
@@ -364,7 +538,7 @@ The <code>beginDateTime</code> and <code>endDateTime</code> attributes are repre
 <div class="content">
 <img src="images/AddConsultActivityDiagram.png" alt="AddConsultActivityDiagram">
 </div>
-<div class="title">Figure 10. Activity diagram for the command addConsult in the <code>Consult</code> feature</div>
+<div class="title">Figure 15. Activity diagram for the command addConsult in the <code>Consult</code> feature</div>
 </div>
 <div class="paragraph">
 <p>The workflow above shows how a <code>Consult</code> is added and the various checks that occurs at the different points throughout the workflow.</p>
@@ -377,37 +551,7 @@ the <code>Student</code> index provided is within the range of the <code>Student
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="length-of-command-prefixes-for-all-features"><a class="link" href="#length-of-command-prefixes-for-all-features">Length of command prefixes (For all features)</a></h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 9.0909%;">
-<col style="width: 45.4545%;">
-<col style="width: 45.4546%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Make the prefixes of the command descriptive, such as <code>student/</code>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Make the prefixes of the commands short, by using the first few letters of the command word, such as <code>s/</code> for students.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">It is more clear and intuitive for the user to type in the full prefix.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">It is easier for the user to type in shorter command prefixes, so that it is less tedious to input the commands.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Lower user experience as the user has to type in longer commands to use the TAble application.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">It may be confusing for the user, as certain command prefixes may share similar initials, such as <code>tags</code> and <code>time</code>.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Reason for choosing Alternative 1:  We believe that the user experience will be better when using more descriptive command prefixes, as the user will not be required to constantly check on the user guide since the command prefixes are intuitive.</p>
-</div>
-</div>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="consult-storing-matric-number-and-name"><a class="link" href="#consult-storing-matric-number-and-name">Consult storing Matric Number and Name</a></h5>
 <table class="tableblock frame-all grid-all spread">
@@ -467,149 +611,6 @@ the <code>Student</code> index provided is within the range of the <code>Student
 <div class="paragraph">
 <p>Reason for choosing Alternative 1:  We believe that automatically sorting the consult list provides  a better user experience as the user can immediately see the upcoming consults in the panel, without having to type a sort command.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="module-feature"><a class="link" href="#module-feature">3.2. Module feature</a></h3>
-<div class="paragraph">
-<p><strong>TAble</strong> allows NUS SoC teaching assistants to track and record all modules that they are teaching. Users can leave notes on the modules that they are teaching and store a list of links for the module that are useful for reference.</p>
-</div>
-<div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
-<div class="paragraph">
-<p>A module can be stored as a Mod object in TAble (renamed due to naming restrictions on Java keywords). The main components are the module code, which is used to identify unique modules, and module name. Mod can also store the user&#8217;s notes of the module through its description parameter, as well as a set of module links which are relevant to the course.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ModClassDiagram.png" alt="ModClassDiagram">
-</div>
-<div class="title">Figure 11. Class diagram of 'Mod' feature, displaying only directly related classes</div>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how notes of a module can be updated with the <code>noteMod</code> command.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/NoteModSequenceDiagram.png" alt="NoteModSequenceDiagram">
-</div>
-<div class="title">Figure 12. Sequence diagram of updating Mod notes</div>
-</div>
-<div class="paragraph">
-<p>Module links are stored as ModLink objects in TAble. The collection of ModLinks are stored as <code>List&lt;Pair&lt;String, ModLink&gt;&gt;</code> since each module link can be described differently. This allows for more flexibility in naming the module links, rather than solely using an index based notation, and ensures that the order of addition into the collection is maintained. The activity diagram of adding module links is shown below.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/AddModLinkActivityDiagram.png" alt="AddModLinkActivityDiagram">
-</div>
-<div class="title">Figure 13. Activity diagram of adding ModLinks to Mod</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="modlink-behaviour"><a class="link" href="#modlink-behaviour">ModLink behaviour</a></h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 9.0909%;">
-<col style="width: 45.4545%;">
-<col style="width: 45.4546%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1: (Current Choice)</strong> Copy link into user&#8217;s clipboard</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Open a new browser page</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allows for easier access and sharing of link.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Fast access to module&#8217;s weblink by directly opening a browser.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User needs to open a browser before accessing link.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Very distracting when opening link, as focus changes from TAble to browser unexpectedly (depending on when browser loads).</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Reason for choosing Alternative 1: On a user design perspective, it is less jarring to copy link into the user&#8217;s clipboard, since the user can choose when they want to access the link and have the flexibility to share the link to others. Additionally, opening a new browser page requires more complicated code that depends on another program.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="tutorial-feature"><a class="link" href="#tutorial-feature">3.3. Tutorial feature</a></h3>
-<div class="paragraph">
-<p><strong>TAble</strong> allows NUS teaching assistants to track and record all the tutorials they are teaching, and maintain details of the tutorial, such as the module it is under, start and end time of the tutorial, and the location it is held.
-Tutorials in <strong>TAble</strong> also allow teaching assistants to enroll students in a tutorial and mark their attendance for every week of the semester, and allows for convenient referencing (particularly when there&#8217;s a pandemic and contact tracing is critical).</p>
-</div>
-<div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">3.3.1. Implementation</a></h4>
-<div class="paragraph">
-<p>Since a <code>Tutorial</code> in <strong>TAble</strong> has to manage many parameters and attributes, different components of <strong>TAble</strong> were distinctly separated in order to ensure maintainability and adhere to good coding practices.
-The following illustrates the sequence diagram for AddTutorialCommand, in which a tutorial is added to <strong>TAble</strong>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/TutorialCommandSequenceDiagram.png" alt="TutorialCommandSequenceDiagram">
-</div>
-<div class="title">Figure 14. Sequence diagram for the command to add a tutorial</div>
-</div>
-<div class="paragraph">
-<p>As can be observed, each step of the process is clearly separated, with each component only responsible for single task (eg. parsing user input, executing the actual command etc.)
-This enables bugs to be easily caught, and for the process to be structured and comprehensible.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
-<div class="paragraph">
-<p>As a <code>Tutorial</code> in TAble should be able to keep track of enrolled students and mark their attendance, the <code>Tutorial</code> object will have to contain a list of <code>Student</code> objects (ie. the enrolled students).
-However, a <code>Student</code> object, as we are implementing it, does not contain the attribute of whether they are present or not for a particular <code>tutorial</code>.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 9.0909%;">
-<col style="width: 45.4545%;">
-<col style="width: 45.4546%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1:</strong> Include an attendance attribute to each <code>Student</code> such that they keep track of their own attendance for every tutorial they are enrolled in.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 : (Current Choice)</strong> Each <code>Tutorial</code> contains an attendance sheet, comprised of a list of 13 nested lists of booleans. Each nested list represents each week of a typical NUS school semester, while the size in each of the nested lists corresponds to the number of enrolled students.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Efficient to mark the attendance of just a single student, and retrieve all attendance information of a particular <code>Student</code>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Efficient to mark the attendance of all students in a given tutorial as the whole attendance sheet is stored in <code>Tutorial</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Difficult to mark attendance of all students in a tutorial as the system will have to individually search and modify the correct boolean in each <code>Student</code> in the tutorial.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Difficult to mark attendance by student instead of tutorial, and inefficient in retrieving attendance information for a particular student as the system will have to iterate through every tutorial that the student is enrolled in.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Reason for choosing Alternative 2:  From a user design perspective, it is more likely that a teaching assistant will want to mark his attendance by tutorial and week rather than by student, hence it is more practical and efficient to choose Alternative 2.
-From a software engineering perspective, it is the responsibility of the <code>Tutorial</code> to keep track of the attendance, not the <code>Student</code> 's.
-This allows attendance of a <code>Student</code> to be easily referenced and marked in a <code>Tutorial</code> without requiring the <code>Student</code> to be privy to that information, and allows for convenient retrieval of attendance by week or by student.</p>
-</div>
-<div class="paragraph">
-<p>As such, the following activity diagram of the system illustrates what occurs when the user calls the markPresent command to mark a student in a tutorial as present, for a specified week in the school semester.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/TutorialMarkPresentActivityDiagram.png" alt="TutorialMarkPresentActivityDiagram">
-</div>
-<div class="title">Figure 15. Activity diagram for the command markPresent in the tutorial feature</div>
-</div>
-<div class="paragraph">
-<p>When executing the markPresent command, the system will first ensure that all prefixes are present and formatted correctly, before subsequently checking if the specified tutorial exists in the TAble database.
-If the tutorial does exist, then the system attempts to retrieve and update the attendance of the respective student in the tutorial. If the student does not exist, an error message is shown, informing the user.
-If successful, the updated information is then saved.</p>
 </div>
 </div>
 </div>
@@ -790,14 +791,47 @@ would likely not be significantly affected.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="common-design-considerations"><a class="link" href="#common-design-considerations">3.6. Common Design Considerations</a></h3>
+<div class="sect3">
+<h4 id="length-of-command-prefixes-for-all-features"><a class="link" href="#length-of-command-prefixes-for-all-features">3.6.1. Length of command prefixes (For all features)</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Make the prefixes of the command descriptive, such as <code>student/</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Make the prefixes of the commands short, by using the first few letters of the command word, such as <code>s/</code> for students.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is more clear and intuitive for the user to type in the full prefix.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is easier for the user to type in shorter command prefixes, so that it is less tedious to input the commands.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lower user experience as the user has to type in longer commands to use the TAble application.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It may be confusing for the user, as certain command prefixes may share similar initials, such as <code>tags</code> and <code>time</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1:  We believe that the user experience will be better when using more descriptive command prefixes, as the user will not be required to constantly check on the user guide since the command prefixes are intuitive.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -828,7 +862,7 @@ would likely not be significantly affected.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2329,4 +2363,4 @@ Expected: The <code>Calendar</code> window will be closed. Alternatively, the us
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 08:04:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 09:15:26 UTC</div></div></div></body></html>

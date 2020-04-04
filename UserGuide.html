@@ -424,7 +424,21 @@ Due to naming restrictions in java, all code references to modules are named Mod
 <div class="ulist">
 <ul>
 <li>
-<p>The module code provided is case insensitive, e.g. <code>Cs2103</code> is equivalent to <code>CS2103</code>. It should be prefixed by at most three characters, then four numbers, and finally no more than two characters as suffix.</p>
+<p>The module code provided is case insensitive, e.g. <code>Cs2103</code> is equivalent to <code>CS2103</code>.<br>
+Module codes consist of three parts: Department Code, Number, then Subcode. They should adhere to the following constraints:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The department code should only contain either two or three capital letters.</p>
+</li>
+<li>
+<p>This is followed by 4 numbers, with the first not being zero.</p>
+</li>
+<li>
+<p>The Subcode cannot be more than 2 capital letters long.</p>
+</li>
+</ol>
+</div>
 </li>
 <li>
 <p>The module name provided should be any valid string.</p>
@@ -459,6 +473,9 @@ Format: <code>deleteMod modCode/MODULE_CODE</code></p>
 </li>
 <li>
 <p>The module code should correspond to an existing module in the database.</p>
+</li>
+<li>
+<p>Modules cannot be deleted if there are tutorials associated with it in TAble (i.e. User cannot delete CS2103 if there are still tutorials with module code CS2103).</p>
 </li>
 </ul>
 </div>
@@ -1833,4 +1850,4 @@ e.g <code>findReminder desc/midterms date/2020-03-15</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 08:04:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 09:15:26 UTC</div></div></div></body></html>
