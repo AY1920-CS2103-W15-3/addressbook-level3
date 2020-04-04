@@ -586,10 +586,26 @@ Format: <code>listTutorial</code></p>
 <p>Add a tutorial slot for a particular module at the given time, day and place.<br>
 Format: <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEEKDAY_VALUE beginTime/START_TIME endTIme/END_TIME place/PLACE</code></p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A tutorial is distinguished by its module and name. Only one session is allowed per tutorial.
+If you wish to have a tutorial with multiple slots per week, you may use unique tutorial names (eg. T02A and T02B).
+</td>
+</tr>
+</table>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
+<li>
+<p>The tutorial name provided is capped at 8 alphanumeric characters.</p>
+</li>
 <li>
 <p>The time provided must be in HH:MM format, i.e: 24-hour format</p>
 </li>
@@ -1665,7 +1681,7 @@ e.g <code>editConsult 3 place/The Deck</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> : <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEEKDAY_VALUE beginTime/START_TIME endTIme/END_TIME place/PLACE</code><br>
+<p><strong>Add</strong> : <code>addTutorial modCode/MODULE_CODE tutorialName/TUTORIAL_NAME day/WEEKDAY_VALUE beginTime/START_TIME endTime/END_TIME place/PLACE</code><br>
 e.g. <code>addTutorial modCode/CS2103 tutorialName/T02 day/3 beginTime/12:00 endTime/13:00 place/SR3</code></p>
 </li>
 <li>
@@ -1793,4 +1809,4 @@ e.g <code>findReminder desc/midterms date/2020-03-15</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 15:02:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-04 03:34:28 UTC</div></div></div></body></html>
