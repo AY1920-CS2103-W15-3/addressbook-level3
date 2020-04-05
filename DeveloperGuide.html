@@ -450,6 +450,11 @@ The following illustrates the sequence diagram for AddTutorialCommand, in which 
 <div class="title">Figure 12. Sequence diagram for the command to add a tutorial</div>
 </div>
 <div class="paragraph">
+<p>The <code>LogicManager</code> is responsible for handling the execution of the user&#8217;s input command to add a tutorial, calling <code>parseCommand()</code>, which returns an <code>AddTutorialCommand</code> object
+and subsequently calls for the <code>AddTutorialCommand</code> object to perform <code>execute()</code>. This leads to the <code>Model</code> being updated accordingly,
+and feedback in the form of a formatted String is finally shown to the user after being returned from <code>AddTutorialCommand</code>.</p>
+</div>
+<div class="paragraph">
 <p>As can be observed, each step of the process is clearly separated, with each component only responsible for single task (eg. parsing user input, executing the actual command etc.)
 This enables bugs to be easily caught, and for the process to be structured and comprehensible.</p>
 </div>
@@ -2363,4 +2368,4 @@ Expected: The <code>Calendar</code> window will be closed. Alternatively, the us
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-05 04:00:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-05 08:17:01 UTC</div></div></div></body></html>
