@@ -648,7 +648,7 @@ the <code>Student</code> index provided is within the range of the <code>Student
 <p>A snooze reminder feature is also implemented for the users to easily postpone a reminder. It&#8217;s implementation is similar to the <code>editReminderCommand</code> where it creates a new reminder to replace the specified reminder instead of editing the current reminder directly. This is to ensure the reminders are immutable which improves the stability of the application.</p>
 </div>
 <div class="paragraph">
-<p>User can choose to snooze the reminder in any/all of the following time units: days, hours and/or minutes. Only positive integer are allowed as the user are not supposed to snooze the reminders backwards or snooze it by zero duration. Following is an activity diagram for the command.</p>
+<p>User can choose to snooze the reminder in any/all of the following time units: days, hours and/or minutes. Only positive integer are allowed as the user are not supposed to snooze the reminders backwards or snooze it by zero duration. Reminders that are done are also not allowed to be snoozed. Following is an activity diagram for the command.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1925,7 +1925,7 @@ would likely not be significantly affected.</p>
 <p>User requests to snooze an existing reminder by a certain number of day, hour or minute</p>
 </li>
 <li>
-<p>System updates the existing reminder according to the the User&#8217;s request</p>
+<p>System updates the existing reminder according to the the user&#8217;s request</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1951,11 +1951,24 @@ would likely not be significantly affected.</p>
 </div>
 </li>
 <li>
-<p>1b. The day, hour and minute of reminder to be snoozed by is not included.</p>
+<p>1b. The day, hour and minute of reminder to be snoozed by are not included.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
 <p>1b1. System shows an error message that at least one of day, hour or minute must be included.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. The reminder is already done.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c1. System shows an error message that the reminder is already done.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2283,21 +2296,21 @@ These instructions only provide a starting point for testers to work on; testers
 </li>
 <li>
 <p>Double-click the jar file<br>
-Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+Expected: Shows the GUI with a set of sample students, modules, tutorials, consults and reminders. The window size is fixed.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Saving window preferences</p>
+<p>Shutting down</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
+<p>Add, edit or delete some data in TAble. Close the window.</p>
 </li>
 <li>
-<p>Re-launch the app by double-clicking the jar file.<br>
-Expected: The most recent window size and location is retained.</p>
+<p>Re-launch the app by double-clicking the jar file<br>
+Expected: Modifications to the data in TAble are retained.</p>
 </li>
 </ol>
 </div>
@@ -2349,11 +2362,11 @@ Expected: Similar to previous.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Test case: <code>calendar</code><br>
+<p>Test case: <code>viewCalendar</code><br>
 Expected: A new <code>Calendar</code> window is brought up at the current year and month. A success message "Opened Calendar window." will appear.</p>
 </li>
 <li>
-<p>Test case: <code>CALENDAR</code><br>
+<p>Test case: <code>VIEWCALENDAR</code><br>
 Expected: No new <code>Calendar</code> window appears. Error details shown in the status message.</p>
 </li>
 <li>
@@ -2371,4 +2384,4 @@ Expected: The <code>Calendar</code> window will be closed. Alternatively, the us
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-07 12:06:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-07 15:10:06 UTC</div></div></div></body></html>
