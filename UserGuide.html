@@ -178,6 +178,39 @@ The consults that are overdue will appear in red to highlight that these consult
 <p>Adds a student to TAble<br>
 Format: <code>addStudent name/NAME matric/MATRIC_NUMBER email/EMAIL [tag/TAG]&#8230;&#8203;</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The students name will be automatically formatted such that it follows a standard format of
+the first letter of each word being uppercase and the rest lowercase, and a maximum of one space between each word. This
+is done to follow proper naming convention, making it more presentable and readable,
+and remedies any errors which may have happened when extracting the list of student names.
+The removal of excess spaces is also done for tags.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example: <code>addStudent name/john      doe matric/A0123456X email/johnd@example.com</code>
+adds a student with the name "John Doe" into the list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Students name have a maximum length of 70 characters as it is the standard length for database fields.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -185,7 +218,7 @@ Format: <code>addStudent name/NAME matric/MATRIC_NUMBER email/EMAIL [tag/TAG]&#8
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A student can have any number of tags (including 0)
+A student can have any number of tags (including 0), but tags are limited to a length of 40 characters
 </td>
 </tr>
 </table>
@@ -1856,4 +1889,4 @@ e.g <code>findReminder desc/midterms date/2020-03-15</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-07 15:10:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-08 14:47:38 UTC</div></div></div></body></html>
