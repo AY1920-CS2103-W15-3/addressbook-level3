@@ -10,7 +10,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>TAble is your handy desktop app, optimized for TAs who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI)! Mark attendance, arrange consults, add module notes, and more with TAble! It has a GUI created with JavaFX and written in Java, and has about 10 kLoC.</p>
+<p>TAble is your handy desktop app, optimized for TAs who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI)! I have added the functionality for TAs to arrange consults and view all upcoming events in a calendar! The GUI of TAble was created with JavaFX and written in Java, and I have written about 4 kLoC.</p>
 </div>
 </div>
 </div>
@@ -24,34 +24,44 @@
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Allows the user to work with all of his/her consults using <strong>TAble</strong>.</p>
+<p><strong>What it does</strong>: The user is able to add/edit/delete/list all <code>Consults</code> which he has scheduled with a current <code>Student</code>.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p><strong>Highlights</strong>: A separate consult panel that displays all of the user&#8217;s <code>Consults</code> exist for the user to easily keep track of all his consults.
+Any consults that are overdue are also highlighted in red, to remind the user to delete these outdated consults.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Major enhancement</strong>: Added a calendar view for TAble.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>What it does</strong>:  Added a calendar view that displays all the <code>Consults</code>, <code>Tutorials</code> and <code>Reminders</code> for the user.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=&amp;sort=totalCommits%20dsc&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=hanchingyong&amp;tabRepo=AY1920S2-CS2103-W15-3%2Fmain%5Bmaster%5D">RepoSense - Code Report</a>]</p>
+<p><strong>Highlights</strong>: This calendar is able to show the number of  <code>Consults</code>, <code>Tutorials</code> and <code>Reminders</code> that occurs on a given day in one view, without any information being ommitted.</p>
+</li>
+<li>
+<p>Credits: <em>{Code for the Calendar Window adapted from <a href="https://github.com/SirGoose3432/javafx-calendar/blob/master/src/FullCalendarView.java}" class="bare">https://github.com/SirGoose3432/javafx-calendar/blob/master/src/FullCalendarView.java}</a></em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>All code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=hanchingyong&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">RepoSense - Code Report</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:
-<strong>*</strong></p>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
+<p>Project management:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>To be Updated</p>
+<p>Raised issues that needed to be solved and provided some solutions to these problems. [<a href="https://github.com/AY1920S2-CS2103-W15-3/main/issues?q=is%3Aissue+involves%3Ahanchingyong">Issues raised/discussed</a>]</p>
 </li>
 </ul>
 </div>
@@ -61,20 +71,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Added Consults feature in User Guide: <a href="https://github.com">#0</a></p>
+<p>Contributed in the <code>Consult</code> and <code>Calendar</code> sections of the User Guide:</p>
 </li>
 <li>
-<p>Added Consults user stories and use cases.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Community:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>To be updated</p>
+<p>Contributed in the <code>Consult</code> and <code>Calendar</code> sections of the Developer Guide: which includes the class diagram for <code>Consults</code>, activity diagram for <code>addConsult</code> command and a sequence diagram for the creation of the Calendar. More details on these are covered below.</p>
 </li>
 </ul>
 </div>
@@ -89,13 +89,23 @@
 </ul>
 </div>
 </li>
+<li>
+<p>Summary of contributions:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Created over [<a href="https://github.com/AY1920S2-CS2103-W15-3/main/pulls?q=is%3Apr+author%3Ahanchingyong">35 pull requests</a>] on GitHub</p>
+</li>
+<li>
+<p>Reviewed over [<a href="https://github.com/AY1920S2-CS2103-W15-3/main/pulls?q=is%3Apr+reviewed-by%3Ahanchingyong">36 pull requests</a>]on GitHub</p>
+</li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -298,6 +308,58 @@ Returns any consults that are held at SR3</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="calendar-feature"><a class="link" href="#calendar-feature">Calendar Feature</a></h3>
+<div class="sect3">
+<h4 id="display-the-calendar-window-code-viewcalendar-code"><a class="link" href="#display-the-calendar-window-code-viewcalendar-code">Display the calendar window: <code>viewCalendar</code></a></h4>
+<div class="paragraph">
+<p>Brings up the calendar window.
+Format: <code>viewCalendar</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The calendar will be brought up, displaying the current month and year.</p>
+</li>
+<li>
+<p>For each month, the number of tutorials, consults and reminders for each day will be displayed in the calendar.</p>
+</li>
+<li>
+<p>Click on the left and right arrows to change the month displayed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="close-the-calendar-window-code-closecalendar-code"><a class="link" href="#close-the-calendar-window-code-closecalendar-code">Close the calendar window: <code>closeCalendar</code></a></h4>
+<div class="paragraph">
+<p>Closes the calendar window.
+Format: <code>closeCalendar</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The calendar will be closed, if a current calendar window is displayed.</p>
+</li>
+<li>
+<p>Alternatively, clicking the cross can also close the calendar window.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-consults-and-tutorials-on-a-particular-day-coming-in-v2-0"><a class="link" href="#view-consults-and-tutorials-on-a-particular-day-coming-in-v2-0">View consults and tutorials on a particular day [Coming in v2.0]</a></h4>
+
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -313,8 +375,295 @@ Returns any consults that are held at SR3</p>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="consult-feature"><a class="link" href="#consult-feature">Consult feature</a></h3>
 <div class="paragraph">
-<p><em>To be updated</em></p>
+<p><strong>TAble</strong> allows NUS SoC teaching assistants to track and record all their consultations scheduled with their students.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>A <code>Consult</code> class stores all of the relevant information of consults. The class diagram below shows how all the different components interact to allow the consult feature to function. Note that the XYZConsultCommand and XYZConsultCommandParser refers to all Consult related commands like add, edit, delete etc.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ConsultsCommandClassDiagram.png" alt="ConsultsCommandClassDiagram">
+</div>
+<div class="title">Figure 1. Class diagram of 'Consults' feature</div>
+</div>
+<div class="paragraph">
+<p>A consultation slot is represented by the <code>Consult</code> class which contains 5 key attributes, the <code>beginDateTime</code>, <code>endDateTime</code>, <code>location</code>, <code>studentMatricNumber</code> and <code>studentName</code>.
+The <code>beginDateTime</code> and <code>endDateTime</code> attributes are represented using Java&#8217;s <code>LocalDateTime</code> class. The <code>studentMatricNumber</code> and <code>studentName</code> attributes are classes that belong to a certain <code>Student</code>. The <code>studentMatricNumber</code> is used to uniquely identify the <code>Student</code> involved in the consultation, while the studentName is used in the front end of the application, displayed to the TA.</p>
+</div>
+<div class="paragraph">
+<p>The <code>XYZConsultCommand</code> class represent classes that extend the abstract class <code>Command</code> and allows the TA to add, edit, delete, view and clear consultations added to TAble. These <code>XYZConsultCommandS</code> are created by the respective <code>XYZConsultCommandParserS</code>.</p>
+</div>
+<div class="paragraph">
+<p>A <code>ConsultTAble</code> that has a <code>UniqueConsultList</code> stores and manages all <code>ConsultS</code>. When a <code>Consult</code> is added to the ConsultTAble, there will first be a check that the <code>Consult</code> does not already exist in the <code>UniqueConsultList</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given the class diagram and the understanding of how the <code>Consult</code> class interacts with other classes, let us examine how an <code>addConsult</code> command behaves, by using the following activity diagram of the system.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddConsultActivityDiagram.png" alt="AddConsultActivityDiagram">
+</div>
+<div class="title">Figure 2. Activity diagram for the command addConsult in the <code>Consult</code> feature</div>
+</div>
+<div class="paragraph">
+<p>The workflow above shows how a <code>Consult</code> is added and the various checks that occurs at the different points throughout the workflow.</p>
+</div>
+<div class="paragraph">
+<p>To summarize the above activity diagram, there are 5 key checks which TAble checks for when the user is adding a <code>consult</code>. Firstly, TAble checks if all 4 prefixes are present in the command.
+Then, TAble checks if all prefixes present are formatted correctly. Following which, TAble will check if each of the data passed for the prefixes are in the right format. Firstly, it checks if
+the <code>Student</code> index provided is within the range of the <code>Student</code> list. Then, it checks if the timing and <code>Location</code> provided are in the correct format. Lastly, and most importantly, it checks if the
+<code>Consult</code> timing provided clashes with other existing <code>Consult</code> timings.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 08:47:52 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="consult-storing-matric-number-and-name"><a class="link" href="#consult-storing-matric-number-and-name">Consult storing Matric Number and Name</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Make the consult store the matric number and name of the student that is attending the consult.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Make the consult store the entire Student class that is attending the consult.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is easier to implement and coupling will be reduced as <code>Student</code> will not be directly related to the <code>consult</code> class.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is easier to visualise as the entire <code>Student</code> related to the <code>consult</code> will be stored.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is not as intuitive as currently, the <code>Consult</code> class only stores certain attributes of the <code>Student</code> that is attending the <code>consult</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It will be harder to test due to the high degree of coupling.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1: Due to the time constraint of this project, our group has decided to choose alternative 1, as it not only reduces coupling, but is sufficient for us to uniquely identify the <code>Student</code> participating in the <code>consult</code> as the <code>MatricNumber</code> would be unique.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="sorting-the-consults"><a class="link" href="#sorting-the-consults">Sorting the consults</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Automatically sorts the consult list by the time of the consult, whenever a consult is added</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Sorts the consult list only when user enters a sort command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is intuitive for the consult list to be sorted according to their date and time.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User can decide how they want the list to be sorted (e.g. by alphabetical order for location).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User are not able to sort the list according to their preferences.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User have to type the sort command each time a new consult is added.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1:  We believe that automatically sorting the consult list provides  a better user experience as the user can immediately see the upcoming consults in the panel, without having to type a sort command.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="calendar-feature-2"><a class="link" href="#calendar-feature-2">Calendar feature</a></h3>
+<div class="paragraph">
+<p><strong>TAble</strong> allows NUS SoC teaching assistants to bring up a calendar view of all their upcoming consults, tutorials and reminders.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<div class="paragraph">
+<p>The key command which users can call is the <code>viewCalendar</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Most functions to display the calendar window are called within the <code>CalendarWindow</code> class, as it is the main class that drives the calendar view.
+The <code>CalendarWindow</code> class extends <code>UiPart&lt;Stage&gt;</code>, and represents the calendar using a <code>GridPane</code> as the skeleton of the calendar, with individual dates being populated by a <code>CalendarDay</code> class which extends <code>UiPart&lt;Region&gt;</code>.
+The <code>CalendarDay</code> has a <code>StackPane</code> that displays the number of <code>ConsultS</code>, <code>TutorialS</code> and <code>ReminderS</code> each day.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram demonstrates how the Calendar is initialised, each time the TAble app is set up.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CalendarWindowSequenceDiagram.png" alt="CalendarWindowSequenceDiagram">
+</div>
+<div class="title">Figure 3. Sequence diagram of creation of Calendar</div>
+</div>
+<div class="paragraph">
+<p>The above sequence diagram illustrates how the Calendar is initialised when the TAble app is start up. Thus, whenever the user inputs the <code>viewCalendar</code> command,
+this calendar window is brought up, similar to how the Help window is brought up as well. The calendar window brought up will show the calendar view of the current month and year.</p>
+</div>
+<div class="paragraph">
+<p>The calendar window also stores the <code>UniqueConsultList</code>, <code>UniqueTutorialList</code> and the <code>UniqueReminderList</code>. As seen in the sequence diagram above, the calendar window checks for the consults, tutorials and reminders in the 3 lists, to see if they are on a particular date.
+If they occur on that date, the <code>StackPane</code> in <code>CalendarDay</code> will be updated to reflect the corresponding number of consult, tutorial and reminders.
+As seen in the screenshot below, the number of reminders, tutorials and consults will not clash, as they take up the top, middle and bottom rows respectively.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CalendarReminderTutConsult.png" alt="CalendarReminderTutConsult">
+</div>
+<div class="title">Figure 4. Screenshot of how the number of reminders, tutorials and consults are displayed on the same day</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="displaying-calendar-as-a-separate-window"><a class="link" href="#displaying-calendar-as-a-separate-window">Displaying calendar as a separate window</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Displaying the calendar view as a separate window.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Having a calendar view permanently by the side of TAble.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is clearer and less visually clunky for the user, as information overload is prevented.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is more intuitive, as the user can always view the calendar at the side for his upcoming schedules.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lower user experience as the user has to type in a command to view the calendar.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The UI may be too cluttered as there are already alot of information being displayed currently.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1:  We believe that our current implementation of the UI has all of TAble&#8217;s core features, and the calendar view can and should
+be implemented as a separate window to prevent visual clutter. The command to view the calendar window command is also short and intuitive to remember, thus the user experience
+would likely not be significantly affected.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="link" href="#use-cases">Use Cases</a></h2>
+<div class="sectionbody">
+<h3 id="use-case-edit-consult-u03" class="discrete">Use case: Edit consult (U03)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to update either the time, date or place of an existing consult</p>
+</li>
+<li>
+<p>System updates the existing consult according to the the User&#8217;s request</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The consult does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that the consult does not exist.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The time, date or place provided is in the wrong format.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System shows an error message that time, date or place must be provided in the correct format.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-consult-u04" class="discrete">Use case: Delete consult (U04)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to delete an existing consult</p>
+</li>
+<li>
+<p>System removes the existing consult from the database</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The consult does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that the consult does not exist.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The user enters the delete consult command in the wrong format.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System shows an error message that the wrong delete consult command format was given.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 15:33:09 UTC</div></div></div></body></html>

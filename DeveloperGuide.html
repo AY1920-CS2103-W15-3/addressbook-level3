@@ -44,8 +44,6 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-student">F.2. Deleting a student</a></li>
-<li><a href="#snoozing-a-reminder">F.3. Snoozing a reminder</a></li>
-<li><a href="#viewing-calendar">F.4. Viewing calendar</a></li>
 </ul>
 </li>
 </ul>
@@ -211,7 +209,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>TAbleParser</code> class to parse the user command.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
@@ -279,20 +277,6 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Student</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Student</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
-<br>
-<span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span>
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
@@ -314,7 +298,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the Address Book and TAble data in json format and read it back.</p>
+<p>can save the TAble data in json format and read it back.</p>
 </li>
 </ul>
 </div>
@@ -2362,12 +2346,11 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+<p>=== Snoozing a reminder</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="snoozing-a-reminder"><a class="link" href="#snoozing-a-reminder">F.3. Snoozing a reminder</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2398,9 +2381,9 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>=== Viewing calendar</p>
 </div>
-<div class="sect2">
-<h3 id="viewing-calendar"><a class="link" href="#viewing-calendar">F.4. Viewing calendar</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2430,4 +2413,6 @@ Expected: The <code>Calendar</code> window will be closed. Alternatively, the us
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 08:47:52 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 15:33:09 UTC</div></div></div></body></html>
