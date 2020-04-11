@@ -10,7 +10,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>TAble is your handy desktop app, optimized for TAs who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI)! Mark attendance, arrange consults, add module notes, and more with TAble! It has a GUI created with JavaFX and written in Java, and has about 10 kLoC.</p>
+<p>TAble is your handy desktop app, optimized for TAs who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI)! Mark attendance, arrange consults, add module notes, set reminders and more with TAble! It has a GUI created with JavaFX and written in Java, and has about 10 kLoC.</p>
 </div>
 </div>
 </div>
@@ -27,13 +27,43 @@
 <p>What it does: Allows the user to work with reminders using <strong>TAble</strong> to increase their productivity.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Justification: Teaching Assistants have many tasks to keep track of when managing a tutorial class (e.g. sending of administrative information to students, uploading of materials/attendance, keeping professor up to date etc). Therefore, it is important for the Teaching Assistants to have a way to keep track of their ongoing tasks so that they are not missed out.</p>
+</li>
+<li>
+<p>Highlights: Reminders are auto sorted according to their due date and time with different colors to distinguish tasks that are due, in progress or done. Reminders that are due on the current day also shows the number of hours and minutes left in real time.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a feature that allows the user to navigate to previous commands using up/down keys.</p>
+<p><em>Minor enhancements</em>:<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added a feature that allows the user to navigate to previous commands using up/down keys</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Eliminates the need for user to retype repetitive commands (e.g. adding students to a tutorial).<br></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Added an autocomplete feature that provides user with suggestions according to their current input</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Eliminates the need to type out long commands/prefixes which increases the user&#8217;s productivity.</p>
+</li>
+<li>
+<p>Credits: <em><a href="https://controlsfx.bitbucket.io/">ControlsFX</a></em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=CranstonYeo&amp;tabRepo=AY1920S2-CS2103-W15-3%2Fmain%5Bmaster%5D">RepoSense - Code Report</a>]</p>
@@ -47,7 +77,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>To be Updated</p>
+<p>Maintained Graphical User Interface for the Main Window of the application <a href="https://github.com/AY1920S2-CS2103-W15-3/main/pull/110">#110</a> <a href="https://github.com/AY1920S2-CS2103-W15-3/main/pull/138">#138</a></p>
+</li>
+<li>
+<p>Managed Graphical User Interface for ReminderListPanel of the application <a href="https://github.com/AY1920S2-CS2103-W15-3/main/pull/105">#105</a></p>
 </li>
 </ul>
 </div>
@@ -57,7 +90,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>To be Updated</p>
+<p>Added the functionality for list/find commands to open the corresponding tab in GUI.</p>
 </li>
 </ul>
 </div>
@@ -67,20 +100,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Added Reminders feature in User Guide.</p>
-</li>
-<li>
-<p>Added Reminders user stories and use cases.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Community:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>To be updated</p>
+<p>Updated User Guide and Developer Guide for Reminder features, including adding relevant PlantUML diagrams in the Developer Guide to enhance comprehensibility of the codebase and the structure of the feature.</p>
 </li>
 </ul>
 </div>
@@ -90,7 +110,20 @@
 <div class="ulist">
 <ul>
 <li>
-<p>To be updated</p>
+<p>Setting up of github&#8217;s issue tracker.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Summary of contributions:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Created over [<a href="https://github.com/AY1920S2-CS2103-W15-3/main/pulls?q=is%3Apr+author%3ACranstonYeo+">10 pull requests</a>] on GitHub</p>
+</li>
+<li>
+<p>Reviewed over [<a href="https://github.com/AY1920S2-CS2103-W15-3/main/pulls?q=is%3Apr+reviewed-by%3ACranstonYeo">15 pull requests</a>] on GitHub</p>
 </li>
 </ul>
 </div>
@@ -99,9 +132,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -396,8 +426,420 @@ Returns all reminders on 05 May 2020.</p>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="reminder-feature-2"><a class="link" href="#reminder-feature-2">Reminder feature</a></h3>
 <div class="paragraph">
-<p><em>To be updated</em></p>
+<p><strong>TAble</strong> allows NUS SoC teaching assistants to create reminders to help them in keeping track of their ongoing or upcoming tasks.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>A reminder is make up of a description, date and time which uniquely identify each reminder. Each reminder has a boolean attribute to indicate if the task is done.</p>
+</div>
+<div class="paragraph">
+<p>To find a reminder in the reminder list, user must key in at least one of the optional predicates, <code>DescriptionContainsKeywordsPredicate</code> or <code>DatePredicate</code>. <code>DescriptionContainsKeywordsPredicate</code> contains a list of strings entered by the user while <code>DatePredicate</code> contains the input <code>LocalDate</code>.</p>
+</div>
+<div class="paragraph">
+<p>The list of strings are matched against the description of the reminders in the reminder list while the <code>LocalDate</code> is matched against the date field. The reminder list is then updated with the list of matching reminders via <code>updatedFilteredReminderList</code> in <code>Model</code>. Below shows a sequence diagram of the execution.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindReminderSequenceDiagram.png" alt="FindReminderSequenceDiagram">
+</div>
+<div class="title">Figure 1. Sequence diagram for finding reminders</div>
+</div>
+<div class="paragraph">
+<p>A snooze reminder feature is also implemented for the users to easily postpone a reminder. It&#8217;s implementation is similar to the <code>editReminderCommand</code> where it creates a new reminder to replace the specified reminder instead of editing the current reminder directly. This is to ensure the reminders are immutable which improves the stability of the application.</p>
+</div>
+<div class="paragraph">
+<p>User can choose to snooze the reminder in any/all of the following time units: days, hours and/or minutes. Only positive integer are allowed as the user are not supposed to snooze the reminders backwards or snooze it by zero duration. Reminders that are done are also not allowed to be snoozed. Following is an activity diagram for the command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SnoozeReminderActivityDiagram.png" alt="SnoozeReminderActivityDiagram">
+</div>
+<div class="title">Figure 2. Activity diagram for the command snoozeReminder in the reminder feature</div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-11 07:12:00 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="sorting-the-reminders"><a class="link" href="#sorting-the-reminders">Sorting the reminders</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Automatically sorts the reminder list whenever a reminder is added</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Sorts the reminder list only when user enters a sort command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is intuitive for the reminder list to be sorted according to their done status and deadline.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User can decide how they want the list to be sorted (e.g. in alphabetical order).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User are not able to sort the list according to their preferences.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User have to type the sort command each time a new task is added.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1:  We believe that automatically sorting the list provide with a better user experience as they could immediately see the most urgent tasks in the reminder&#8217;s list upon startup without first typing a sort command.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="ways-to-inform-user-about-their-upcoming-tasks"><a class="link" href="#ways-to-inform-user-about-their-upcoming-tasks">Ways to inform user about their upcoming tasks</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1: (Current Choice)</strong> Each reminder displays the duration left before the task is due</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> A pop-up notification when a reminder is due or about to due</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User could see clearly the duration left for each task at a glance.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User are notified of upcoming tasks without having to look through the list of reminders.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reminders that are about to due could be missed out.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiple pop-up notifications from the reminders could cause annoyance for the user.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1: Pop-up notifications can be intrusive and potentially cause lag to the program which negatively impacts user&#8217;s experience.
+Furthermore, they are hard to test due to their volatile nature and including them might decrease the stability of the application.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="link" href="#use-cases">Use Cases</a></h2>
+<div class="sectionbody">
+<h3 id="use-case-add-reminder-u13" class="discrete">Use case: Add reminder (U13)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add reminder with description, date and time of reminder included</p>
+</li>
+<li>
+<p>System saves the new reminder into the database</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The description, date or time of reminder is not included.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that description, date and time must all be included.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-mark-reminder-as-done-u14" class="discrete">Use case: Mark reminder as done (U14)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to mark an existing reminder as done</p>
+</li>
+<li>
+<p>System updates the existing reminder according to the the User&#8217;s request</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The reminder does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that the reminder does not exist.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The reminder is already done.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System shows an error message that the reminder is already done.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-update-reminder-u15" class="discrete">Use case: Update reminder (U15)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to update either the description, date or time of an existing reminder</p>
+</li>
+<li>
+<p>System updates the existing reminder according to the the User&#8217;s request</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The reminder does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that the reminder does not exist.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The description, date and time of reminder are not included.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System shows an error message that at least one of description, date or time must be included.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-reminder-u16" class="discrete">Use case: Delete reminder (U16)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to delete an existing reminder</p>
+</li>
+<li>
+<p>System removes the existing reminder from the database</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The reminder does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that the reminder does not exist.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-list-reminders-u17" class="discrete">Use case: List reminders (U17)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list all existing reminders</p>
+</li>
+<li>
+<p>System returns all the existing reminders from the database</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-reminders-u18" class="discrete">Use case: Find reminders (U18)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find all reminders matching with some particular keywords and/or date.</p>
+</li>
+<li>
+<p>System returns a list with all the matching reminders from the database</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The keyword and date are not included.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that at least a keyword or date must be included.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-snooze-reminder-u19" class="discrete">Use case: Snooze reminder (U19)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to snooze an existing reminder by a certain number of day, hour or minute</p>
+</li>
+<li>
+<p>System updates the existing reminder according to the the user&#8217;s request</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The reminder does not exist.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that the reminder does not exist.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The day, hour and minute of reminder to be snoozed by are not included.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System shows an error message that at least one of day, hour or minute must be included.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. The reminder is already done.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c1. System shows an error message that the reminder is already done.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-11 13:09:24 UTC</div></div></div></body></html>
