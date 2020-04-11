@@ -45,8 +45,10 @@
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-student">F.2. Deleting a student</a></li>
 <li><a href="#copying-module-links-from-module">F.3. Copying module links from module</a></li>
-<li><a href="#snoozing-a-reminder">F.4. Snoozing a reminder</a></li>
-<li><a href="#viewing-calendar">F.5. Viewing calendar</a></li>
+<li><a href="#marking-attendance-of-a-tutorial-student">F.4. Marking attendance of a tutorial student</a></li>
+<li><a href="#copying-tutorial-students-emails">F.5. Copying tutorial students' emails</a></li>
+<li><a href="#snoozing-a-reminder">F.6. Snoozing a reminder</a></li>
+<li><a href="#viewing-calendar">F.7. Viewing calendar</a></li>
 </ul>
 </li>
 </ul>
@@ -2388,7 +2390,7 @@ It is recommended that the module information panel is currently showing the tar
 </li>
 <li>
 <p>Test case: <code>copyModLink 1 modCode/CS2103</code><br>
-Expected: the first module link of the module is copied to the user&#8217;s clipboard.</p>
+Expected: The first module link of the module is copied to the user&#8217;s clipboard.</p>
 </li>
 <li>
 <p>Test case: <code>copyModLink -1 modCode/CS2103</code><br>
@@ -2402,7 +2404,77 @@ Expected: No module link is copied to the clipboard (unless there is a module wi
 </div>
 </div>
 <div class="sect2">
-<h3 id="snoozing-a-reminder"><a class="link" href="#snoozing-a-reminder">F.4. Snoozing a reminder</a></h3>
+<h3 id="marking-attendance-of-a-tutorial-student"><a class="link" href="#marking-attendance-of-a-tutorial-student">F.4. Marking attendance of a tutorial student</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Marking a student as present or absent (by default absent) for a particular week in the semester (3-13 inclusive).</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisities: Target tutorial must exist in TAble and have at least one student enrolled in it.</p>
+</li>
+<li>
+<p>Test case: <code>markPresent tutorialIndex/2 week/3 student/1</code><br>
+Expected: Using <code>listAttendance tutorialIndex/2 week/3</code> will display an attendance list with the 1st student highlighted green.</p>
+</li>
+<li>
+<p>Test case: <code>markPresent tutorialIndex/2 week/3 student/all</code><br>
+Expected: Using <code>listAttendance tutorialIndex/2 week/3</code> will display an attendance list with all the students highlighted green.</p>
+</li>
+<li>
+<p>Test case: <code>markAbsent tutorialIndex/2 week/3 student/1</code><br>
+Expected: Using <code>listAttendance tutorialIndex/2 week/3</code> will display an attendance list with the 1st student highlighted red.</p>
+</li>
+<li>
+<p>Test case: <code>markAbsent tutorialIndex/2 week/3 student/all</code><br>
+Expected: Using <code>listAttendance tutorialIndex/2 week/3</code> will display an attendance list with all the students highlighted red.</p>
+</li>
+<li>
+<p>Test case: <code>markPresent tutorialIndex/-1 week/3 student/1</code><br>
+Expected: Error message displayed, with no change to attendance list. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>markPresent tutorialIndex/1 week/0 student/1</code><br>
+Expected: Error message displayed, with no change to attendance list. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>markPresent tutorialIndex/-1 week/3 student/-2</code><br>
+Expected: Error message displayed, with no change to attendance list. Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="copying-tutorial-students-emails"><a class="link" href="#copying-tutorial-students-emails">F.5. Copying tutorial students' emails</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Copying all tutorial students' emails at once onto user&#8217;s clipboard with the <code>copyTutorialEmails</code> command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisities: Target tutorial must exist in TAble and have at least one student enrolled in it, otherwise the copied information would be blank.</p>
+</li>
+<li>
+<p>Test case: <code>copyTutorialEmails tutorialIndex/2</code><br>
+Expected: All the emails of the students in the specified tutorial is copied to the user&#8217;s clipboard, separated with "; "</p>
+</li>
+<li>
+<p>Test case: <code>copyTutorialEmails tutorialIndex/-1</code><br>
+Expected: No student emails are copied to the clipboard, and an error message is shown to the user.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="snoozing-a-reminder"><a class="link" href="#snoozing-a-reminder">F.6. Snoozing a reminder</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2435,7 +2507,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-calendar"><a class="link" href="#viewing-calendar">F.5. Viewing calendar</a></h3>
+<h3 id="viewing-calendar"><a class="link" href="#viewing-calendar">F.7. Viewing calendar</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2465,4 +2537,4 @@ Expected: The <code>Calendar</code> window will be closed. Alternatively, the us
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 16:15:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-11 02:00:36 UTC</div></div></div></body></html>
