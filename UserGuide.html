@@ -1432,13 +1432,13 @@ Reminders will be automatically sorted according to their date and time, with th
 <div class="ulist">
 <ul>
 <li>
-<p>The description provided should be any valid string.</p>
+<p>The description provided should be any valid string that is not blank or exceeds 80 characters.</p>
 </li>
 <li>
-<p>The date provided must be in YYYY-MM-DD format</p>
+<p>The date provided must be in YYYY-MM-DD format.</p>
 </li>
 <li>
-<p>The time provided must be in HH:MM format, i.e: 24-hour format</p>
+<p>The time provided must be in HH:MM format, i.e: 24-hour format.</p>
 </li>
 <li>
 <p>The reminder must be in the future.</p>
@@ -1453,7 +1453,7 @@ Reminders will be automatically sorted according to their date and time, with th
 <div class="ulist">
 <ul>
 <li>
-<p><code>addReminder desc/Mark midterms papers date/2020-03-05 time/14:00</code></p>
+<p><code>addReminder desc/Mark midterms papers date/2020-10-05 time/14:00</code></p>
 </li>
 </ul>
 </div>
@@ -1498,14 +1498,62 @@ Edits the date of the 3rd reminder to 20th May 2020 18:00 hours i.e. 6.00 p.m.</
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-all-reminders-code-listreminder-code"><a class="link" href="#list-all-reminders-code-listreminder-code">3.6.3. List all reminders: <code>listReminder</code></a></h4>
+<h4 id="finding-reminders-by-their-descriptions-or-date-code-findreminder-code"><a class="link" href="#finding-reminders-by-their-descriptions-or-date-code-findreminder-code">3.6.3. Finding reminders by their descriptions or date: <code>findReminder</code></a></h4>
+<div class="paragraph">
+<p>Finds reminders matching with the given descriptions or date.
+Format: <code>findReminder [desc/DESCRIPTION] [MORE_DESCRIPTIONS] [date/DATE]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>Mark</code> will match <code>mark</code>.</p>
+</li>
+<li>
+<p>The order of the descriptions does not matter. e.g. <code>Mark papers</code> will match <code>Papers mark</code></p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Mar</code> will not match <code>Mark</code></p>
+</li>
+<li>
+<p>Reminders matching at least one description will be returned (i.e. <code>OR</code> search). e.g. <code>Mark midterms</code> will return <code>Mark papers</code>, <code>Midterms exam</code></p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>If both optional fields are provided, only reminders matching both criteria will be displayed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findReminder desc/mark</code><br>
+Returns reminders containing the keyword 'mark'.</p>
+</li>
+<li>
+<p><code>findReminder date/2020-05-05</code><br>
+Returns all reminders on 05 May 2020.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-all-reminders-code-listreminder-code"><a class="link" href="#list-all-reminders-code-listreminder-code">3.6.4. List all reminders: <code>listReminder</code></a></h4>
 <div class="paragraph">
 <p>Lists all the reminders that the TA have added on TAble.<br>
 Format: <code>listReminder</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="marking-a-reminder-as-done-code-donereminder-code"><a class="link" href="#marking-a-reminder-as-done-code-donereminder-code">3.6.4. Marking a reminder as done: <code>doneReminder</code></a></h4>
+<h4 id="marking-a-reminder-as-done-code-donereminder-code"><a class="link" href="#marking-a-reminder-as-done-code-donereminder-code">3.6.5. Marking a reminder as done: <code>doneReminder</code></a></h4>
 <div class="paragraph">
 <p>Marks the reminder from the reminder list as done.<br>
 Format: <code>doneReminder INDEX</code></p>
@@ -1553,7 +1601,7 @@ Mark the 3rd reminder in TAble as done.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-reminder-code-deletereminder-code"><a class="link" href="#deleting-a-reminder-code-deletereminder-code">3.6.5. Deleting a reminder: <code>deleteReminder</code></a></h4>
+<h4 id="deleting-a-reminder-code-deletereminder-code"><a class="link" href="#deleting-a-reminder-code-deletereminder-code">3.6.6. Deleting a reminder: <code>deleteReminder</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified reminder from the reminder list.<br>
 Format: <code>deleteReminder INDEX</code></p>
@@ -1589,7 +1637,7 @@ Deletes the 3rd reminder in TAble.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="snoozing-a-reminder-code-snoozereminder-code"><a class="link" href="#snoozing-a-reminder-code-snoozereminder-code">3.6.6. Snoozing a reminder: <code>snoozeReminder</code></a></h4>
+<h4 id="snoozing-a-reminder-code-snoozereminder-code"><a class="link" href="#snoozing-a-reminder-code-snoozereminder-code">3.6.7. Snoozing a reminder: <code>snoozeReminder</code></a></h4>
 <div class="paragraph">
 <p>Snoozes a reminder in the reminder list.<br>
 Format: <code>snoozeReminder INDEX [day/DAY] [hour/HOUR] [minute/MINUTE]</code></p>
@@ -1626,45 +1674,6 @@ Postpone the second reminder to 3 days and 2 hours later.</p>
 <li>
 <p><code>snoozeReminder 4 minute/30</code><br>
 Postpone the fourth reminder to 30 minutes later.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="finding-reminders-by-information-or-date-code-findreminder-code"><a class="link" href="#finding-reminders-by-information-or-date-code-findreminder-code">3.6.7. Finding reminders by information or date: <code>findReminder</code></a></h4>
-<div class="paragraph">
-<p>Finds reminders matching with the given keyword or date.
-Format: <code>findReminder [desc/DESCRIPTION] [date/DATE]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>Mark</code> will match <code>mark</code></p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>If both optional fields are provided, only reminders matching both criteria will be displayed.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>findReminder desc/mark</code><br>
-Returns reminders containing the keyword 'mark'.</p>
-</li>
-<li>
-<p><code>findReminder date/2020-05-05</code><br>
-Returns all reminders on 05 May 2020.</p>
 </li>
 </ul>
 </div>
@@ -1897,7 +1906,18 @@ e.g <code>editConsult 3 place/The Deck</code></p>
 <ul>
 <li>
 <p><strong>Add</strong> : <code>addReminder desc/DESCRIPTION date/DATE time/TIME</code><br>
-e.g. <code>addReminder desc/Upload week 11 tutorial answers date/2020-03-31 time/15:00</code></p>
+e.g. <code>addReminder desc/Upload week 11 tutorial answers date/2020-10-31 time/15:00</code></p>
+</li>
+<li>
+<p><strong>Edit</strong> : <code>editReminder INDEX [desc/DESCRIPTION] [date/DATE] [time/TIME]</code><br>
+e.g <code>editReminder 3 date/2020-10-05</code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>findReminder [desc/DESCRIPTION] [MORE_DESCRIPTIONS] [date/DATE]</code><br>
+e.g <code>findReminder desc/midterms paper date/2020-10-15</code></p>
+</li>
+<li>
+<p><strong>List</strong> : <code>listReminder</code></p>
 </li>
 <li>
 <p><strong>Done</strong> : <code>doneReminder INDEX</code><br>
@@ -1908,19 +1928,8 @@ e.g. <code>doneReminder 2</code></p>
 e.g. <code>deleteReminder 2</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>editReminder INDEX [desc/DESCRIPTION] [date/DATE] [time/TIME]</code><br>
-e.g <code>editReminder 3 date/2020-04-05</code></p>
-</li>
-<li>
 <p><strong>Snooze</strong> : <code>snoozeReminder INDEX [day/DAY] [hour/HOUR] [minute/MINUTE]</code><br>
 e.g <code>snoozeReminder 4 hour/2 minute/30</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>findReminder [desc/DESCRIPTION] [date/DATE]</code><br>
-e.g <code>findReminder desc/midterms date/2020-03-15</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>listReminder</code></p>
 </li>
 </ul>
 </div>
@@ -1942,4 +1951,4 @@ e.g <code>findReminder desc/midterms date/2020-03-15</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 08:59:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 12:11:47 UTC</div></div></div></body></html>
