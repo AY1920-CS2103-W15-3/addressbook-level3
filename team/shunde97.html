@@ -10,7 +10,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>TAble is your handy desktop app, optimized for TAs who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI)! Mark attendance, arrange consults, add module notes, and more with TAble! It has a GUI created with JavaFX and written in Java, and has about 10 kLoC.</p>
+<p>TAble is your handy desktop app, optimized for TAs who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI)! Mark attendance, arrange consults, add module notes, and more with TAble! It has a GUI created with JavaFX and written in Java, and has about 20 kLoC.</p>
 </div>
 </div>
 </div>
@@ -20,29 +20,41 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: Enabled support for <strong>Students</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p><strong>What it does</strong>: The user is able to add/edit/delete/list/clear/find all 'Students' in TAble. The user can also find 'Students' in TAble using their names or matric numbers as keywords. Stronger checks are implemented to ensure no duplicate entries for email addresses and matric numbers but allows for duplicate names to appear, which accurately simulates the real world where 2 students can have the same name but they will have different matric numbers and email addresses.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p><strong>Justification</strong>: Teaching Assistants (TAs) have the main job role of teaching a group of students. Therefore it is important for TAs to have an accurate and updated list of students he can refer to across all his different tutorials so that he can account for every student. This helps consolidate important information about all the students, and allows him to find students, and make edits or delete them if required to maintain an accurate and updated list of students. It also allows efficient tracking of events as changes to the list of students will be accurately reflected in their corresponding tutorial/consults.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p><strong>Highlights</strong>: A separate student panel which displays all of the user&#8217;s 'Students' exist for the user to easily keep track of all his students and
+quickly see information information regarding each student.  Any edit or deletion of students will be reflected accordingly in the corresponding tutorial and/or consultation the student is involved. There are also labels which help TAs identify which module and tutorials the student is currently enrolled in.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancements</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added labels on the Graphical User Interface which allows the user to identify which module and tutorials each student is currently enrolled in</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Eliminates the need for user to look through all tutorials to identify the tutorials each student is currently enrolled in, which is repetitive and can be inefficient especially when the number of tutorials in TAble increases significantly.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>All code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=shunde97&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">RepoSense - Code Report</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,17 +65,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>To be updated</p>
-</li>
-</ul>
-</div>
+<p>Raised issues that needed to be solved and provided some solutions to these problems. [<a href="https://github.com/AY1920S2-CS2103-W15-3/main/issues?q=is%3Aissue+involves%3Ashunde97">Issues raised/discussed</a>]</p>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>To be updated</p>
+<p>Managed Graphical User Interface for StudentListPanel of the application <a href="https://github.com/AY1920S2-CS2103-W15-3/main/pull/201">#201</a></p>
 </li>
 </ul>
 </div>
@@ -73,17 +78,23 @@
 <div class="ulist">
 <ul>
 <li>
-<p>To be updated</p>
+<p>Contributed in the User Guide and Developer Guide for <strong>Student</strong> features, including adding relevant PlantUML diagrams in the Developer Guide to enhance comprehensibility of the codebase and the structure of the feature.</p>
+</li>
+<li>
+<p>Fix and Maintain Product Website <a href="https://github.com/AY1920S2-CS2103-W15-3/main/pull/227">#227</a></p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Tools:</p>
+<p>Summary of contributions:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>To be updated</p>
+<p>Created over [<a href="https://github.com/AY1920S2-CS2103-W15-3/main/pulls?q=is%3Apr+author%3Ashunde97">19 pull requests</a>] on GitHub</p>
+</li>
+<li>
+<p>Reviewed over [<a href="https://github.com/AY1920S2-CS2103-W15-3/main/pulls?q=is%3Apr+reviewed-by%3Ashunde97">11 pull requests</a>]on GitHub</p>
 </li>
 </ul>
 </div>
@@ -92,9 +103,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -111,14 +119,358 @@
 </tr>
 </tbody>
 </table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">include</dt>
-<dd>
-<p>== Contributions to the Developer Guide</p>
-</dd>
-</dl>
+<div class="sect2">
+<h3 id="students-feature-written-by-chiang-shun-de"><a class="link" href="#students-feature-written-by-chiang-shun-de">Students Feature (Written by Chiang Shun De)</a></h3>
+<div class="sect3">
+<h4 id="adding-a-student-code-addstudent-code"><a class="link" href="#adding-a-student-code-addstudent-code">Adding a student: <code>addStudent</code></a></h4>
+<div class="paragraph">
+<p>Adds a student to TAble<br>
+Format: <code>addStudent name/NAME matric/MATRIC_NUMBER email/EMAIL [tag/TAG]&#8230;&#8203;</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Students name have a maximum length of 70 characters as it is the standard length for database fields.</p>
+</li>
+<li>
+<p>In TAble there can be duplicate names, but not duplicate emails and matric numbers as they are unique to each student.</p>
+</li>
+<li>
+<p>Tags are sorted alphabetically for easier referencing.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A student can have any number of tags (including 0), but each tag is limited to a length of 40 characters.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The students name will be automatically formatted such that it follows a standard format of
+the first letter of each word being uppercase and the rest lowercase, and a maximum of one space between each word. This
+is done to follow proper naming convention, making it more presentable and readable,
+and remedies any errors which may have happened when extracting the list of student names.
+The removal of excess spaces is also done for tags.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example: <code>addStudent name/john      doe matric/A0123456X email/johnd@example.com</code>
+adds a student with the name "John Doe" into the list.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addStudent name/John Tan matric/A0123456X email/johnt@example.com</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Output:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>New student added: John Tan Matric Number: A0123456X Email: johnt@example.com Tags:</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addStudent name/Betsy Daphne Anne Lim matric/A1234567X tag/good student email/betsydaphneannelim@example.com tag/CS2103</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Output:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>New student added: Betsy Daphne Anne Lim Matric Number: A1234567X Email: betsydaphneannelim@example.com Tags: [CS2103][good student]</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-students-code-liststudent-code"><a class="link" href="#listing-all-students-code-liststudent-code">Listing all students : <code>listStudent</code></a></h4>
+<div class="paragraph">
+<p>Shows a list of all students in TAble.<br>
+Format: <code>listStudent</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clears-the-list-of-students-code-clearstudent-code"><a class="link" href="#clears-the-list-of-students-code-clearstudent-code">Clears the list of students : <code>clearStudent</code></a></h4>
+<div class="paragraph">
+<p>Clears the list of all students in TAble.<br>
+Format: <code>clearStudent</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-student-code-editstudent-code"><a class="link" href="#editing-a-student-code-editstudent-code">Editing a student : <code>editStudent</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing student in TAble.<br>
+Format: <code>editStudent INDEX [name/NAME] [matric/MATRIC_NUMBER] [email/EMAIL] [tag/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The edited student will be reflected on all consults with them or any tutorials they are enrolled in.</p>
+</li>
+<li>
+<p>When editing students, do note that there can be duplicate names in TAble, but not duplicate emails and matric numbers as they are unique to each student.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the student at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed student list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When editing tags, the existing tags of the student will be removed i.e adding of tags is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all the student&#8217;s tags by typing <code>tag/</code> without specifying any tags after it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editStudent 1 email/johntan@example.com</code><br>
+Edits the email address of the 1st student to be <code>johndoe@example.com</code>.</p>
+</li>
+<li>
+<p><code>editStudent 2 name/Betsy Lim tag/</code><br>
+Edits the name of the 2nd student to be <code>Betsy Lim</code> and clears all existing tags associated with the 2nd student.</p>
+</li>
+<li>
+<p><code>editStudent 3 matric/A0123456Z tag/good student</code><br>
+Edits the matric number of the 3rd student to be <code>A0123456Z</code> and adds a 'good student' tag</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="locating-students-by-name-code-findstudent-code"><a class="link" href="#locating-students-by-name-code-findstudent-code">Locating students by name: <code>findStudent</code></a></h4>
+<div class="paragraph">
+<p>Finds students whose names contain any of the given keywords.<br>
+Format: <code>findStudent KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Hans Lim</code> will match <code>Lim Hans</code></p>
+</li>
+<li>
+<p>Only the name is searched.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+</li>
+<li>
+<p>Students matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Lim</code> will return <code>Hans Tan</code>, <code>Lim Yang</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findStudent John</code><br>
+Returns students <code>John Ang</code> and <code>John Tan</code>
+Example output:</p>
+</li>
+</ul>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>2 students listed!</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findStudent Betsy Tim John</code><br>
+Returns any student having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="locating-students-by-matric-number-code-findstudentmatricnumber-code"><a class="link" href="#locating-students-by-matric-number-code-findstudentmatricnumber-code">Locating students by matric number: <code>findStudentMatricNumber</code></a></h4>
+<div class="paragraph">
+<p>Finds students whose matric number matches the given matric number.<br>
+Format: <code>findStudentMatricNumber matric/MATRIC_NUMBER</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>a0123456a</code> will match <code>A0123456A</code></p>
+</li>
+<li>
+<p>Only the matric number is searched.</p>
+</li>
+<li>
+<p>Only full matric number will be matched e.g. <code>A01234</code> will not match <code>A0123456A</code>, conversely
+<code>A0123456A</code> will only return the student with matric number 'A0123456A'</p>
+</li>
+<li>
+<p>The student with matric number matching the given matric number will be returned.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findStudentMatricNumber matric/A0111111X</code><br>
+Returns the student with matric number "A0111111X"</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-student-code-deletestudent-code"><a class="link" href="#deleting-a-student-code-deletestudent-code">Deleting a student : <code>deleteStudent</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified student from TAble.<br>
+This removes the student from all enrolled tutorials as well.<br>
+Format: <code>deleteStudent INDEX</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Deleting a student using the deleteStudent command will remove any consultations associated with
+the deleted student and removes the student from any tutorials they were enrolled in.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the student at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed student list. By default the student list will be the list
+displayed by the <code>listStudent</code> command.</p>
+</li>
+<li>
+<p>You can search for students using the <code>findStudent</code> or <code>findStudentMatricNumber</code> command and then using the <code>deleteStudent</code> command
+with the index based on the generated list by the <code>findStudent</code> or <code>findStudentMatricNumber</code> command.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listStudent</code><br>
+<code>deleteStudent 2</code><br>
+Deletes the 2nd student in TAble.</p>
+</li>
+<li>
+<p><code>findStudent Betsy</code><br>
+<code>deleteStudent 1</code><br>
+Deletes the 1st student in the list resulting from the <code>findStudent</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sort-students-alphabetically-by-name-code-sortstudentname-code-coming-in-v2-0"><a class="link" href="#sort-students-alphabetically-by-name-code-sortstudentname-code-coming-in-v2-0">Sort students alphabetically by name: <code>sortStudentName</code> [coming in v2.0]</a></h4>
+<div class="paragraph">
+<p>Sorts the current list of students according to their name in alphabetical order
+Format: <code>sortStudentName</code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 100%;">
@@ -129,8 +481,387 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="student-feature-written-by-chiang-shun-de"><a class="link" href="#student-feature-written-by-chiang-shun-de">Student feature (Written by Chiang Shun De)</a></h3>
 <div class="paragraph">
-<p><em>To be updated</em></p>
+<p><strong>Table</strong> allows NUS SoC teaching assistants to track and record all students that they will be teaching, and maintain accurate details of the students, such as their name, matriculation number (henceforth referred to as matric number), emails, and tags which serves as remarks.  Changes to the student’s identity fields or deletion of student will also be reflected in the corresponding tutorial or consultation associated with the student.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>A <code>Student</code> class stores all relevant information of students. The main components are the students’ name, matric number, email address. <code>Student</code> can also store the user&#8217;s remarks about the student through the tag parameter, which will sort the tags, if there are more than 1 tag, in alphabetical order. The class diagram below shows how all the different components interact to allow the student feature to function.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StudentCommandClassDiagram.png" alt="StudentCommandClassDiagram">
+</div>
+<div class="title">Figure 1. Class diagram of 'Student' feature, with only directly related classes displayed</div>
+</div>
+<div class="paragraph">
+<p>Referencing the above class diagram, a <code>Student</code> contains 4 key attributes,
+the student&#8217;s <code>name</code>, <code>matricNumber</code>, <code>email</code>, and a <code>set&lt;Tag&gt;</code> of <code>Tag</code>, which could be empty.
+The unique identifier of each student is the <code>matricNumber</code>, i.e. no two students in TAble can have the same matric number.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram illustrates the <code>findStudentMatricNumber</code> command, where a student which has the same matric number as the given matric number is found. The user must key in a correctly formatted matric number.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindStudentMatricNumberSequenceDiagram.png" alt="FindStudentMatricNumberSequenceDiagram">
+</div>
+<div class="title">Figure 2. Sequence diagram of 'findStudentMatricNumber' command</div>
+</div>
+<div class="paragraph">
+<p>Referencing the above sequence diagram, <code>LogicManager</code> executes the user&#8217;s input and calls <code>parseCommand(input)</code> of <code>TAbleParser</code>.
+<code>TAbleParser</code> then returns a new <code>FindStudentMatricNumberCommandParser()</code>. Via <code>FindStudentMatricNumberCommandParser</code>, the provided matric number is parsed into a <code>MatricNumberContainsKeywordsPredicate</code> predicate and a <code>FindStudentMatricNumberCommand</code> object with the <code>MatricNumberContainsKeywordsPredicate</code> predicate is created.
+Calling <code>updateFilteredStudentList(predicate)</code>, the provided matric number is compared against the matric number of students currently in TAble and the student list is then updated with the list of students whose matric number matches the provided matric number.
+The command returns a formatted string which shows how many students match the given matric number, which indicate that the command is called successfully</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram illustrates what happens when the <code>addStudent</code> command is called to add a student into TAble.
+There is a need to check that the given matric number and email address does not already exist in TAble</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddStudentActivityDiagram.png" alt="AddStudentActivityDiagram">
+</div>
+<div class="title">Figure 3. Activity diagram for 'addStudent' command in the 'Student' feature</div>
+</div>
+<div class="paragraph">
+<p>Referencing the above activity diagram, TAble will first check that all prefixes are present and formatted correctly, and that no multiple of the same prefix exists.
+It will then proceed to check if the name, matric number, email address, and tags (if any) are formatted correctly.
+It will then create a <code>Student</code> object using the provided name, matric number, email address, and tags (if any) and then check if there is a duplicate student inside TAble.
+If there are no duplicate student inside TAble, it will check across every student in TAble to see if the provided matric number or email address already exists inside TAble.
+If the provided matric number or email address does not belong to any student inside TAble already, the created student is then added into TAble and a message is returned indicating success.
+The new student will appear in the TAble.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 05:56:21 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="sorting-students"><a class="link" href="#sorting-students">Sorting Students</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Sort the list of students only when user enters a sort command</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Automatically sort the list of students whenever a student is added/edited/deleted</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User can decide how they want the list to be sorted (e.g. by alphabetical order).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is intuitive for the students to be sorted in alphabetical order, allows for easier referencing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User have to type the sort command each time a new student is added or an existing student is edited/deleted.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User are not able to sort the list of students according to their preferences. It is quite inefficient as the system
+would have to sort the list of students every a new student is added or an existing student is edited/deleted.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1:  From a user design perspective, a teaching assistant would scroll through the current list of students
+to check if the student has been added , or to identify which tutorial and modules the student has been added in. When the list gets bigger,
+he would have to scroll further to search for the student he is looking for or to check if a particular student has been added. With both <code>findStudent</code> and <code>findStudentMatricNumber</code> commands present,
+it would be more efficient to find the student using either of 2 commands than scrolling through the list of students. This also aligns with the project constraints that typing is preferred over mouse use.
+The functionality of sorting the list of students alphabetically via a command will be implemented in version 2.0 for a better user experience and a more presentable list of studenst.
+Currently the functionality that both <code>findStudent</code> and <code>findStudentMatricNumber</code> provides an efficient solution to identify students or check if they have been added.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="link" href="#use-cases">Use Cases</a></h2>
+<div class="sectionbody">
+<h3 id="use-case-add-student-u02" class="discrete">Use case: Add student (U02)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add a student with name, matric number, email address and tag included</p>
+</li>
+<li>
+<p>System saves the new student into the database</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The name, matric number, or email address is not included.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message which indicates that an invalid format was given.</p>
+</li>
+<li>
+<p>1a2. User enters student with all required fields included.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. The user enters a matric number or email address which already exists in the database.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System shows an error message that the given identity field already exists.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-edit-student-u03" class="discrete">Use case: Edit student (U03)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to update either the name, matric number, email address, or tags of an existing student based on the student&#8217;s index.</p>
+</li>
+<li>
+<p>Systems updates the students according to the User&#8217;s request.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message which indicates that an invalid command was given.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. The name, matric number, email address provided is in the invalid format.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System shows an error message which indicates that the field to be edited must be
+provided in the correct format.</p>
+</li>
+<li>
+<p>1b2. User enters the required fields in the correct format.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c. The matric number or email address provided already exists in the database.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c1. System shows an error message which indicates that the matric number or email address to be changed to already exists in the database.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-student-by-name-u04" class="discrete">Use case: Find student by name (U04)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find all students matching with some keywords.</p>
+</li>
+<li>
+<p>System returns a list with all matching students from the database.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The keyword is not included.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message the an invalid command was provided.</p>
+</li>
+<li>
+<p>1a2. User reenters the command with the keyword included.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-student-by-matric-number-u05" class="discrete">Use case: Find student by matric number (U05)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find the student with the matching matric number.</p>
+</li>
+<li>
+<p>System returns a list with the matching student from the database.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The matric number is not included.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that indicates matric number to be searched cannot be empty.</p>
+</li>
+<li>
+<p>1a2. User reenters the command with the matric number included.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. User keys in more than one matric number.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System shows an error message that indicates not to repeat prefixes.</p>
+</li>
+<li>
+<p>1b2. User reenters the command with only one matric number included.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-list-students-u06" class="discrete">Use case: List students (U06)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list all existing students in the database</p>
+</li>
+<li>
+<p>System shows the list of existing students students</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 07:00:54 UTC</div></div></div></body></html>

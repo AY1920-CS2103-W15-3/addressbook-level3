@@ -22,14 +22,15 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#module-feature-written-by-nigel-neo">3.1. Module feature (Written by Nigel Neo)</a></li>
-<li><a href="#tutorial-feature-written-by-sarah-lim">3.2. Tutorial feature (Written by Sarah Lim)</a></li>
-<li><a href="#consult-feature-written-by-han-ching">3.3. Consult feature (Written by Han Ching)</a></li>
-<li><a href="#reminder-feature-written-by-cranston-yeo">3.4. Reminder feature (Written by Cranston Yeo)</a></li>
-<li><a href="#calendar-feature-written-by-han-ching">3.5. Calendar feature (Written by Han Ching)</a></li>
-<li><a href="#common-design-considerations">3.6. Common Design Considerations</a></li>
-<li><a href="#logging">3.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
+<li><a href="#student-feature-written-by-chiang-shun-de">3.1. Student feature (Written by Chiang Shun De)</a></li>
+<li><a href="#module-feature-written-by-nigel-neo">3.2. Module feature (Written by Nigel Neo)</a></li>
+<li><a href="#tutorial-feature-written-by-sarah-lim">3.3. Tutorial feature (Written by Sarah Lim)</a></li>
+<li><a href="#consult-feature-written-by-han-ching">3.4. Consult feature (Written by Han Ching)</a></li>
+<li><a href="#reminder-feature-written-by-cranston-yeo">3.5. Reminder feature (Written by Cranston Yeo)</a></li>
+<li><a href="#calendar-feature-written-by-han-ching">3.6. Calendar feature (Written by Han Ching)</a></li>
+<li><a href="#common-design-considerations">3.7. Common Design Considerations</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
@@ -41,12 +42,13 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
 <li><a href="#command-history-and-auto-suggestion">F.2. Command history and Auto suggestion</a></li>
-<li><a href="#deleting-a-student">F.3. Deleting a student</a></li>
-<li><a href="#copying-module-links-from-module">F.4. Copying module links from module</a></li>
-<li><a href="#marking-attendance-of-a-tutorial-student">F.5. Marking attendance of a tutorial student</a></li>
-<li><a href="#copying-tutorial-students-emails">F.6. Copying tutorial students' emails</a></li>
-<li><a href="#snoozing-a-reminder">F.7. Snoozing a reminder</a></li>
-<li><a href="#viewing-calendar">F.8. Viewing calendar</a></li>
+<li><a href="#adding-a-student">F.3. Adding a student</a></li>
+<li><a href="#deleting-a-student">F.4. Deleting a student</a></li>
+<li><a href="#copying-module-links-from-module">F.5. Copying module links from module</a></li>
+<li><a href="#marking-attendance-of-a-tutorial-student">F.6. Marking attendance of a tutorial student</a></li>
+<li><a href="#copying-tutorial-students-emails">F.7. Copying tutorial students' emails</a></li>
+<li><a href="#snoozing-a-reminder">F.8. Snoozing a reminder</a></li>
+<li><a href="#viewing-calendar">F.9. Viewing calendar</a></li>
 </ul>
 </li>
 </ul>
@@ -157,13 +159,13 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
+<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>deleteStudent 1</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
 </div>
-<div class="title">Figure 3. Component interactions for <code>delete 1</code> command</div>
+<div class="title">Figure 3. Component interactions for <code>deleteStudent 1</code> command</div>
 </div>
 <div class="paragraph">
 <p>The sections below give more details of each component.</p>
@@ -232,13 +234,13 @@ The following class plays an important role at the architecture level:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("deleteStudent 1")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>deleteStudent 1</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -324,12 +326,107 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="module-feature-written-by-nigel-neo"><a class="link" href="#module-feature-written-by-nigel-neo">3.1. Module feature (Written by Nigel Neo)</a></h3>
+<h3 id="student-feature-written-by-chiang-shun-de"><a class="link" href="#student-feature-written-by-chiang-shun-de">3.1. Student feature (Written by Chiang Shun De)</a></h3>
+<div class="paragraph">
+<p><strong>Table</strong> allows NUS SoC teaching assistants to track and record all students that they will be teaching, and maintain accurate details of the students, such as their name, matriculation number (henceforth referred to as matric number), emails, and tags which serves as remarks.  Changes to the student’s identity fields or deletion of student will also be reflected in the corresponding tutorial or consultation associated with the student.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
+<div class="paragraph">
+<p>A <code>Student</code> class stores all relevant information of students. The main components are the students’ name, matric number, email address. <code>Student</code> can also store the user&#8217;s remarks about the student through the tag parameter, which will sort the tags, if there are more than 1 tag, in alphabetical order. The class diagram below shows how all the different components interact to allow the student feature to function.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/StudentCommandClassDiagram.png" alt="StudentCommandClassDiagram">
+</div>
+<div class="title">Figure 9. Class diagram of 'Student' feature, with only directly related classes displayed</div>
+</div>
+<div class="paragraph">
+<p>Referencing the above class diagram, a <code>Student</code> contains 4 key attributes,
+the student&#8217;s <code>name</code>, <code>matricNumber</code>, <code>email</code>, and a <code>set&lt;Tag&gt;</code> of <code>Tag</code>, which could be empty.
+The unique identifier of each student is the <code>matricNumber</code>, i.e. no two students in TAble can have the same matric number.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram illustrates the <code>findStudentMatricNumber</code> command, where a student which has the same matric number as the given matric number is found. The user must key in a correctly formatted matric number.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindStudentMatricNumberSequenceDiagram.png" alt="FindStudentMatricNumberSequenceDiagram">
+</div>
+<div class="title">Figure 10. Sequence diagram of 'findStudentMatricNumber' command</div>
+</div>
+<div class="paragraph">
+<p>Referencing the above sequence diagram, <code>LogicManager</code> executes the user&#8217;s input and calls <code>parseCommand(input)</code> of <code>TAbleParser</code>.
+<code>TAbleParser</code> then returns a new <code>FindStudentMatricNumberCommandParser()</code>. Via <code>FindStudentMatricNumberCommandParser</code>, the provided matric number is parsed into a <code>MatricNumberContainsKeywordsPredicate</code> predicate and a <code>FindStudentMatricNumberCommand</code> object with the <code>MatricNumberContainsKeywordsPredicate</code> predicate is created.
+Calling <code>updateFilteredStudentList(predicate)</code>, the provided matric number is compared against the matric number of students currently in TAble and the student list is then updated with the list of students whose matric number matches the provided matric number.
+The command returns a formatted string which shows how many students match the given matric number, which indicate that the command is called successfully</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram illustrates what happens when the <code>addStudent</code> command is called to add a student into TAble.
+There is a need to check that the given matric number and email address does not already exist in TAble</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddStudentActivityDiagram.png" alt="AddStudentActivityDiagram">
+</div>
+<div class="title">Figure 11. Activity diagram for 'addStudent' command in the 'Student' feature</div>
+</div>
+<div class="paragraph">
+<p>Referencing the above activity diagram, TAble will first check that all prefixes are present and formatted correctly, and that no multiple of the same prefix exists.
+It will then proceed to check if the name, matric number, email address, and tags (if any) are formatted correctly.
+It will then create a <code>Student</code> object using the provided name, matric number, email address, and tags (if any) and then check if there is a duplicate student inside TAble.
+If there are no duplicate student inside TAble, it will check across every student in TAble to see if the provided matric number or email address already exists inside TAble.
+If the provided matric number or email address does not belong to any student inside TAble already, the created student is then added into TAble and a message is returned indicating success.
+The new student will appear in the TAble.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="sorting-students"><a class="link" href="#sorting-students">Sorting Students</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 45.4545%;">
+<col style="width: 45.4546%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current Choice):</strong> Sort the list of students only when user enters a sort command</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2 :</strong> Automatically sort the list of students whenever a student is added/edited/deleted</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User can decide how they want the list to be sorted (e.g. by alphabetical order).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">It is intuitive for the students to be sorted in alphabetical order, allows for easier referencing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User have to type the sort command each time a new student is added or an existing student is edited/deleted.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User are not able to sort the list of students according to their preferences. It is quite inefficient as the system
+would have to sort the list of students every a new student is added or an existing student is edited/deleted.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Reason for choosing Alternative 1:  From a user design perspective, a teaching assistant would scroll through the current list of students
+to check if the student has been added , or to identify which tutorial and modules the student has been added in. When the list gets bigger,
+he would have to scroll further to search for the student he is looking for or to check if a particular student has been added. With both <code>findStudent</code> and <code>findStudentMatricNumber</code> commands present,
+it would be more efficient to find the student using either of 2 commands than scrolling through the list of students. This also aligns with the project constraints that typing is preferred over mouse use.
+The functionality of sorting the list of students alphabetically via a command will be implemented in version 2.0 for a better user experience and a more presentable list of studenst.
+Currently the functionality that both <code>findStudent</code> and <code>findStudentMatricNumber</code> provides an efficient solution to identify students or check if they have been added.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="module-feature-written-by-nigel-neo"><a class="link" href="#module-feature-written-by-nigel-neo">3.2. Module feature (Written by Nigel Neo)</a></h3>
 <div class="paragraph">
 <p><strong>TAble</strong> allows NUS SoC teaching assistants to track and record all modules that they are teaching. Users can leave notes on the modules that they are teaching and store a list of links for the module that are useful for reference.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
 <div class="paragraph">
 <p>A module can be stored as a Mod object in <strong>TAble</strong> (renamed due to naming restrictions on Java keywords). The main components are the module code, which is used to identify unique modules, and module name. Mod can also store the user&#8217;s notes of the module through its description parameter, as well as a list of module links which are relevant to the course.</p>
 </div>
@@ -337,7 +434,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="content">
 <img src="images/ModClassDiagram.png" alt="ModClassDiagram">
 </div>
-<div class="title">Figure 9. Class diagram of 'Mod' feature, displaying only directly related classes</div>
+<div class="title">Figure 12. Class diagram of 'Mod' feature, displaying only directly related classes</div>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram shows how notes of a module can be updated with the <code>noteMod</code> command. Each command is parsed into a ModCode object and the note stored as string. The ModCode is then used to retrieve the appropriate Mod object in <code>model</code>. Next, this is used in the Mod constructor to come up with a new Mod with the given note. This new Mod replaces the original Mod in model and the command returns a string indicating success.</p>
@@ -346,7 +443,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="content">
 <img src="images/NoteModSequenceDiagram.png" alt="NoteModSequenceDiagram">
 </div>
-<div class="title">Figure 10. Sequence diagram of updating Mod notes</div>
+<div class="title">Figure 13. Sequence diagram of updating Mod notes</div>
 </div>
 <div class="paragraph">
 <p>Module links are stored as ModLink objects in <strong>TAble</strong>. The collection of ModLinks are stored as <code>List&lt;ModLinkPair&gt;</code> (where a ModLinkPair is actually a class wrapper for a Pair&lt;String, ModLink&gt; object) since each module link can be described differently. This allows for more flexibility in naming the module links, rather than solely using an index based notation, and ensures that the order of addition into the collection is maintained. The activity diagram of adding module links is shown below.</p>
@@ -355,14 +452,14 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="content">
 <img src="images/AddModLinkActivityDiagram.png" alt="AddModLinkActivityDiagram">
 </div>
-<div class="title">Figure 11. Activity diagram of adding ModLinks to Mod</div>
+<div class="title">Figure 14. Activity diagram of adding ModLinks to Mod</div>
 </div>
 <div class="paragraph">
 <p>Users can then view the information associated with a Mod object by using the <code>viewModInfo</code> command, and copy module links with the <code>copyModLink</code> command. Discussion on the copyModLink command is shown below.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="unable-to-delete-module-with-associated-tutorials"><a class="link" href="#unable-to-delete-module-with-associated-tutorials">Unable to delete module with associated tutorials</a></h5>
 <table class="tableblock frame-all grid-all spread">
@@ -426,13 +523,13 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 </div>
 </div>
 <div class="sect2">
-<h3 id="tutorial-feature-written-by-sarah-lim"><a class="link" href="#tutorial-feature-written-by-sarah-lim">3.2. Tutorial feature (Written by Sarah Lim)</a></h3>
+<h3 id="tutorial-feature-written-by-sarah-lim"><a class="link" href="#tutorial-feature-written-by-sarah-lim">3.3. Tutorial feature (Written by Sarah Lim)</a></h3>
 <div class="paragraph">
 <p><strong>TAble</strong> allows NUS teaching assistants to track and record all the tutorials they are teaching, and maintain details of the tutorial, such as the module it is under, start and end time of the tutorial, and the location it is held.
 Tutorials in <strong>TAble</strong> also allow teaching assistants to enroll students in a tutorial and mark their attendance for every week of the semester, and allows for convenient referencing (particularly when there&#8217;s a pandemic and contact tracing is critical).</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.3.1. Implementation</a></h4>
 <div class="paragraph">
 <p>Since a <code>Tutorial</code> in <strong>TAble</strong> has to manage many parameters and attributes, different components of <strong>TAble</strong> were distinctly separated in order to ensure maintainability and adhere to good coding practices.
 The following illustrates the sequence diagram for AddTutorialCommand, in which a tutorial is added to <strong>TAble</strong>.</p>
@@ -441,7 +538,7 @@ The following illustrates the sequence diagram for AddTutorialCommand, in which 
 <div class="content">
 <img src="images/TutorialCommandSequenceDiagram.png" alt="TutorialCommandSequenceDiagram">
 </div>
-<div class="title">Figure 12. Sequence diagram for the command to add a tutorial</div>
+<div class="title">Figure 15. Sequence diagram for the command to add a tutorial</div>
 </div>
 <div class="paragraph">
 <p>The <code>LogicManager</code> is responsible for handling the execution of the user&#8217;s input command to add a tutorial, calling <code>parseCommand()</code>, which returns an <code>AddTutorialCommand</code> object
@@ -454,7 +551,7 @@ This enables bugs to be easily caught, and for the process to be structured and 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>As a <code>Tutorial</code> in TAble should be able to keep track of enrolled students and mark their attendance, the <code>Tutorial</code> object will have to contain a list of <code>Student</code> objects (ie. the enrolled students).
 However, a <code>Student</code> object, as we are implementing it, does not contain the attribute of whether they are present or not for a particular <code>tutorial</code>.</p>
@@ -495,7 +592,7 @@ This allows attendance of a <code>Student</code> to be easily referenced and mar
 <div class="content">
 <img src="images/TutorialMarkPresentActivityDiagram.png" alt="TutorialMarkPresentActivityDiagram">
 </div>
-<div class="title">Figure 13. Activity diagram for the command markPresent in the tutorial feature</div>
+<div class="title">Figure 16. Activity diagram for the command markPresent in the tutorial feature</div>
 </div>
 <div class="paragraph">
 <p>When executing the markPresent command, the system will first ensure that all prefixes are present and formatted correctly, before subsequently checking if the specified tutorial exists in the TAble database.
@@ -505,12 +602,12 @@ If successful, the updated information is then saved.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="consult-feature-written-by-han-ching"><a class="link" href="#consult-feature-written-by-han-ching">3.3. Consult feature (Written by Han Ching)</a></h3>
+<h3 id="consult-feature-written-by-han-ching"><a class="link" href="#consult-feature-written-by-han-ching">3.4. Consult feature (Written by Han Ching)</a></h3>
 <div class="paragraph">
 <p><strong>TAble</strong> allows NUS SoC teaching assistants to track and record all their consultations scheduled with their students.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">3.3.1. Implementation</a></h4>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">3.4.1. Implementation</a></h4>
 <div class="paragraph">
 <p>A <code>Consult</code> class stores all of the relevant information of consults. The class diagram below shows how all the different components interact to allow the consult feature to function. Note that the XYZConsultCommand and XYZConsultCommandParser refers to all Consult related commands like add, edit, delete etc.</p>
 </div>
@@ -518,7 +615,7 @@ If successful, the updated information is then saved.</p>
 <div class="content">
 <img src="images/ConsultsCommandClassDiagram.png" alt="ConsultsCommandClassDiagram">
 </div>
-<div class="title">Figure 14. Class diagram of 'Consults' feature</div>
+<div class="title">Figure 17. Class diagram of 'Consults' feature</div>
 </div>
 <div class="paragraph">
 <p>A consultation slot is represented by the <code>Consult</code> class which contains 5 key attributes, the <code>beginDateTime</code>, <code>endDateTime</code>, <code>location</code>, <code>studentMatricNumber</code> and <code>studentName</code>.
@@ -537,7 +634,7 @@ The <code>beginDateTime</code> and <code>endDateTime</code> attributes are repre
 <div class="content">
 <img src="images/AddConsultActivityDiagram.png" alt="AddConsultActivityDiagram">
 </div>
-<div class="title">Figure 15. Activity diagram for the command addConsult in the <code>Consult</code> feature</div>
+<div class="title">Figure 18. Activity diagram for the command addConsult in the <code>Consult</code> feature</div>
 </div>
 <div class="paragraph">
 <p>The workflow above shows how a <code>Consult</code> is added and the various checks that occurs at the different points throughout the workflow.</p>
@@ -550,7 +647,7 @@ the <code>Student</code> index provided is within the range of the <code>Student
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="consult-storing-matric-number-and-name"><a class="link" href="#consult-storing-matric-number-and-name">Consult storing Matric Number and Name</a></h5>
 <table class="tableblock frame-all grid-all spread">
@@ -614,12 +711,12 @@ the <code>Student</code> index provided is within the range of the <code>Student
 </div>
 </div>
 <div class="sect2">
-<h3 id="reminder-feature-written-by-cranston-yeo"><a class="link" href="#reminder-feature-written-by-cranston-yeo">3.4. Reminder feature (Written by Cranston Yeo)</a></h3>
+<h3 id="reminder-feature-written-by-cranston-yeo"><a class="link" href="#reminder-feature-written-by-cranston-yeo">3.5. Reminder feature (Written by Cranston Yeo)</a></h3>
 <div class="paragraph">
 <p><strong>TAble</strong> allows NUS SoC teaching assistants to create reminders to help them in keeping track of their ongoing or upcoming tasks.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">3.4.1. Implementation</a></h4>
+<h4 id="implementation-6"><a class="link" href="#implementation-6">3.5.1. Implementation</a></h4>
 <div class="paragraph">
 <p>A reminder is made up of a description, date and time which uniquely identify each reminder. Each reminder has a boolean attribute to indicate if the task is done.</p>
 </div>
@@ -633,7 +730,7 @@ the <code>Student</code> index provided is within the range of the <code>Student
 <div class="content">
 <img src="images/FindReminderSequenceDiagram.png" alt="FindReminderSequenceDiagram">
 </div>
-<div class="title">Figure 16. Sequence diagram for finding reminders</div>
+<div class="title">Figure 19. Sequence diagram for finding reminders</div>
 </div>
 <div class="paragraph">
 <p>A snooze reminder feature is also implemented for the users to easily postpone a reminder. It&#8217;s implementation is similar to the <code>editReminderCommand</code> where it creates a new reminder to replace the specified reminder instead of editing the current reminder directly. This is to ensure the reminders are immutable which improves the stability of the application.</p>
@@ -645,11 +742,11 @@ the <code>Student</code> index provided is within the range of the <code>Student
 <div class="content">
 <img src="images/SnoozeReminderActivityDiagram.png" alt="SnoozeReminderActivityDiagram">
 </div>
-<div class="title">Figure 17. Activity diagram for the command snoozeReminder in the reminder feature</div>
+<div class="title">Figure 20. Activity diagram for the command snoozeReminder in the reminder feature</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="sorting-the-reminders"><a class="link" href="#sorting-the-reminders">Sorting the reminders</a></h5>
 <table class="tableblock frame-all grid-all spread">
@@ -714,12 +811,12 @@ Furthermore, they are hard to test due to their volatile nature and including th
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-feature-written-by-han-ching"><a class="link" href="#calendar-feature-written-by-han-ching">3.5. Calendar feature (Written by Han Ching)</a></h3>
+<h3 id="calendar-feature-written-by-han-ching"><a class="link" href="#calendar-feature-written-by-han-ching">3.6. Calendar feature (Written by Han Ching)</a></h3>
 <div class="paragraph">
 <p><strong>TAble</strong> allows NUS SoC teaching assistants to bring up a calendar view of all their upcoming consults, tutorials and reminders.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-6"><a class="link" href="#implementation-6">3.5.1. Implementation</a></h4>
+<h4 id="implementation-7"><a class="link" href="#implementation-7">3.6.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The key command which users can call is the <code>viewCalendar</code> command.</p>
 </div>
@@ -735,7 +832,7 @@ The <code>CalendarDay</code> has a <code>StackPane</code> that displays the numb
 <div class="content">
 <img src="images/CalendarWindowSequenceDiagram.png" alt="CalendarWindowSequenceDiagram">
 </div>
-<div class="title">Figure 18. Sequence diagram of creation of Calendar</div>
+<div class="title">Figure 21. Sequence diagram of creation of Calendar</div>
 </div>
 <div class="paragraph">
 <p>The above sequence diagram illustrates how the Calendar is initialised when the TAble app is start up. Thus, whenever the user inputs the <code>viewCalendar</code> command,
@@ -750,11 +847,11 @@ As seen in the screenshot below, the number of reminders, tutorials and consults
 <div class="content">
 <img src="images/CalendarReminderTutConsult.png" alt="CalendarReminderTutConsult">
 </div>
-<div class="title">Figure 19. Screenshot of how the number of reminders, tutorials and consults are displayed on the same day</div>
+<div class="title">Figure 22. Screenshot of how the number of reminders, tutorials and consults are displayed on the same day</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="displaying-calendar-as-a-separate-window"><a class="link" href="#displaying-calendar-as-a-separate-window">Displaying calendar as a separate window</a></h5>
 <table class="tableblock frame-all grid-all spread">
@@ -790,9 +887,9 @@ would likely not be significantly affected.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="common-design-considerations"><a class="link" href="#common-design-considerations">3.6. Common Design Considerations</a></h3>
+<h3 id="common-design-considerations"><a class="link" href="#common-design-considerations">3.7. Common Design Considerations</a></h3>
 <div class="sect3">
-<h4 id="length-of-command-prefixes-for-all-features"><a class="link" href="#length-of-command-prefixes-for-all-features">3.6.1. Length of command prefixes (For all features)</a></h4>
+<h4 id="length-of-command-prefixes-for-all-features"><a class="link" href="#length-of-command-prefixes-for-all-features">3.7.1. Length of command prefixes (For all features)</a></h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 9.0909%;">
@@ -823,14 +920,14 @@ would likely not be significantly affected.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -861,7 +958,7 @@ would likely not be significantly affected.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -937,6 +1034,12 @@ would likely not be significantly affected.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">teaching assistant</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">find a student by name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">locate details of students without having to go through the entire list</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teaching assistant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find a student by matric number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">locate students with the specific matric number without having to go through the entire list</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -1108,7 +1211,7 @@ would likely not be significantly affected.</p>
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>TAble Application</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>System</strong> is the <code>TAble Application</code> and the <strong>Actor</strong> is the <code>user</code> which is a Teaching Assistant at NUS SOC, unless specified otherwise)</p>
 </div>
 <h3 id="use-case-delete-student-u01" class="discrete">Use case: Delete student (U01)</h3>
 <div class="paragraph">
@@ -1159,7 +1262,289 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-add-consult-u02" class="discrete">Use case: Add consult (U02)</h3>
+<h3 id="use-case-add-student-u02" class="discrete">Use case: Add student (U02)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add a student with name, matric number, email address and tag included</p>
+</li>
+<li>
+<p>System saves the new student into the database</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The name, matric number, or email address is not included.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message which indicates that an invalid format was given.</p>
+</li>
+<li>
+<p>1a2. User enters student with all required fields included.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. The user enters a matric number or email address which already exists in the database.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System shows an error message that the given identity field already exists.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-edit-student-u03" class="discrete">Use case: Edit student (U03)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to update either the name, matric number, email address, or tags of an existing student based on the student&#8217;s index.</p>
+</li>
+<li>
+<p>Systems updates the students according to the User&#8217;s request.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message which indicates that an invalid command was given.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. The name, matric number, email address provided is in the invalid format.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System shows an error message which indicates that the field to be edited must be
+provided in the correct format.</p>
+</li>
+<li>
+<p>1b2. User enters the required fields in the correct format.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c. The matric number or email address provided already exists in the database.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c1. System shows an error message which indicates that the matric number or email address to be changed to already exists in the database.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-student-by-name-u04" class="discrete">Use case: Find student by name (U04)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find all students matching with some keywords.</p>
+</li>
+<li>
+<p>System returns a list with all matching students from the database.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The keyword is not included.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message the an invalid command was provided.</p>
+</li>
+<li>
+<p>1a2. User reenters the command with the keyword included.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-student-by-matric-number-u05" class="discrete">Use case: Find student by matric number (U05)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find the student with the matching matric number.</p>
+</li>
+<li>
+<p>System returns a list with the matching student from the database.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The matric number is not included.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System shows an error message that indicates matric number to be searched cannot be empty.</p>
+</li>
+<li>
+<p>1a2. User reenters the command with the matric number included.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. User keys in more than one matric number.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System shows an error message that indicates not to repeat prefixes.</p>
+</li>
+<li>
+<p>1b2. User reenters the command with only one matric number included.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-list-students-u06" class="discrete">Use case: List students (U06)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list all existing students in the database</p>
+</li>
+<li>
+<p>System shows the list of existing students students</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-add-consult-u07" class="discrete">Use case: Add consult (U07)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1196,7 +1581,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-edit-consult-u03" class="discrete">Use case: Edit consult (U03)</h3>
+<h3 id="use-case-edit-consult-u08" class="discrete">Use case: Edit consult (U08)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1246,7 +1631,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-delete-consult-u04" class="discrete">Use case: Delete consult (U04)</h3>
+<h3 id="use-case-delete-consult-u09" class="discrete">Use case: Delete consult (U09)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1296,7 +1681,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-list-consults-u05" class="discrete">Use case: List consults (U05)</h3>
+<h3 id="use-case-list-consults-u10" class="discrete">Use case: List consults (U10)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1326,7 +1711,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-add-tutorial-u06" class="discrete">Use case: Add tutorial (U06)</h3>
+<h3 id="use-case-add-tutorial-u11" class="discrete">Use case: Add tutorial (U11)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1363,7 +1748,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-delete-tutorial-u07" class="discrete">Use case: Delete tutorial (U07)</h3>
+<h3 id="use-case-delete-tutorial-u12" class="discrete">Use case: Delete tutorial (U12)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1417,7 +1802,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-list-tutorials-u08" class="discrete">Use case: List tutorials (U08)</h3>
+<h3 id="use-case-list-tutorials-u13" class="discrete">Use case: List tutorials (U13)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1434,7 +1819,7 @@ would likely not be significantly affected.</p>
 </li>
 </ol>
 </div>
-<h3 id="use-case-add-a-student-to-an-existing-tutorial-u09" class="discrete">Use case: Add a student to an existing tutorial (U09)</h3>
+<h3 id="use-case-add-a-student-to-an-existing-tutorial-u14" class="discrete">Use case: Add a student to an existing tutorial (U14)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1505,7 +1890,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-remove-a-student-from-an-existing-tutorial-u10" class="discrete">Use case: Remove a student from an existing tutorial (U10)</h3>
+<h3 id="use-case-remove-a-student-from-an-existing-tutorial-u15" class="discrete">Use case: Remove a student from an existing tutorial (U15)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1576,7 +1961,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-mark-attendance-of-student-u11" class="discrete">Use case: Mark attendance of student (U11)</h3>
+<h3 id="use-case-mark-attendance-of-student-u16" class="discrete">Use case: Mark attendance of student (U16)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1630,7 +2015,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-view-attendance-sheet-u12" class="discrete">Use case: View attendance sheet (U12)</h3>
+<h3 id="use-case-view-attendance-sheet-u17" class="discrete">Use case: View attendance sheet (U17)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1647,7 +2032,7 @@ would likely not be significantly affected.</p>
 </li>
 </ol>
 </div>
-<h3 id="use-case-add-reminder-u13" class="discrete">Use case: Add reminder (U13)</h3>
+<h3 id="use-case-add-reminder-u18" class="discrete">Use case: Add reminder (U18)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1684,7 +2069,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-mark-reminder-as-done-u14" class="discrete">Use case: Mark reminder as done (U14)</h3>
+<h3 id="use-case-mark-reminder-as-done-u19" class="discrete">Use case: Mark reminder as done (U19)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1734,7 +2119,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-update-reminder-u15" class="discrete">Use case: Update reminder (U15)</h3>
+<h3 id="use-case-update-reminder-u20" class="discrete">Use case: Update reminder (U20)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1784,7 +2169,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-delete-reminder-u16" class="discrete">Use case: Delete reminder (U16)</h3>
+<h3 id="use-case-delete-reminder-u21" class="discrete">Use case: Delete reminder (U21)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1821,7 +2206,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-list-reminders-u17" class="discrete">Use case: List reminders (U17)</h3>
+<h3 id="use-case-list-reminders-u22" class="discrete">Use case: List reminders (U22)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1851,7 +2236,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-find-reminders-u18" class="discrete">Use case: Find reminders (U18)</h3>
+<h3 id="use-case-find-reminders-u23" class="discrete">Use case: Find reminders (U23)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1894,7 +2279,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-snooze-reminder-u19" class="discrete">Use case: Snooze reminder (U19)</h3>
+<h3 id="use-case-snooze-reminder-u24" class="discrete">Use case: Snooze reminder (U24)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1957,7 +2342,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-create-module-u20" class="discrete">Use case: Create Module (U20)</h3>
+<h3 id="use-case-create-module-u25" class="discrete">Use case: Create Module (U25)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2004,7 +2389,7 @@ would likely not be significantly affected.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
-<h3 id="use-case-view-module-u21" class="discrete">Use case: View Module (U21)</h3>
+<h3 id="use-case-view-module-u26" class="discrete">Use case: View Module (U26)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2041,7 +2426,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-update-module-u22" class="discrete">Use case: Update Module (U22)</h3>
+<h3 id="use-case-update-module-u27" class="discrete">Use case: Update Module (U27)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2078,7 +2463,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-add-module-links-u23" class="discrete">Use case: Add Module links (U23)</h3>
+<h3 id="use-case-add-module-links-u28" class="discrete">Use case: Add Module links (U28)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2132,7 +2517,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-clear-all-module-links-u24" class="discrete">Use case: Clear All Module links (U24)</h3>
+<h3 id="use-case-clear-all-module-links-u29" class="discrete">Use case: Clear All Module links (U29)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2169,7 +2554,7 @@ would likely not be significantly affected.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-open-calendar-window-u25" class="discrete">Use case: Open Calendar Window (U25)</h3>
+<h3 id="use-case-open-calendar-window-u30" class="discrete">Use case: Open Calendar Window (U30)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2358,26 +2743,31 @@ Expected: The first suggested add command is displayed in the command box.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-student"><a class="link" href="#deleting-a-student">F.3. Deleting a student</a></h3>
+<h3 id="adding-a-student"><a class="link" href="#adding-a-student">F.3. Adding a student</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a student while all students are listed</p>
+<p>Adding a student into TAble</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all students using the <code>listStudent</code> command. Multiple students in the list.</p>
+<p>Test case: <code>addStudent name/Bob Bee matric/A0183838X email/bobbee@example.com tag/test</code><br>
+Expected: student 'Bob Bee' with the above matric number, email address, and tag is added into the list. Details of the added student shown in the status message. Timestamp in the status bar is updated.</p>
 </li>
 <li>
-<p>Test case: <code>deleteStudent 1</code><br>
-Expected: First student is deleted from the list. Details of the deleted student shown in the status message. Timestamp in the status bar is updated.</p>
+<p>Test case: <code>addStudent name/ matric/A0111111R email/blank@example.com</code><br>
+Expected: No student is added. Error message displayed. Error details shown in the status message</p>
 </li>
 <li>
-<p>Test case: <code>deleteStudent 0</code><br>
-Expected: No student is deleted. Error details shown in the status message. Status bar remains the same.</p>
+<p>Test case: <code>addStudent name/Andy Ang matric/A0123456789X email/blank@example.com</code><br>
+Expected: No student is added. Error message displayed. Error details shown in the status message</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>deleteStudent</code>, <code>deleteStudent x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Test case: <code>addStudent name/ matric/ email/</code><br>
+Expected: No student is added. Error message displayed. Error details shown in the status message</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>addStudent</code>, <code>addStudent name/Anthony Lee matric/A0147852X email/[EMAIL]</code> (where [EMAIL] is an email address which currently exists in TAble) + <code>addStudent name/Anthony Lee matric/[MATRIC_NUMBER] email/anthonlee@example.com</code> (where [MATRIC_NUMBER] is a matric number which currently exists in TAble)
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -2387,7 +2777,36 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="copying-module-links-from-module"><a class="link" href="#copying-module-links-from-module">F.4. Copying module links from module</a></h3>
+<h3 id="deleting-a-student"><a class="link" href="#deleting-a-student">F.4. Deleting a student</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a student while all students are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all students using the <code>listStudent</code> command. 1 or more students in the list.</p>
+</li>
+<li>
+<p>Test case: <code>deleteStudent 1</code><br>
+Expected: First student is deleted from the list. Details of the deleted student shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>deleteStudent 0</code><br>
+Expected: No student is deleted. Error message displayed. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>deleteStudent</code>, <code>deleteStudent x</code> (where x is larger than the list size), <code>deleteStudent y</code> (where y is a float or negative number)+
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="copying-module-links-from-module"><a class="link" href="#copying-module-links-from-module">F.5. Copying module links from module</a></h3>
 <div class="paragraph">
 <p>After storing a module link using the <code>AddModLink</code> command on a target module, the user can easily copy it to their clipboard with the <code>copyModLink</code> command.</p>
 </div>
@@ -2424,7 +2843,7 @@ Expected: No module link is copied to the clipboard (unless there is a module wi
 </div>
 </div>
 <div class="sect2">
-<h3 id="marking-attendance-of-a-tutorial-student"><a class="link" href="#marking-attendance-of-a-tutorial-student">F.5. Marking attendance of a tutorial student</a></h3>
+<h3 id="marking-attendance-of-a-tutorial-student"><a class="link" href="#marking-attendance-of-a-tutorial-student">F.6. Marking attendance of a tutorial student</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2469,7 +2888,7 @@ Expected: Error message displayed, with no change to attendance list. Error deta
 </div>
 </div>
 <div class="sect2">
-<h3 id="copying-tutorial-students-emails"><a class="link" href="#copying-tutorial-students-emails">F.6. Copying tutorial students' emails</a></h3>
+<h3 id="copying-tutorial-students-emails"><a class="link" href="#copying-tutorial-students-emails">F.7. Copying tutorial students' emails</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2494,7 +2913,7 @@ Expected: No student emails are copied to the clipboard, and an error message is
 </div>
 </div>
 <div class="sect2">
-<h3 id="snoozing-a-reminder"><a class="link" href="#snoozing-a-reminder">F.7. Snoozing a reminder</a></h3>
+<h3 id="snoozing-a-reminder"><a class="link" href="#snoozing-a-reminder">F.8. Snoozing a reminder</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2527,7 +2946,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-calendar"><a class="link" href="#viewing-calendar">F.8. Viewing calendar</a></h3>
+<h3 id="viewing-calendar"><a class="link" href="#viewing-calendar">F.9. Viewing calendar</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2557,4 +2976,4 @@ Expected: The <code>Calendar</code> window will be closed. Alternatively, the us
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 05:56:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 07:00:54 UTC</div></div></div></body></html>
