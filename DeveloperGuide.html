@@ -9,7 +9,7 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a></li>
+<li><a href="#introduction">1. Introduction</a></li>
 <li><a href="#design">2. Design</a>
 <ul class="sectlevel2">
 <li><a href="#Design-Architecture">2.1. Architecture</a></li>
@@ -32,9 +32,6 @@
 <li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
 </ul>
 </li>
-<li><a href="#documentation">4. Documentation</a></li>
-<li><a href="#testing">5. Testing</a></li>
-<li><a href="#dev-ops">6. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
@@ -56,10 +53,13 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
+<p>TAble is your handy desktop app, optimized for TAs who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI)! Mark attendance, arrange consults, add module notes, set reminders and more with TAble! It has a GUI created with JavaFX and written in Java, and has about 20 kLoC.</p>
+</div>
+<div class="paragraph">
+<p>This document serves as a technical guide to developers who wish to understand the internal mechanisms of TAble or modify/extend the application.</p>
 </div>
 </div>
 </div>
@@ -259,7 +259,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
 </div>
-<div class="title">Figure 7. Structure of the Model Component</div>
+<div class="title">Figure 7. Structure of the Model Component. Only the full details of Student is featured in this diagram for clarity.</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920-CS2103-W15-3/main/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -290,7 +290,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
-<div class="title">Figure 8. Structure of the Storage Component</div>
+<div class="title">Figure 8. Structure of the Storage Component. The full structure is only shown for Consults for clarity.</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920-CS2103-W15-3/main/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -331,7 +331,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="sect3">
 <h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
 <div class="paragraph">
-<p>A module can be stored as a Mod object in TAble (renamed due to naming restrictions on Java keywords). The main components are the module code, which is used to identify unique modules, and module name. Mod can also store the user&#8217;s notes of the module through its description parameter, as well as a list of module links which are relevant to the course.</p>
+<p>A module can be stored as a Mod object in <strong>TAble</strong> (renamed due to naming restrictions on Java keywords). The main components are the module code, which is used to identify unique modules, and module name. Mod can also store the user&#8217;s notes of the module through its description parameter, as well as a list of module links which are relevant to the course.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -349,7 +349,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="title">Figure 10. Sequence diagram of updating Mod notes</div>
 </div>
 <div class="paragraph">
-<p>Module links are stored as ModLink objects in TAble. The collection of ModLinks are stored as <code>List&lt;ModLinkPair&gt;</code> (where a ModLinkPair is actually a class wrapper for a Pair&lt;String, ModLink&gt; object) since each module link can be described differently. This allows for more flexibility in naming the module links, rather than solely using an index based notation, and ensures that the order of addition into the collection is maintained. The activity diagram of adding module links is shown below.</p>
+<p>Module links are stored as ModLink objects in <strong>TAble</strong>. The collection of ModLinks are stored as <code>List&lt;ModLinkPair&gt;</code> (where a ModLinkPair is actually a class wrapper for a Pair&lt;String, ModLink&gt; object) since each module link can be described differently. This allows for more flexibility in naming the module links, rather than solely using an index based notation, and ensures that the order of addition into the collection is maintained. The activity diagram of adding module links is shown below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -379,13 +379,13 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Informs user if there are any dependencies between module to be deleted and tutorials in TAble.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Informs user if there are any dependencies between module to be deleted and tutorials in <strong>TAble</strong>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fast deletion of module and related objects.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User needs to individually delete associated tutorials before module can be deleted.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Information in TAble will be lost easily as user may not be aware of such an association. As there is no undo command, it will not be easy to undo this command and revert TAble to its original state.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Information in <strong>TAble</strong> will be lost easily as user may not be aware of such an association. As there is no undo command, it will not be easy to undo this command and revert TAble to its original state.</p></td>
 </tr>
 </tbody>
 </table>
@@ -415,7 +415,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User needs to open a browser before accessing link.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Very distracting when opening link, as focus changes from TAble to browser unexpectedly (depending on when browser loads).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Very distracting when opening link, as focus changes from <strong>TAble</strong> to browser unexpectedly (depending on when browser loads).</p></td>
 </tr>
 </tbody>
 </table>
@@ -865,30 +865,6 @@ would likely not be significantly affected.</p>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Refer to the guide <a href="Documentation.html">here</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">5. Testing</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Refer to the guide <a href="Testing.html">here</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Refer to the guide <a href="DevOps.html">here</a>.</p>
 </div>
 </div>
 </div>
@@ -2581,4 +2557,4 @@ Expected: The <code>Calendar</code> window will be closed. Alternatively, the us
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 04:00:36 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 05:56:21 UTC</div></div></div></body></html>
