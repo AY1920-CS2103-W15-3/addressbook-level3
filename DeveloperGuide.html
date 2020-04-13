@@ -414,8 +414,8 @@ would have to sort the list of students every a new student is added or an exist
 to check if the student has been added , or to identify which tutorial and modules the student has been added in. When the list gets bigger,
 he would have to scroll further to search for the student he is looking for or to check if a particular student has been added. With both <code>findStudent</code> and <code>findStudentMatricNumber</code> commands present,
 it would be more efficient to find the student using either of 2 commands than scrolling through the list of students. This also aligns with the project constraints that typing is preferred over mouse use.
-The functionality of sorting the list of students alphabetically via a command will be implemented in version 2.0 for a better user experience and a more presentable list of studenst.
-Currently the functionality that both <code>findStudent</code> and <code>findStudentMatricNumber</code> provides an efficient solution to identify students or check if they have been added.</p>
+The functionality of sorting the list of students alphabetically via a command was implemented to bring about a better user experience and a more presentable list of students.
+However the functionality of both <code>findStudent</code> and <code>findStudentMatricNumber</code> provides an efficient solution to identify students or check if they have been added, without the need to sort the list of students.</p>
 </div>
 </div>
 </div>
@@ -1524,7 +1524,7 @@ provided in the correct format.</p>
 <p>User requests to list all existing students in the database</p>
 </li>
 <li>
-<p>System shows the list of existing students students</p>
+<p>System shows the list of existing students</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1544,7 +1544,37 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-add-consult-u07" class="discrete">Use case: Add consult (U07)</h3>
+<h3 id="use-case-sort-students-u07" class="discrete">Use case: Sort students (U07)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to sort all existing students in the database</p>
+</li>
+<li>
+<p>System shows the list of existing students sorted in alphabetical order</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-add-consult-u08" class="discrete">Use case: Add consult (U08)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1581,7 +1611,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-edit-consult-u08" class="discrete">Use case: Edit consult (U08)</h3>
+<h3 id="use-case-edit-consult-u09" class="discrete">Use case: Edit consult (U09)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1631,7 +1661,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-delete-consult-u09" class="discrete">Use case: Delete consult (U09)</h3>
+<h3 id="use-case-delete-consult-u10" class="discrete">Use case: Delete consult (U10)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1681,7 +1711,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-list-consults-u10" class="discrete">Use case: List consults (U10)</h3>
+<h3 id="use-case-list-consults-u11" class="discrete">Use case: List consults (U11)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1711,7 +1741,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-add-tutorial-u11" class="discrete">Use case: Add tutorial (U11)</h3>
+<h3 id="use-case-add-tutorial-u12" class="discrete">Use case: Add tutorial (U12)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1748,7 +1778,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-delete-tutorial-u12" class="discrete">Use case: Delete tutorial (U12)</h3>
+<h3 id="use-case-delete-tutorial-u13" class="discrete">Use case: Delete tutorial (U13)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1802,7 +1832,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-list-tutorials-u13" class="discrete">Use case: List tutorials (U13)</h3>
+<h3 id="use-case-list-tutorials-u14" class="discrete">Use case: List tutorials (U14)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1819,7 +1849,7 @@ provided in the correct format.</p>
 </li>
 </ol>
 </div>
-<h3 id="use-case-add-a-student-to-an-existing-tutorial-u14" class="discrete">Use case: Add a student to an existing tutorial (U14)</h3>
+<h3 id="use-case-add-a-student-to-an-existing-tutorial-u15" class="discrete">Use case: Add a student to an existing tutorial (U15)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1890,7 +1920,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-remove-a-student-from-an-existing-tutorial-u15" class="discrete">Use case: Remove a student from an existing tutorial (U15)</h3>
+<h3 id="use-case-remove-a-student-from-an-existing-tutorial-u16" class="discrete">Use case: Remove a student from an existing tutorial (U16)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1961,7 +1991,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-mark-attendance-of-student-u16" class="discrete">Use case: Mark attendance of student (U16)</h3>
+<h3 id="use-case-mark-attendance-of-student-u17" class="discrete">Use case: Mark attendance of student (U17)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2015,7 +2045,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-view-attendance-sheet-u17" class="discrete">Use case: View attendance sheet (U17)</h3>
+<h3 id="use-case-view-attendance-sheet-u18" class="discrete">Use case: View attendance sheet (U18)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2032,7 +2062,7 @@ provided in the correct format.</p>
 </li>
 </ol>
 </div>
-<h3 id="use-case-add-reminder-u18" class="discrete">Use case: Add reminder (U18)</h3>
+<h3 id="use-case-add-reminder-u19" class="discrete">Use case: Add reminder (U19)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2069,7 +2099,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-mark-reminder-as-done-u19" class="discrete">Use case: Mark reminder as done (U19)</h3>
+<h3 id="use-case-mark-reminder-as-done-u20" class="discrete">Use case: Mark reminder as done (U20)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2119,7 +2149,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-update-reminder-u20" class="discrete">Use case: Update reminder (U20)</h3>
+<h3 id="use-case-update-reminder-u21" class="discrete">Use case: Update reminder (U21)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2169,7 +2199,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-delete-reminder-u21" class="discrete">Use case: Delete reminder (U21)</h3>
+<h3 id="use-case-delete-reminder-u22" class="discrete">Use case: Delete reminder (U22)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2206,7 +2236,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-list-reminders-u22" class="discrete">Use case: List reminders (U22)</h3>
+<h3 id="use-case-list-reminders-u23" class="discrete">Use case: List reminders (U23)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2236,7 +2266,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-find-reminders-u23" class="discrete">Use case: Find reminders (U23)</h3>
+<h3 id="use-case-find-reminders-u24" class="discrete">Use case: Find reminders (U24)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2279,7 +2309,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-snooze-reminder-u24" class="discrete">Use case: Snooze reminder (U24)</h3>
+<h3 id="use-case-snooze-reminder-u25" class="discrete">Use case: Snooze reminder (U25)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2342,7 +2372,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-create-module-u25" class="discrete">Use case: Create Module (U25)</h3>
+<h3 id="use-case-create-module-u26" class="discrete">Use case: Create Module (U26)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2389,7 +2419,7 @@ provided in the correct format.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
-<h3 id="use-case-view-module-u26" class="discrete">Use case: View Module (U26)</h3>
+<h3 id="use-case-view-module-u27" class="discrete">Use case: View Module (U27)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2426,7 +2456,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-update-module-u27" class="discrete">Use case: Update Module (U27)</h3>
+<h3 id="use-case-update-module-u28" class="discrete">Use case: Update Module (U28)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2463,7 +2493,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-add-module-links-u28" class="discrete">Use case: Add Module links (U28)</h3>
+<h3 id="use-case-add-module-links-u29" class="discrete">Use case: Add Module links (U29)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2517,7 +2547,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-clear-all-module-links-u29" class="discrete">Use case: Clear All Module links (U29)</h3>
+<h3 id="use-case-clear-all-module-links-u30" class="discrete">Use case: Clear All Module links (U30)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2554,7 +2584,7 @@ provided in the correct format.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-open-calendar-window-u30" class="discrete">Use case: Open Calendar Window (U30)</h3>
+<h3 id="use-case-open-calendar-window-u31" class="discrete">Use case: Open Calendar Window (U31)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2976,4 +3006,4 @@ Expected: The <code>Calendar</code> window will be closed. Alternatively, the us
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:44:19 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 12:53:19 UTC</div></div></div></body></html>

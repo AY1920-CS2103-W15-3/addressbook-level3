@@ -50,6 +50,9 @@ quickly see information information regarding each student.  Any edit or deletio
 </ul>
 </div>
 </li>
+<li>
+<p>Implemented a sorting feature which allows the user to sort the students in TAble in alphabetical order. If there are students with the same full names, these students will be sorted using their matric number, the student with the smallest matric number will appear highest on the list.</p>
+</li>
 </ul>
 </div>
 </li>
@@ -459,9 +462,11 @@ Deletes the 1st student in the list resulting from the <code>findStudent</code> 
 </div>
 </div>
 <div class="sect3">
-<h4 id="sort-students-alphabetically-by-name-code-sortstudentname-code-coming-in-v2-0"><a class="link" href="#sort-students-alphabetically-by-name-code-sortstudentname-code-coming-in-v2-0">Sort students alphabetically by name: <code>sortStudentName</code> [coming in v2.0]</a></h4>
+<h4 id="sort-students-alphabetically-by-name-code-sortstudentname-code"><a class="link" href="#sort-students-alphabetically-by-name-code-sortstudentname-code">Sort students alphabetically by name: <code>sortStudentName</code></a></h4>
 <div class="paragraph">
-<p>Sorts the current list of students according to their name in alphabetical order
+<p>Sorts the current list of students according to their name in alphabetical order. If there
+are two students with the same name they will be sorted by matric number, meaning the
+student with the lower matric number will be higher on the list.
 Format: <code>sortStudentName</code></p>
 </div>
 </div>
@@ -570,8 +575,8 @@ would have to sort the list of students every a new student is added or an exist
 to check if the student has been added , or to identify which tutorial and modules the student has been added in. When the list gets bigger,
 he would have to scroll further to search for the student he is looking for or to check if a particular student has been added. With both <code>findStudent</code> and <code>findStudentMatricNumber</code> commands present,
 it would be more efficient to find the student using either of 2 commands than scrolling through the list of students. This also aligns with the project constraints that typing is preferred over mouse use.
-The functionality of sorting the list of students alphabetically via a command will be implemented in version 2.0 for a better user experience and a more presentable list of studenst.
-Currently the functionality that both <code>findStudent</code> and <code>findStudentMatricNumber</code> provides an efficient solution to identify students or check if they have been added.</p>
+The functionality of sorting the list of students alphabetically via a command was implemented to bring about a better user experience and a more presentable list of students.
+However the functionality of both <code>findStudent</code> and <code>findStudentMatricNumber</code> provides an efficient solution to identify students or check if they have been added, without the need to sort the list of students.</p>
 </div>
 </div>
 </div>
@@ -843,7 +848,37 @@ provided in the correct format.</p>
 <p>User requests to list all existing students in the database</p>
 </li>
 <li>
-<p>System shows the list of existing students students</p>
+<p>System shows the list of existing students</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-sort-students-u07" class="discrete">Use case: Sort students (U07)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to sort all existing students in the database</p>
+</li>
+<li>
+<p>System shows the list of existing students sorted in alphabetical order</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -864,4 +899,4 @@ provided in the correct format.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:44:19 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 12:53:19 UTC</div></div></div></body></html>
